@@ -1,5 +1,6 @@
 #pragma once
 #include "Jugador.h"
+#include "Plataforma.h"
 
 class Mundo
 {
@@ -8,6 +9,7 @@ private:
 	float y_ojo;
 	float z_ojo;
 	Jugador player;
+	Plataforma plataforma1;
 public:
 	Mundo() { ; }
 	virtual ~Mundo();

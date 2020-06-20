@@ -25,6 +25,7 @@ void Jugador::Dibuja() {
 	glVertex2d(x - largo / 2, y - alto / 2);
 	glVertex2d(x + largo / 2, y - alto / 2);
 	glEnd();
+	glTranslatef(-posicion.x, -posicion.y, 0);
 	glEnable(GL_LIGHTING);
 }
 

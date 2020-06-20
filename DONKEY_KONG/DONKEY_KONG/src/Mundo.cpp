@@ -15,6 +15,10 @@ void Mundo::Inicializa() {
 
 	//Inicializamos jugador
 	player.setPos(-10,0);
+	//Inicializamos plataforma
+	plataforma1.setSize(10, 0.25);
+	plataforma1.setPos(9,-2);
+
 }
 
 void Mundo::Dibuja() {
@@ -24,7 +28,7 @@ void Mundo::Dibuja() {
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
 
 	player.Dibuja();
-	
+	plataforma1.Dibuja();
 }
 
 void Mundo::Mueve() {
