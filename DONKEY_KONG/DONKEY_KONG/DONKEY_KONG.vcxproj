@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="src\DonkeyKong.cpp" />
     <ClCompile Include="src\Elemento.cpp" />
+    <ClCompile Include="src\ElementoEstatico.cpp" />
     <ClCompile Include="src\Jugador.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Plataforma.cpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Elemento.h" />
+    <ClInclude Include="src\ElementoEstatico.h" />
     <ClInclude Include="src\Jugador.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Paths.h" />
