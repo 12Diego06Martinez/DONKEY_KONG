@@ -1,17 +1,11 @@
 #pragma once
-#include "Vector2D.h"
+#include "ElementoEstatico.h"
 
-class Plataforma
+class Plataforma:public ElementoEstatico
 {
-private:
-	float alto;
-	float largo;
-	Vector2D posicion;
 public:
-	Plataforma();
+	Plataforma(bool harmful, std::string path):ElementoEstatico(harmful, path){}
+	Plataforma(bool harmful) :ElementoEstatico(harmful){}
 	virtual ~Plataforma();
-	void Dibuja();
-	void setPos(float, float);
-	void setSize(float, float);
 };
 

@@ -14,7 +14,7 @@ protected:
 	unsigned char verde;
 	unsigned char azul;
 public:
-	Elemento() { ; }
+	Elemento(bool harmful):Harmful(harmful) {}
 	Elemento(bool harmful, std::string path): Harmful(harmful), Path(path){}
 	virtual ~Elemento();
 	virtual void Dibuja() = 0;

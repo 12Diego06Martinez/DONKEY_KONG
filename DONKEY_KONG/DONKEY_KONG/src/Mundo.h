@@ -9,9 +9,10 @@ private:
 	float y_ojo;
 	float z_ojo;
 	Jugador player;
-	Plataforma plataforma1;
+	//Plataforma plataforma1;
+	Plataforma* plataforma1 = new Plataforma(false);
 public:
-	Mundo() { ; }
+	Mundo() {}
 	virtual ~Mundo();
 	void Inicializa();
 	void Dibuja();
