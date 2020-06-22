@@ -16,19 +16,35 @@ void Mundo::Inicializa() {
 	//Inicializamos jugador
 	player.setPos(-10,0);
 	//Inicializamos plataforma
-	plataforma1->setSize(18, 0.25);
-	plataforma1->setPos(0, -2);
-	plataforma2->setSize(8, 0.25);
-	plataforma2->setPos(-5, 2);
-	plataforma3->setSize(8, 0.25);
-	plataforma3->setPos(5, 2);
-	plataforma4->setSize(18, 0.25);
-	plataforma4->setPos(0, 6);
-	escalera1->setSize(0.5, 4);
-	escalera1->setPos(5, 0);
-	escalera2->setSize(0.5, 4);
-	escalera2->setPos(-2, 4);
+	for (int i = 0; i < 3; i++) {
+		Plataforma* aux = new Plataforma(false);
+		aux->setPos(0, 8 * i - 2);
+		aux->setSize(18, 0.25);
+		plataformasLargas.Agregar(aux);
+	}
 
+	for (int i = 0; i < 2; i++) {
+		Plataforma* aux = new Plataforma(false);
+		aux->setPos(10 * i - 5, 2);
+		aux->setSize(8, 0.25);
+		plataformasCortas.Agregar(aux);
+	}
+
+	for (int i = 2; i < 4;i++) {
+		Plataforma* aux = new Plataforma(false);
+		aux->setPos(10 * i - 26, 10);
+		aux->setSize(4 * i - 2, 0.25);
+		plataformasCortas.Agregar(aux);
+	}
+		
+	for (int i = 1; i < 4; i++) {
+		for (int j = 1; j < 3; j++) {
+			Escalera* aux = new Escalera(false);
+			aux->setPos(13 - 5 * i - 3 * j, 12 + 4 * i - 8 * j);
+			aux->setSize(0.5, 4);
+			escaleras.Agregar(aux);
+		}	
+	}
 }
 
 void Mundo::Dibuja() {
@@ -38,12 +54,9 @@ void Mundo::Dibuja() {
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
 
 	player.Dibuja();
-	plataforma1->Dibuja();
-	plataforma2->Dibuja();
-	plataforma3->Dibuja();
-	plataforma4->Dibuja();
-	escalera1->Dibuja();
-	escalera2->Dibuja();
+	plataformasLargas.Dibuja();
+	plataformasCortas.Dibuja();
+	escaleras.Dibuja();
 }
 
 void Mundo::Mueve() {

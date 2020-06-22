@@ -2,6 +2,8 @@
 #include "Jugador.h"
 #include "Plataforma.h"
 #include "Escalera.h"
+#include "ListaPlataformas.h"
+#include "ListaEscaleras.h"
 
 class Mundo
 {
@@ -10,14 +12,9 @@ private:
 	float y_ojo;
 	float z_ojo;
 	Jugador player;
-	Plataforma* plataforma1 = new Plataforma(false);
-	Plataforma* plataforma2 = new Plataforma(false);
-	Plataforma* plataforma3 = new Plataforma(false);
-	Plataforma* plataforma4 = new Plataforma(false);
-	Escalera* escalera1 = new Escalera(false);
-	Escalera* escalera2 = new Escalera(false);
-	Escalera* escalera3 = new Escalera(false);
-
+	ListaPlataformas plataformasLargas;
+	ListaPlataformas plataformasCortas;
+	ListaEscaleras escaleras;
 public:
 	Mundo() {}
 	virtual ~Mundo();
@@ -26,4 +23,3 @@ public:
 	void Mueve();
 	void TeclaEspecial(unsigned char key);
 };
-
