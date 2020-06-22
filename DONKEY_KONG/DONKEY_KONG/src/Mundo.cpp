@@ -16,11 +16,6 @@ void Mundo::Inicializa() {
 	//Inicializamos jugador
 	player.setPos(-10,0);
 	//Inicializamos plataforma
-	//plataforma2->setSize(6, 0.25);
-	//plataforma2->setPos(-6, 10);
-	//plataforma3->setSize(10, 0.25);
-	//plataforma3->setPos(4, 10);
-	
 	for (int i = 0; i < 3; i++) {
 		Plataforma* aux = new Plataforma(false);
 		aux->setPos(0, 8 * i - 2);
@@ -42,12 +37,14 @@ void Mundo::Inicializa() {
 		plataformasCortas.Agregar(aux);
 	}
 		
-		
-	escalera1->setSize(0.5, 4);
-	escalera1->setPos(5, 0);
-	escalera2->setSize(0.5, 4);
-	escalera2->setPos(-2, 4);
-
+	for (int i = 1; i < 4; i++) {
+		for (int j = 1; j < 3; j++) {
+			Escalera* aux = new Escalera(false);
+			aux->setPos(13 - 5 * i - 3 * j, 12 + 4 * i - 8 * j);
+			aux->setSize(0.5, 4);
+			escaleras.Agregar(aux);
+		}	
+	}
 }
 
 void Mundo::Dibuja() {
@@ -59,10 +56,7 @@ void Mundo::Dibuja() {
 	player.Dibuja();
 	plataformasLargas.Dibuja();
 	plataformasCortas.Dibuja();
-	//plataforma2->Dibuja();
-	//plataforma3->Dibuja();
-	escalera1->Dibuja();
-	escalera2->Dibuja();
+	escaleras.Dibuja();
 }
 
 void Mundo::Mueve() {
