@@ -14,29 +14,48 @@ void Mundo::Inicializa() {
 	z_ojo = 30;
 
 	//Inicializamos jugador
-	player.setPos(-10,0);
+	player.setPos(-10,-0.75);
 	//Inicializamos plataforma
 	for (int i = 0; i < 3; i++) {
-		Plataforma* aux = new Plataforma(false);
-		aux->setPos(0, 8 * i - 2);
-		aux->setSize(18, 0.25);
-		plataformasLargas.Agregar(aux);
+		Plataforma* aux = new Plataforma(20, 0.25, 0, 8 * i - 2,false);
+		plataformas.Agregar(aux);
 	}
+
+	/*for (int i = 1; i < 3; i++) {
+		for (int j = 1; j < 3; j++) {
+			Plataforma* aux = new Plataforma(10 - 2 * i + 2 * j, 0.25, -17 + i + 10 * j, 18 - 8 * i, false);
+			plataformas.Agregar(aux);
+		}
+	}*/
 
 	for (int i = 0; i < 2; i++) {
 		Plataforma* aux = new Plataforma(false);
 		aux->setPos(10 * i - 5, 2);
 		aux->setSize(8, 0.25);
-		plataformasCortas.Agregar(aux);
+		plataformas.Agregar(aux);
 	}
 
-	for (int i = 2; i < 4;i++) {
+	for (int i = 2; i < 4; i++) {
 		Plataforma* aux = new Plataforma(false);
 		aux->setPos(10 * i - 26, 10);
 		aux->setSize(4 * i - 2, 0.25);
-		plataformasCortas.Agregar(aux);
+		plataformas.Agregar(aux);
 	}
-		
+
+	for (int i = 1; i < 4; i++) {
+		for (int j = 1; j < 3; j++) {
+			Escalera* aux = new Escalera(0.5, 4, 13 - 5 * i - 3 * j, 12 + 4 * i - 8 * j, false);
+			escaleras.Agregar(aux);
+		}
+	}
+
+	/*for (int i = 0; i < 3; i++) {
+		Plataforma* aux = new Plataforma(false);
+		aux->setPos(0, 8 * i - 2);
+		aux->setSize(18, 0.25);
+		plataformasLargas.Agregar(aux);
+	}
+	
 	for (int i = 1; i < 4; i++) {
 		for (int j = 1; j < 3; j++) {
 			Escalera* aux = new Escalera(false);
@@ -44,7 +63,7 @@ void Mundo::Inicializa() {
 			aux->setSize(0.5, 4);
 			escaleras.Agregar(aux);
 		}	
-	}
+	}*/
 }
 
 void Mundo::Dibuja() {
@@ -54,8 +73,7 @@ void Mundo::Dibuja() {
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
 
 	player.Dibuja();
-	plataformasLargas.Dibuja();
-	plataformasCortas.Dibuja();
+	plataformas.Dibuja();
 	escaleras.Dibuja();
 }
 

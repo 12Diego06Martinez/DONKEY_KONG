@@ -16,6 +16,7 @@ protected:
 public:
 	Elemento(bool harmful):Harmful(harmful) {}
 	Elemento(bool harmful, std::string path): Harmful(harmful), Path(path){}
+	Elemento(float width, float height, float px, float py, bool harmful) :largo(width), alto(height), Harmful(harmful) { posicion.x = px; posicion.y = py; }
 	virtual ~Elemento();
 	virtual void Dibuja() = 0;
 	void setColor(unsigned char r, unsigned char g, unsigned char b);

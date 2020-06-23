@@ -1,7 +1,7 @@
-#include "ListaEscaleras.h"
+#include "ListaEstaticos.h"
 
 ////////////////////////////////////CONSTRUCTOR//////////////////////////
-ListaEscaleras::ListaEscaleras() {
+ListaEstaticos::ListaEstaticos() {
 	//Lista vacia
 	num = 0;
 	for (int i = 0; i < MAX_NUM; i++) {
@@ -9,39 +9,39 @@ ListaEscaleras::ListaEscaleras() {
 	}
 }
 
-ListaEscaleras::~ListaEscaleras() {
+ListaEstaticos::~ListaEstaticos() {
 
 }
 
 ///////////////////////////////////METODOS///////////////////////////////
-void ListaEscaleras::Dibuja() {
+void ListaEstaticos::Dibuja() {
 	for (int i = 0; i < num; i++) {
 		lista[i]->Dibuja();
 	}
 }
 
-bool ListaEscaleras::Agregar(Escalera* escalera) {
+bool ListaEstaticos::Agregar(ElementoEstatico* elemento) {
 	if (num < MAX_NUM) {
 		for (int i = 0; i < num; i++) {
-			if (lista[i] == escalera) {
+			if (lista[i] == elemento) {
 				return false;
 			}
 		}
-		lista[num] = escalera;
+		lista[num] = elemento;
 		num++;
 		return true;
 	}
 	return false;
 }
 
-void ListaEscaleras::destruirContenido() {
+void ListaEstaticos::destruirContenido() {
 	for (int i = 0; i < num; i++) {
 		delete lista[i];
 	}
 	num = 0;
 }
 
-void ListaEscaleras::Eliminar(int index) {
+void ListaEstaticos::Eliminar(int index) {
 	if ((index < 0) || (index >= num)) {
 		return;
 	}
@@ -54,16 +54,16 @@ void ListaEscaleras::Eliminar(int index) {
 	}
 }
 
-void ListaEscaleras::Eliminar(Escalera* escalera) {
+void ListaEstaticos::Eliminar(ElementoEstatico* elemento) {
 	for (int i = 0; i < num; i++) {
-		if (lista[i] == escalera) {
+		if (lista[i] == elemento) {
 			Eliminar(i);
 			return;
 		}
 	}
 }
 
-Escalera* ListaEscaleras::operator[](int pos) {
+ElementoEstatico* ListaEstaticos::operator[](int pos) {
 	if (pos >= num)//si me paso, devuelvo la ultima   
 		pos = num - 1;
 
