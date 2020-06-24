@@ -12,6 +12,7 @@ private:
 	float z_ojo;
 	Jugador player;
 	ListaEstaticos plataformas;
+	Plataforma plataforma;
 	//ListaEstaticos escaleras;
 public:
 	Mundo() {}

@@ -48,11 +48,11 @@ void Jugador::setVel(float vx, float vy) {
 
 
 void Jugador::Rebote(Plataforma p) {
-	/*float x_max = p.posicion.x;
-	float x_min = p.posicion.y;
-
+	float x_max = p.limite2.x;
+	float x_min = p.limite1.x;
+	
 	if (posicion.x > x_max)
 		posicion.x = x_max;
-	if (posicion.y < x_min) 
-		posicion.y = x_min;*/
+	if (posicion.x < x_min) 
+		posicion.x = x_min;
 }

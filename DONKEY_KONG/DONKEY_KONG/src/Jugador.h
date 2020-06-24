@@ -1,7 +1,6 @@
 #pragma once
 #include "Vector2D.h"	
 #include "Plataforma.h"
-#include <string>
 
 class Jugador
 {
