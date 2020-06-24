@@ -152,6 +152,7 @@
     <ClCompile Include="src\Elemento.cpp" />
     <ClCompile Include="src\ElementoEstatico.cpp" />
     <ClCompile Include="src\Escalera.cpp" />
+    <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Jugador.cpp" />
     <ClCompile Include="src\ListaEstaticos.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\Elemento.h" />
     <ClInclude Include="src\ElementoEstatico.h" />
     <ClInclude Include="src\Escalera.h" />
+    <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Jugador.h" />
     <ClInclude Include="src\ListaEstaticos.h" />
     <ClInclude Include="src\Mundo.h" />

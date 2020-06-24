@@ -7,5 +7,5 @@ class Plataforma:public ElementoEstatico
 public:
 	Plataforma();
 	virtual ~Plataforma();
-	friend class Jugador;
+	friend class Interaccion;
 };

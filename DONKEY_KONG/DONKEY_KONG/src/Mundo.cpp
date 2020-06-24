@@ -1,4 +1,5 @@
-#include "Mundo.h",
+#include "Mundo.h"
+#include "Interaccion.h"
 #include "glut.h"
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
@@ -50,7 +51,7 @@ void Mundo::Dibuja() {
 
 void Mundo::Mueve() {
 	player.Mueve(0.025f);
-	player.Rebote(plataforma);
+	Interaccion::Rebote(player, plataforma);
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {

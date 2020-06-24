@@ -45,14 +45,3 @@ void Jugador::setVel(float vx, float vy) {
 	velocidad.x = vx;
 	velocidad.y = vy;
 }
-
-
-void Jugador::Rebote(Plataforma p) {
-	float x_max = p.limite2.x;
-	float x_min = p.limite1.x;
-	
-	if (posicion.x > x_max)
-		posicion.x = x_max;
-	if (posicion.x < x_min) 
-		posicion.x = x_min;
-}

@@ -16,5 +16,5 @@ public:
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
 	void Mueve(float t);
-	void Rebote(Plataforma p);
+	friend class Interaccion;
 };
