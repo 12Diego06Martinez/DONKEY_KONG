@@ -1,6 +1,3 @@
 #include "Escalera.h"
 
 //////////////////////////////CONSTRUCTOR///////////////////////////
-Escalera::~Escalera() {
-
-}

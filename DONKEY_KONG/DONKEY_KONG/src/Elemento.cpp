@@ -1,34 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Elemento.h"
-#include <math.h>
+#include <string>
 
 /////////////////////////////////////CONSTRUCTOR////////////////////////
+Elemento::Elemento(bool harmful, const char* p) {
+	path = new char[strlen(p) + 1];
+	strcpy(path, p);
+
+	Harmful = harmful;
+}
+
 Elemento::~Elemento() {
 
 }
 
 ///////////////////////////////////METODOS/////////////////////////////
-void Elemento::setHarmful(bool harm) {
-	Harmful = harm;
-}
-
-void Elemento::setPos(float px, float py) {
-	posicion.x = px;
-	posicion.y = py;
-}
-
 void Elemento::setColor(unsigned char r, unsigned char g, unsigned char b) {
 	rojo = r;
 	verde = g;
 	azul = b;
 }
 
-void Elemento::setSize(float width, float height) {
-	alto = height;
-	largo = width;
-}
-
-Vector2D Elemento::getCentro() {
-	Vector2D centro;
-	centro = sqrt((alto * alto) + (largo * largo)) / 2;
-	return centro;
+void Elemento::setHarmful(bool harm) {
+	Harmful = harm;
 }

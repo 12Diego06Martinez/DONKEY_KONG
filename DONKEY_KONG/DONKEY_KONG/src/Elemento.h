@@ -1,29 +1,19 @@
 #pragma once
-#include <string>
 #include "Vector2D.h"
 
 class Elemento
 {
 protected:
+	char *path;
 	bool Harmful;
-	float alto;
-	float largo;
-	std::string Path;
-	Vector2D posicion;
 	unsigned char rojo;
 	unsigned char verde;
 	unsigned char azul;
 public:
-	Elemento(bool harmful):Harmful(harmful) {}
-	Elemento(bool harmful, std::string path): Harmful(harmful), Path(path){}
-	Elemento(float width, float height, float px, float py, bool harmful) :largo(width), alto(height), Harmful(harmful) { posicion.x = px; posicion.y = py; }
+	Elemento(bool harmful, const char* p);
 	virtual ~Elemento();
-	virtual void Dibuja() = 0;
+	virtual void Dibuja()=0;
 	void setColor(unsigned char r, unsigned char g, unsigned char b);
 	void setHarmful(bool harm);
-	void setPos(float px, float py);
-	void setSize(float width, float height);
 	bool isHarmful() { return Harmful; }
-	Vector2D getCentro();
-	Vector2D getPos() { return posicion; }
 };

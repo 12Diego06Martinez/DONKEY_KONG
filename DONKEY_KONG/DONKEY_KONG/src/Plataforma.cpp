@@ -1,7 +1,10 @@
 #include "Plataforma.h"
-#include "glut.h"
 
 /////////////////////////////////////////CONSTRUCTOR////////////////////////
+Plataforma::Plataforma():ElementoEstatico(false, "imagenes/Block.png") {
+
+}
+
 Plataforma::~Plataforma() {
 
 }
