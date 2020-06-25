@@ -149,23 +149,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\DonkeyKong.cpp" />
-    <ClCompile Include="src\Elemento.cpp" />
-    <ClCompile Include="src\ElementoEstatico.cpp" />
     <ClCompile Include="src\Escalera.cpp" />
-    <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Jugador.cpp" />
-    <ClCompile Include="src\ListaEstaticos.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Plataforma.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Elemento.h" />
-    <ClInclude Include="src\ElementoEstatico.h" />
     <ClInclude Include="src\Escalera.h" />
-    <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Jugador.h" />
-    <ClInclude Include="src\ListaEstaticos.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Paths.h" />
     <ClInclude Include="src\Plataforma.h" />

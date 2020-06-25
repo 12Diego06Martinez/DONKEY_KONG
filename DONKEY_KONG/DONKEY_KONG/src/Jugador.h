@@ -1,11 +1,13 @@
 #pragma once
-#include "Vector2D.h"	
+#include "Vector2D.h"
 #include "Plataforma.h"
+#include "Escalera.h"
 
 class Jugador
 {
 private:
 	char* path;
+	bool isOnLadder;
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
@@ -16,5 +18,6 @@ public:
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
 	void Mueve(float t);
-	friend class Interaccion;
+	void Interaccion(Plataforma& plataforma);
+	bool Interaccion(Escalera& escalera);
 };

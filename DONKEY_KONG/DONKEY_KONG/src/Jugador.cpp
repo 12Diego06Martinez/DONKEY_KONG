@@ -5,7 +5,7 @@
 
 //////////////////////////////////////CONSTRUCTOR////////////////////////
 Jugador::Jugador() {
-	
+	isOnLadder = false;
 }
 
 Jugador::~Jugador() {
@@ -16,7 +16,7 @@ void Jugador::Dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_right.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_transparent.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -44,4 +44,32 @@ void Jugador::setPos(float px, float py) {
 void Jugador::setVel(float vx, float vy) {
 	velocidad.x = vx;
 	velocidad.y = vy;
+}
+
+void Jugador::Interaccion(Plataforma& plataforma) {
+	float x_max = plataforma.getPos().x + plataforma.getSize().x;
+	float x_min = plataforma.getPos().x - plataforma.getSize().x;
+	float y_max = plataforma.getPos().y + plataforma.getSize().y;
+	//float y_min = plataforma.getPos().y - plataforma.getAlto();
+
+	if (posicion.x > x_max && posicion.y < y_max)
+		posicion.x = x_max;
+	if (posicion.x < x_min && posicion.y < y_max)
+		posicion.x = x_min;
+}
+
+bool Jugador::Interaccion(Escalera& escalera) {
+	float x_max = escalera.getPos().x + escalera.getSize().x;
+	float x_min = escalera.getPos().x - escalera.getSize().x;
+	float y_max = escalera.getPos().y + escalera.getSize().y + 0.3;
+	float y_min = escalera.getPos().y - escalera.getSize().y;
+	
+	if (posicion.x > x_min && posicion.x < x_max)
+		isOnLadder = true;
+	if (posicion.y >= y_min && posicion.y < y_max)
+		isOnLadder = true;
+	else
+		isOnLadder = false;
+
+	return isOnLadder;
 }
