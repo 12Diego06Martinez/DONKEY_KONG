@@ -46,30 +46,38 @@ void Jugador::setVel(float vx, float vy) {
 	velocidad.y = vy;
 }
 
+void Jugador::setReposo() {
+	setVel(0.0, 0.0);
+}
+
 void Jugador::Interaccion(Plataforma& plataforma) {
 	float x_max = plataforma.getPos().x + plataforma.getSize().x;
 	float x_min = plataforma.getPos().x - plataforma.getSize().x;
-	float y_max = plataforma.getPos().y + plataforma.getSize().y;
+	//float y_max = plataforma.getPos().y + plataforma.getSize().y;
 	//float y_min = plataforma.getPos().y - plataforma.getAlto();
 
-	if (posicion.x > x_max && posicion.y < y_max)
+	if (posicion.x > x_max)
 		posicion.x = x_max;
-	if (posicion.x < x_min && posicion.y < y_max)
+	if (posicion.x < x_min)
 		posicion.x = x_min;
 }
 
 bool Jugador::Interaccion(Escalera& escalera) {
-	float x_max = escalera.getPos().x + escalera.getSize().x;
-	float x_min = escalera.getPos().x - escalera.getSize().x;
-	float y_max = escalera.getPos().y + escalera.getSize().y + 0.3;
-	float y_min = escalera.getPos().y - escalera.getSize().y;
 	
-	if (posicion.x > x_min && posicion.x < x_max)
-		isOnLadder = true;
-	if (posicion.y >= y_min && posicion.y < y_max)
+	if (escalera.calculaDistancia(posicion, escalera.getPos()) == 2)
 		isOnLadder = true;
 	else
 		isOnLadder = false;
 
 	return isOnLadder;
+}
+
+bool Jugador::LimitePlataforma(Plataforma& plataforma) {
+	
+	if (posicion.y == plataforma.getPos().y)
+		isOnPlatform = true;
+	else
+		isOnPlatform = false;
+	
+	return isOnPlatform;
 }

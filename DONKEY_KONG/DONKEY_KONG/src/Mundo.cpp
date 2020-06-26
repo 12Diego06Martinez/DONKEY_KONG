@@ -15,7 +15,7 @@ void Mundo::Inicializa() {
 	z_ojo = 30;
 
 	//Inicializamos jugador
-	player.setPos(-8,-2.29);
+	player.setPos(-8,-2);
 	//Inicializamos plataforma
 	plataforma1.setPos(0, -2);
 	plataforma1.setSize(9,0.15);
@@ -70,8 +70,17 @@ void Mundo::Dibuja() {
 
 void Mundo::Mueve() {
 	player.Mueve(0.025f);
-	player.Interaccion(plataforma1);
-	if (player.Interaccion(escalera1)) {
+
+	if (player.LimitePlataforma(plataforma1)) {
+		player.Interaccion(plataforma1);
+	}
+
+	if (player.LimitePlataforma(plataforma3)) {
+		player.Interaccion(plataforma3);
+	}
+	
+
+	if (player.Interaccion(escalera1)|| player.Interaccion(escalera2)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
 }
@@ -88,6 +97,10 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		case GLUT_KEY_UP:
 			if (player.Interaccion(escalera1))
 				player.setVel(0.0f, 5.0f);
+			break;
+		case GLUT_KEY_DOWN:
+			if (player.Interaccion(escalera1))
+				player.setVel(0.0f, -5.0f);
 			break;
 	}
 }

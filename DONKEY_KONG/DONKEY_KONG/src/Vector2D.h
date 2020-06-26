@@ -14,5 +14,6 @@ public:
 	float operator*(const Vector2D& v);//producto escalar
 	Vector2D operator*(float);//producto por un escalar
 	Vector2D operator +(float r);
+	bool operator > (const Vector2D& v);
 };
 

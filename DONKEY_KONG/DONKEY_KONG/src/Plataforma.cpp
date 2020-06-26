@@ -49,3 +49,10 @@ void Plataforma::setPath(const char* p) {
 void Plataforma::setHarmful(bool harm) {
 	harmful = harm;
 }
+
+float Plataforma::calculaDistancia(Vector2D vector1, Vector2D vector2) {
+	float distancia;
+	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
+	
+	return distancia;
+}

@@ -18,6 +18,7 @@ public:
 	void setSize(float largo, float alto);
 	void setPath(const char* p);
 	void setHarmful(bool harm);
+	float calculaDistancia(Vector2D vector1, Vector2D vector2);
 	bool isHarmful() { return harmful; }
 	Vector2D getPos() { return posicion; }
 	Vector2D getSize() { return size; }
