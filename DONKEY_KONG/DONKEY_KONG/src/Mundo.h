@@ -31,4 +31,5 @@ public:
 	void Dibuja();
 	void Mueve();
 	void TeclaEspecial(unsigned char key);
+	void Tecla(unsigned char key);
 };

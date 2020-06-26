@@ -16,7 +16,7 @@ void Jugador::Dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_transparent.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_right.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -30,10 +30,15 @@ void Jugador::Dibuja() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Jugador::Mueve(float t) {
-	//Ecuaciones del movimiento
+void Jugador::Desplaza(float t) {
+	//Movimiento a izquierda y derecha
 	posicion = posicion + velocidad * t + aceleracion * (0.5f * t * t);
 	velocidad = velocidad + aceleracion * t;
+}
+
+void Jugador::Salto(float t, float angulo) {
+	posicion = posicion + velocidad * (sin(angulo) * t) - 9.8 * 0.5 * t * t;
+	velocidad = velocidad * sin(angulo) - 9.8 * t;
 }
 
 void Jugador::setPos(float px, float py) {
@@ -63,7 +68,7 @@ void Jugador::Interaccion(Plataforma& plataforma) {
 }
 
 bool Jugador::Interaccion(Escalera& escalera) {
-	
+	//Detecta cuando el jugador está en línea con la escalera
 	if (escalera.calculaDistancia(posicion, escalera.getPos()) == 2)
 		isOnLadder = true;
 	else
@@ -73,7 +78,7 @@ bool Jugador::Interaccion(Escalera& escalera) {
 }
 
 bool Jugador::LimitePlataforma(Plataforma& plataforma) {
-	
+	//Detecta si el jugador está sobre una plataforma
 	if (posicion.y == plataforma.getPos().y)
 		isOnPlatform = true;
 	else

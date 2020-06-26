@@ -18,7 +18,8 @@ public:
 	void Dibuja();
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
-	void Mueve(float t);
+	void Desplaza(float t);
+	void Salto(float t, float angulo);
 	void setReposo();
 	void Interaccion(Plataforma& plataforma);
 	bool Interaccion(Escalera& escalera);

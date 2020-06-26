@@ -69,14 +69,16 @@ void Mundo::Dibuja() {
 }
 
 void Mundo::Mueve() {
-	player.Mueve(0.025f);
+	player.Desplaza(0.025f);
 
 	if (player.LimitePlataforma(plataforma1)) {
 		player.Interaccion(plataforma1);
+		//player.setReposo();
 	}
 
 	if (player.LimitePlataforma(plataforma3)) {
 		player.Interaccion(plataforma3);
+		//player.setReposo();
 	}
 	
 
@@ -88,19 +90,38 @@ void Mundo::Mueve() {
 void Mundo::TeclaEspecial(unsigned char key) {
 
 	switch (key) {
-		case GLUT_KEY_RIGHT:
+	case GLUT_KEY_RIGHT:
+		if(player.LimitePlataforma(plataforma1) || player.LimitePlataforma(plataforma3))
 			player.setVel(5.0f, 0.0f);
-			break;
-		case GLUT_KEY_LEFT:
+		break;
+	case GLUT_KEY_LEFT:
+		if (player.LimitePlataforma(plataforma1) || player.LimitePlataforma(plataforma3))
 			player.setVel(-5.0f, 0.0f);
-			break;
-		case GLUT_KEY_UP:
-			if (player.Interaccion(escalera1))
+		break;
+	case GLUT_KEY_UP:
+		if (player.Interaccion(escalera1) && !player.LimitePlataforma(plataforma3))
+			player.setVel(0.0f, 5.0f);
+		if (player.LimitePlataforma(plataforma3))
+			player.setVel(0, 0);
+		/*if (player.Interaccion(escalera2)) {
+			if (!player.LimitePlataforma(plataforma4))
 				player.setVel(0.0f, 5.0f);
-			break;
-		case GLUT_KEY_DOWN:
-			if (player.Interaccion(escalera1))
+		}*/
+		break;
+	case GLUT_KEY_DOWN:
+		if (player.Interaccion(escalera1)) {
+			if (!player.LimitePlataforma(plataforma1))
 				player.setVel(0.0f, -5.0f);
-			break;
+		}
+		break;
+	}
+}
+
+void Mundo::Tecla(unsigned char key) {
+
+	switch (key) {
+	case ' ':
+		//player.Salto(0.025f, 60);
+		break;
 	}
 }
