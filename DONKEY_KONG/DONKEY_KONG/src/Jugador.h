@@ -9,6 +9,7 @@ private:
 	char* path;
 	bool isOnLadder;
 	bool isOnPlatform;
+	bool isOnTop;
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D aceleracion;
@@ -25,7 +26,9 @@ public:
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
 	ETSIDI::Vector2D getAcel() { return aceleracion; }
-	void Interaccion(Plataforma& plataforma);
-	bool Interaccion(Escalera& escalera);
-	bool LimitePlataforma(Plataforma& plataforma);
+	void limitePlataforma(Plataforma& plataforma);
+	bool limiteEscalera(Escalera& escalera);
+	bool detectaEscalera(Escalera& escalera);
+	bool sobrePlataforma(Plataforma& plataforma);
+
 };

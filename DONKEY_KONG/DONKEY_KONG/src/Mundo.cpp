@@ -60,19 +60,20 @@ void Mundo::Dibuja() {
 void Mundo::Mueve() {
 	player.Desplaza(0.025f);
 
-	if (player.LimitePlataforma(plataforma1)) {
-		player.Interaccion(plataforma1);
-		if(player.Interaccion(escalera1))
-			player.setReposo();
+	if (player.sobrePlataforma(plataforma1)) {
+		player.limitePlataforma(plataforma1);
 	}
 
-	if (player.LimitePlataforma(plataforma2)) {
-		player.Interaccion(plataforma2);
-		if(player.Interaccion(escalera1))
-			player.setReposo();
+	if (player.limiteEscalera(escalera1))
+		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
+
+	
+
+	if (player.sobrePlataforma(plataforma2)) {
+		player.limitePlataforma(plataforma2);
 	}
 
-	if (player.Interaccion(escalera1)|| player.Interaccion(escalera2)) {
+	if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
 }
@@ -81,23 +82,23 @@ void Mundo::TeclaEspecial(unsigned char key) {
 
 	switch (key) {
 	case GLUT_KEY_RIGHT:
-		if(player.LimitePlataforma(plataforma1) || player.LimitePlataforma(plataforma2))
+		if(player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2))
 			player.setVel(5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_LEFT:
-		if (player.LimitePlataforma(plataforma1) || player.LimitePlataforma(plataforma2))
+		if (player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2))
 			player.setVel(-5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_UP:
-		if (player.Interaccion(escalera1))
+		if (player.detectaEscalera(escalera1)) 
 			player.setVel(0.0f, 5.0f);
 		break;
 
 	case GLUT_KEY_DOWN:
-		if (player.Interaccion(escalera1))
-			player.setVel(0.0f, -5.0f);
+		if (player.detectaEscalera(escalera1))
+			//player.setVel(0.0f, -5.0f);
 		break;
 	}
 }

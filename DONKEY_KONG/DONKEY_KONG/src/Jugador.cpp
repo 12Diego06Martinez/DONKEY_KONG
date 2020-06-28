@@ -60,7 +60,7 @@ void Jugador::setReposo() {
 	//setAcel(0.0f, 0.0f);
 }
 
-void Jugador::Interaccion(Plataforma& plataforma) {
+void Jugador::limitePlataforma(Plataforma& plataforma) {
 
 	if (posicion.x > plataforma.getLimite2().x)
 		setVel(0.0f, 0.0f);
@@ -70,12 +70,29 @@ void Jugador::Interaccion(Plataforma& plataforma) {
 		//posicion.x = x_min;
 }
 
-bool Jugador::Interaccion(Escalera& escalera) {
+bool Jugador::limiteEscalera(Escalera& escalera) {
+
+	if (posicion.y > escalera.getLimite2().y)
+		isOnTop = true;
+
+	else
+		isOnTop = false;
+
+	return isOnTop;
+	//if (posicion.y > escalera.getLimite2().y) {
+	//	setVel(0.0f, 0.0f);
+	//	//setPos(posicion.x, escalera.getLimite2().y);
+	//	//isOnLadder = false;
+	//}
+	
+}
+
+bool Jugador::detectaEscalera(Escalera& escalera) {
 	//Detecta cuando el jugador está en línea con la escalera
 	float x_max = escalera.getPos().x + escalera.getSize().x / 4;
 	float x_min = escalera.getPos().x - escalera.getSize().x / 4;
 
-	if (posicion.x > x_min&& posicion.x < x_max) {
+	if (posicion.x > x_min && posicion.x < x_max) {
 		isOnLadder = true;
 	}
 	else if (posicion.x<x_min || posicion.x>x_max) {
@@ -85,7 +102,7 @@ bool Jugador::Interaccion(Escalera& escalera) {
 	return isOnLadder;
 }
 
-bool Jugador::LimitePlataforma(Plataforma& plataforma) {
+bool Jugador::sobrePlataforma(Plataforma& plataforma) {
 	//Detecta si el jugador está sobre una plataforma
 	if (posicion.y == plataforma.getLimite2().y)
 		isOnPlatform = true;
@@ -94,3 +111,4 @@ bool Jugador::LimitePlataforma(Plataforma& plataforma) {
 	
 	return isOnPlatform;
 }
+
