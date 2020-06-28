@@ -2,14 +2,13 @@
 #include "ETSIDI.h"
 #include "Plataforma.h"
 #include "Escalera.h"
+#include "Paths.h"
 
 class Jugador
 {
 private:
 	char* path;
-	bool isOnLadder;
-	bool isOnPlatform;
-	bool isOnTop;
+	jugador_t estado;
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D aceleracion;
@@ -26,9 +25,12 @@ public:
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
 	ETSIDI::Vector2D getAcel() { return aceleracion; }
+	jugador_t getEstado() { return estado; }
 	void limitePlataforma(Plataforma& plataforma);
-	bool limiteEscalera(Escalera& escalera);
-	bool detectaEscalera(Escalera& escalera);
-	bool sobrePlataforma(Plataforma& plataforma);
-
+	jugador_t sobrePlataforma(Plataforma& plataforma);
+	////////////////////////////////////////////
+	jugador_t detectaEscalera(Escalera& escalera);
+	void limiteEscalera(Escalera& escalera);
+	///////////////////////////////////////////
+	
 };

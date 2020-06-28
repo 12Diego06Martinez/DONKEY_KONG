@@ -1,5 +1,6 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
+#include "Paths.h"
 #include "glut.h"
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
@@ -60,45 +61,50 @@ void Mundo::Dibuja() {
 void Mundo::Mueve() {
 	player.Desplaza(0.025f);
 
-	if (player.sobrePlataforma(plataforma1)) {
+	//Jugador con plataformas
+	if (player.sobrePlataforma(plataforma1)==EN_PLATAFORMA) {
 		player.limitePlataforma(plataforma1);
 	}
-
-	if (player.limiteEscalera(escalera1))
-		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
-
-	
-
-	if (player.sobrePlataforma(plataforma2)) {
+	if (player.sobrePlataforma(plataforma2)==EN_PLATAFORMA) {
 		player.limitePlataforma(plataforma2);
 	}
+	if (player.sobrePlataforma(plataforma4)==EN_PLATAFORMA)
+		player.limitePlataforma(plataforma4);
 
-	if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
+	//Jugador con escaleras
+	/*if (player.limiteEscalera(escalera1))
+		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
+
+	if (player.limiteEscalera(escalera2))
+		player.setPos(player.getPos().x, plataforma4.getLimite2().y);*/
+
+	
+	/*if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
-	}
+	}*/
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
 
 	switch (key) {
 	case GLUT_KEY_RIGHT:
-		if(player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2))
+		if(player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2) || player.sobrePlataforma(plataforma4))
 			player.setVel(5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_LEFT:
-		if (player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2))
+		if (player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2) || player.sobrePlataforma(plataforma4))
 			player.setVel(-5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_UP:
-		if (player.detectaEscalera(escalera1)) 
-			player.setVel(0.0f, 5.0f);
+		/*if (player.detectaEscalera(escalera1) || player.detectaEscalera(escalera2)) 
+			player.setVel(0.0f, 5.0f);*/
 		break;
 
 	case GLUT_KEY_DOWN:
-		if (player.detectaEscalera(escalera1))
-			//player.setVel(0.0f, -5.0f);
+		/*if (player.detectaEscalera(escalera1) || player.detectaEscalera(escalera2))
+			player.setVel(0.0f, -5.0f);*/
 		break;
 	}
 }
