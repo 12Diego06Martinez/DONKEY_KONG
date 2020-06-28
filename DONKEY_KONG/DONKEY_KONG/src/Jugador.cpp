@@ -5,7 +5,7 @@ using namespace ETSIDI;
 
 //////////////////////////////////////CONSTRUCTOR////////////////////////
 Jugador::Jugador() {
-	//isAligned = false;
+	isAligned = false;
 }
 
 Jugador::~Jugador() {
@@ -60,6 +60,13 @@ void Jugador::setReposo() {
 	//setAcel(0.0f, 0.0f);
 }
 
+void Jugador::limitePared(Pared pared){
+	if (posicion.x > pared.getLimite2().x)
+		posicion.x = pared.getLimite2().x;
+	if (posicion.x < pared.getLimite1().x)
+		posicion.x = pared.getLimite1().x;
+}
+
 void Jugador::limitePlataforma(Plataforma& plataforma) {
 
 	if (posicion.x > plataforma.getLimite2().x)
@@ -70,27 +77,29 @@ void Jugador::limitePlataforma(Plataforma& plataforma) {
 		//posicion.x = x_min;
 }
 
-jugador_t Jugador::sobrePlataforma(Plataforma& plataforma) {
+bool Jugador::sobrePlataforma(Plataforma& plataforma) {
 	//Detecta si el jugador está sobre una plataforma
 	if (posicion.y == plataforma.getLimite2().y)
-		estado = EN_PLATAFORMA;
-	
-	return estado;
+		isOnPlatform = true;
+	else
+		isOnPlatform = false;
+
+	return isOnPlatform;
 }
 
 ////////////////////////////////////////////////////////
-jugador_t Jugador::detectaEscalera(Escalera& escalera) {
+bool Jugador::detectaEscalera(Escalera& escalera) {
 	//Detecta cuando el jugador está en línea con la escalera
 	float x_max = escalera.getPos().x + escalera.getSize().x / 4;
 	float x_min = escalera.getPos().x - escalera.getSize().x / 4;
 
 	if (posicion.x > x_min && posicion.x < x_max) {
-		estado = ALINEADO;
+		isAligned = true;
 	}
 	else if (posicion.x<x_min || posicion.x>x_max) {
-		estado = NO_ALINEADO;
+		isAligned = false;
 	}
-	return estado;
+	return isAligned;
 }
 
 void Jugador::limiteEscalera(Escalera& escalera) {
@@ -98,19 +107,19 @@ void Jugador::limiteEscalera(Escalera& escalera) {
 	float x_max = escalera.getPos().x + escalera.getSize().x / 4;
 	float x_min = escalera.getPos().x - escalera.getSize().x / 4;
 
-	//if (posicion.x > x_min&& posicion.x < x_max) {
-	//	isAligned = true;
-	//	if (posicion.y == escalera.getLimite1().y) {
-	//		isDownStairs = true;
-	//		ableToUp = true;
-	//	}
-	//	else if (posicion.y == escalera.getLimite2().y) {
-	//		isUpStairs = true;
-	//		ableToDown = true;
-	//	}
-	//}
+	if (posicion.x > x_min&& posicion.x < x_max) {
+		isAligned = true;
+		if (posicion.y == escalera.getLimite1().y) {
+			isDownStairs = true;
+			ableToUp = true;
+		}
+		else if (posicion.y == escalera.getLimite2().y) {
+			isUpStairs = true;
+			ableToDown = true;
+		}
+	}
 
-	//else if (posicion.x<x_min || posicion.x>x_max) {
-	//	isAligned = false;
-	//}
+	else if (posicion.x<x_min || posicion.x>x_max) {
+		isAligned = false;
+	}
 }

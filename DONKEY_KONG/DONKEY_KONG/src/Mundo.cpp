@@ -1,6 +1,5 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
-#include "Paths.h"
 #include "glut.h"
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
@@ -15,9 +14,11 @@ void Mundo::Inicializa() {
 	y_ojo = 7.5;
 	z_ojo = 30;
 
-	//Inicializamos jugador
+	//Pared
+	suelo.setLimites(-9, -4, 9, -3);
+	//Jugador
 	player.setPos(-8,-1.85);
-	//Inicializamos plataforma
+	//Plataformas
 	plataforma1.Inicializa(0, -2, 18, 0.3);
 	plataforma2.Inicializa(5, 2, 8, 0.3);
 	plataforma3.Inicializa(-5, 2, 8, 0.3);
@@ -25,7 +26,7 @@ void Mundo::Inicializa() {
 	plataforma5.Inicializa(4, 10, 10, 0.3);
 	plataforma6.Inicializa(-6, 10, 6, 0.3);
 	plataforma7.Inicializa(0, 14, 18, 0.3);
-	//Inicializamos escaleras
+	//Escaleras
 	escalera1.Inicializa(6.0, 0, 0.5, 4);
 	escalera2.Inicializa(3, 4, 0.5, 4);
 	escalera3.Inicializa(-8, 4, 0.5, 4);
@@ -39,6 +40,8 @@ void Mundo::Dibuja() {
 	gluLookAt(x_ojo, y_ojo, z_ojo,//posición del ojo
 		0.0, y_ojo, 0.0, //Miramos al centro de la escena
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
+	//Pared
+	suelo.Dibuja();
 	//Jugador
 	player.Dibuja();
 	//Plataformas
@@ -61,16 +64,8 @@ void Mundo::Dibuja() {
 void Mundo::Mueve() {
 	player.Desplaza(0.025f);
 
-	//Jugador con plataformas
-	if (player.sobrePlataforma(plataforma1)==EN_PLATAFORMA) {
-		player.limitePlataforma(plataforma1);
-	}
-	if (player.sobrePlataforma(plataforma2)==EN_PLATAFORMA) {
-		player.limitePlataforma(plataforma2);
-	}
-	if (player.sobrePlataforma(plataforma4)==EN_PLATAFORMA)
-		player.limitePlataforma(plataforma4);
-
+	//Jugador con pared
+	player.limitePared(suelo);
 	//Jugador con escaleras
 	/*if (player.limiteEscalera(escalera1))
 		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
@@ -79,22 +74,20 @@ void Mundo::Mueve() {
 		player.setPos(player.getPos().x, plataforma4.getLimite2().y);*/
 
 	
-	/*if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
+	if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
-	}*/
+	}
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
 
 	switch (key) {
 	case GLUT_KEY_RIGHT:
-		if(player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2) || player.sobrePlataforma(plataforma4))
-			player.setVel(5.0f, 0.0f);
+		player.setVel(5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_LEFT:
-		if (player.sobrePlataforma(plataforma1) || player.sobrePlataforma(plataforma2) || player.sobrePlataforma(plataforma4))
-			player.setVel(-5.0f, 0.0f);
+		player.setVel(-5.0f, 0.0f);
 		break;
 
 	case GLUT_KEY_UP:

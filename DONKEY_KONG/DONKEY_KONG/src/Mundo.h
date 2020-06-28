@@ -1,6 +1,7 @@
 #pragma once
 #include "Jugador.h"
 #include "Plataforma.h"
+#include "Pared.h"
 #include "Escalera.h"
 
 class Mundo
@@ -9,6 +10,7 @@ private:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+	Pared suelo;
 	Jugador player;
 	//ListaEstaticos plataformas;
 	Plataforma plataforma1;
