@@ -5,7 +5,7 @@ using namespace ETSIDI;
 
 //////////////////////////////////////CONSTRUCTOR////////////////////////
 Jugador::Jugador() {
-	isAligned = false;
+
 }
 
 Jugador::~Jugador() {
@@ -31,13 +31,17 @@ void Jugador::Dibuja() {
 }
 
 void Jugador::Desplaza(float t) {
-	//Movimiento a izquierda y derecha
-	posicion = posicion + velocidad * t + aceleracion * (0.5f * t * t);
-	velocidad = velocidad + aceleracion * t;
+	//Movimiento rectilineo unirforme
+	posicion = posicion + velocidad *t;
 }
 
-void Jugador::Salto(float t) {
-	
+void Jugador::Salto() {
+		setVel(velocidad.x, 5.0f);
+		while (posicion.y > 1.0f) {
+			setVel(velocidad.x, -5.0f);
+		}
+		if (posicion.y == -1.85f)
+			setVel(velocidad.x, 0);
 }
 
 void Jugador::setPos(float px, float py) {
@@ -50,9 +54,8 @@ void Jugador::setVel(float vx, float vy) {
 	velocidad.y = vy;
 }
 
-void Jugador::setAcel(float ax, float ay) {
-	aceleracion.x = ax;
-	aceleracion.y = ay;
+void Jugador::setSalto(bool salto) {
+	saltoAllowed = salto;
 }
 
 void Jugador::setReposo() {
@@ -67,16 +70,7 @@ void Jugador::limitePared(Pared pared){
 		posicion.x = pared.getLimite1().x;
 }
 
-void Jugador::limitePlataforma(Plataforma& plataforma) {
-
-	if (posicion.x > plataforma.getLimite2().x)
-		setVel(0.0f, 0.0f);
-		//posicion.x = x_max;
-	if (posicion.x < plataforma.getLimite1().x)
-		setVel(0.0f, 0.0f);
-		//posicion.x = x_min;
-}
-
+/////////////////////////////////////////////////////////
 bool Jugador::sobrePlataforma(Plataforma& plataforma) {
 	//Detecta si el jugador está sobre una plataforma
 	if (posicion.y == plataforma.getLimite2().y)

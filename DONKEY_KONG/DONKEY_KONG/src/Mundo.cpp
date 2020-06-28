@@ -66,6 +66,14 @@ void Mundo::Mueve() {
 
 	//Jugador con pared
 	player.limitePared(suelo);
+	//Salto
+	if (player.getSalto()) {
+		if (player.getPos().y > -1.0f) {
+			player.setVel(player.getVel().x, -5.0f);
+		}
+		if(player.sobrePlataforma(plataforma1))
+			player.setVel(player.getVel().x,0);
+	}
 	//Jugador con escaleras
 	/*if (player.limiteEscalera(escalera1))
 		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
@@ -104,9 +112,12 @@ void Mundo::TeclaEspecial(unsigned char key) {
 
 void Mundo::Tecla(unsigned char key) {
 
-//	switch (key) {
-//	case ' ':
-//		
-//		break;
-//	}
+	switch (key) {
+	case ' ':
+		if (player.sobrePlataforma(plataforma1)) {
+			player.setVel(player.getVel().x, 5.0f);
+			player.setSalto(true);
+		}
+		break;
+	}
 }
