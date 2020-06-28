@@ -20,11 +20,11 @@ void Mundo::Inicializa() {
 	player.setPos(-8,-1.85);
 	//Plataformas
 	plataforma1.Inicializa(0, -2, 18, 0.3);
-	plataforma2.Inicializa(5, 2, 8, 0.3);
-	plataforma3.Inicializa(-5, 2, 8, 0.3);
+	plataforma2.Inicializa(4.75, 2, 8.5, 0.3);
+	plataforma3.Inicializa(-4.75, 2, 8.5, 0.3);
 	plataforma4.Inicializa(0, 6, 18, 0.3);
-	plataforma5.Inicializa(4, 10, 10, 0.3);
-	plataforma6.Inicializa(-6, 10, 6, 0.3);
+	plataforma5.Inicializa(3.5, 10, 11, 0.3);
+	plataforma6.Inicializa(-4.75, 10, 7, 0.3);
 	plataforma7.Inicializa(0, 14, 18, 0.3);
 	//Escaleras
 	escalera1.Inicializa(6.0, 0, 0.5, 4);
@@ -68,11 +68,10 @@ void Mundo::Mueve() {
 	player.limitePared(suelo);
 	//Salto
 	if (player.getSalto()) {
-		if (player.getPos().y > -1.0f) {
-			player.setVel(player.getVel().x, -5.0f);
+		if (player.sobrePlataforma(plataforma1)) {
+			player.setAcel(0.0f, 0.0f);
+			player.setVel(player.getVel().x, 0);
 		}
-		if(player.sobrePlataforma(plataforma1))
-			player.setVel(player.getVel().x,0);
 	}
 	//Jugador con escaleras
 	/*if (player.limiteEscalera(escalera1))
@@ -115,7 +114,8 @@ void Mundo::Tecla(unsigned char key) {
 	switch (key) {
 	case ' ':
 		if (player.sobrePlataforma(plataforma1)) {
-			player.setVel(player.getVel().x, 5.0f);
+			player.setVel(player.getVel().x, 4.0f);
+			player.setAcel(0, -15);
 			player.setSalto(true);
 		}
 		break;

@@ -26,6 +26,7 @@ public:
 	void Dibuja();
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
+	void setAcel(float ax, float ay);
 	void setSalto(bool salto);
 	void Desplaza(float t);
 	void Salto();

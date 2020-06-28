@@ -32,7 +32,8 @@ void Jugador::Dibuja() {
 
 void Jugador::Desplaza(float t) {
 	//Movimiento rectilineo unirforme
-	posicion = posicion + velocidad *t;
+	posicion = posicion + velocidad *t + aceleracion * (0.5 * t * t);
+	velocidad = velocidad + aceleracion * t;
 }
 
 void Jugador::Salto() {
@@ -54,6 +55,11 @@ void Jugador::setVel(float vx, float vy) {
 	velocidad.y = vy;
 }
 
+void Jugador::setAcel(float ax, float ay) {
+	aceleracion.x = ax;
+	aceleracion.y = ay;
+}
+
 void Jugador::setSalto(bool salto) {
 	saltoAllowed = salto;
 }
@@ -73,8 +79,11 @@ void Jugador::limitePared(Pared pared){
 /////////////////////////////////////////////////////////
 bool Jugador::sobrePlataforma(Plataforma& plataforma) {
 	//Detecta si el jugador está sobre una plataforma
-	if (posicion.y == plataforma.getLimite2().y)
+	if (posicion.y <= plataforma.getLimite2().y) {
+		posicion.y = plataforma.getLimite2().y;
 		isOnPlatform = true;
+	}
+		
 	else
 		isOnPlatform = false;
 
