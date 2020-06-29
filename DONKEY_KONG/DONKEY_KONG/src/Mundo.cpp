@@ -74,14 +74,12 @@ void Mundo::Mueve() {
 		}
 	}
 	//Jugador con escaleras
-	/*if (player.limiteEscalera(escalera1))
-		player.setPos(player.getPos().x, plataforma2.getLimite2().y);
-
-	if (player.limiteEscalera(escalera2))
-		player.setPos(player.getPos().x, plataforma4.getLimite2().y);*/
-
+	if (player.arribaEscalera(escalera1)) {
+		player.setVel(0.0f, 0.0f);
+		player.setAligned(false);
+	}
 	
-	if (player.detectaEscalera(escalera1)|| player.detectaEscalera(escalera2)) {
+	if (player.detectaEscalera(escalera1)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
 }
@@ -98,8 +96,10 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		/*if (player.detectaEscalera(escalera1) || player.detectaEscalera(escalera2)) 
-			player.setVel(0.0f, 5.0f);*/
+		if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
+			player.setVel(0.0f, 5.0f);
+			player.setAligned(true);
+		}
 		break;
 
 	case GLUT_KEY_DOWN:

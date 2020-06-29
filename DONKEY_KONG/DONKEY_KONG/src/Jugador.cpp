@@ -64,9 +64,16 @@ void Jugador::setSalto(bool salto) {
 	saltoAllowed = salto;
 }
 
+void Jugador::setUpStairs(bool up) {
+	isUpStairs = up;
+}
+
+void Jugador::setAligned(bool aligned) {
+	isAligned = aligned;
+}
+
 void Jugador::setReposo() {
 	setVel(0.0f, 0.0f);
-	//setAcel(0.0f, 0.0f);
 }
 
 void Jugador::limitePared(Pared pared){
@@ -76,8 +83,7 @@ void Jugador::limitePared(Pared pared){
 		posicion.x = pared.getLimite1().x;
 }
 
-/////////////////////////////////////////////////////////
-bool Jugador::sobrePlataforma(Plataforma& plataforma) {
+bool Jugador::sobrePlataforma(Plataforma plataforma) {
 	//Detecta si el jugador está sobre una plataforma
 	if (posicion.y <= plataforma.getLimite2().y) {
 		posicion.y = plataforma.getLimite2().y;
@@ -90,39 +96,27 @@ bool Jugador::sobrePlataforma(Plataforma& plataforma) {
 	return isOnPlatform;
 }
 
-////////////////////////////////////////////////////////
-bool Jugador::detectaEscalera(Escalera& escalera) {
+bool Jugador::detectaEscalera(Escalera escalera) {
 	//Detecta cuando el jugador está en línea con la escalera
-	float x_max = escalera.getPos().x + escalera.getSize().x / 4;
-	float x_min = escalera.getPos().x - escalera.getSize().x / 4;
-
-	if (posicion.x > x_min && posicion.x < x_max) {
-		isAligned = true;
+	float distancia = escalera.calculaDistancia(escalera.getPos(), posicion);
+	if (distancia > 1.849 && distancia < 1.855) {
+		isDownStairs = true;
 	}
-	else if (posicion.x<x_min || posicion.x>x_max) {
-		isAligned = false;
-	}
-	return isAligned;
+	else
+		isDownStairs = false;
+	
+	return isDownStairs;
 }
 
-void Jugador::limiteEscalera(Escalera& escalera) {
+bool Jugador::arribaEscalera(Escalera escalera) {
 
-	float x_max = escalera.getPos().x + escalera.getSize().x / 4;
-	float x_min = escalera.getPos().x - escalera.getSize().x / 4;
+	float y_max = escalera.getLimite2().y;
 
-	if (posicion.x > x_min&& posicion.x < x_max) {
-		isAligned = true;
-		if (posicion.y == escalera.getLimite1().y) {
-			isDownStairs = true;
-			ableToUp = true;
-		}
-		else if (posicion.y == escalera.getLimite2().y) {
-			isUpStairs = true;
-			ableToDown = true;
-		}
-	}
+	if (posicion.y > y_max && isAligned==true)
+		isUpStairs = true;
+	else
+		isUpStairs = false;
 
-	else if (posicion.x<x_min || posicion.x>x_max) {
-		isAligned = false;
-	}
+	return isUpStairs;
 }
+
