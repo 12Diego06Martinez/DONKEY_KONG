@@ -34,12 +34,8 @@ public:
 	void setReposo();
 	void limitePared(Pared pared);
 	bool sobrePlataforma(Plataforma plataforma);
-	//bool detectaEscaleraAbajo(Escalera escalera);
-	//bool detectaEscaleraArriba(Escalera escalera);
 	bool detectaEscalera(Escalera escalera);
 	void limiteEscalera(Escalera escalera);
-	bool arribaEscalera(Escalera escalera);
-	bool abajoEscalera(Escalera escalera);
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
 	ETSIDI::Vector2D getAcel() { return aceleracion; }

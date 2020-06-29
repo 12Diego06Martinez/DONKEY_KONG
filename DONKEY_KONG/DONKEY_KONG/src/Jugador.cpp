@@ -19,7 +19,7 @@ void Jugador::Dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Diego/prueba.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Diego/pie_dcha_transparente.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -72,7 +72,8 @@ void Jugador::limitePared(Pared pared){
 
 bool Jugador::sobrePlataforma(Plataforma plataforma) {
 	//Detecta si el jugador está sobre una plataforma
-	if (posicion.y <= (plataforma.getPos().y+0.00000006)) {
+	//+0.00000006
+	if (posicion.y <= plataforma.getPos().y) {
 		posicion.y = plataforma.getPos().y;
 		isOnPlatform = true;
 	}
@@ -123,35 +124,19 @@ void Jugador::limiteEscalera(Escalera escalera) {
 	float y_max = escalera.getLimite2().y;
 	float y_min = escalera.getLimite1().y;
 
-	if (posicion.y > y_max&& isAligned == true)
+	//
+	if (posicion.y > y_max && isAligned == true) {
 		isUpStairs = true;
-	else if(posicion.y < y_min && isAligned == true)
+		setPos(posicion.x, y_max);
+	}
+		
+	else if (posicion.y < y_min && isAligned == true) {
 		isDownStairs = true;
+		setPos(posicion.x, y_min);
+	}
+		
 	else {
 		isUpStairs = false;
 		isDownStairs = false;
 	}
-}
-
-bool Jugador::arribaEscalera(Escalera escalera) {
-
-	float y_max = escalera.getLimite2().y;
-
-	if (posicion.y > y_max && isAligned==true)
-		isUpStairs = true;
-	else
-		isUpStairs = false;
-
-	return isUpStairs;
-}
-
-bool Jugador::abajoEscalera(Escalera escalera) {
-	float y_min = escalera.getLimite1().y;
-
-	if (posicion.y < y_min && isAligned == true)
-		isDownStairs = true;
-	else
-		isDownStairs = false;
-
-	return isDownStairs;
 }

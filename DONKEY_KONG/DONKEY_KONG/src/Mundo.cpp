@@ -63,8 +63,8 @@ void Mundo::Dibuja() {
 }
 
 void Mundo::Mueve() {
+	
 	player.Mueve(0.025f);
-
 	//Jugador con pared
 	player.limitePared(suelo);
 	//Salto
@@ -74,7 +74,14 @@ void Mundo::Mueve() {
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
 		}
+
+		/*else if(player.sobrePlataforma(plataforma2)) {
+			player.setAcel(0.0f, 0.0f);
+			player.setVel(player.getVel().x, 0);
+			player.setSalto(false);
+		}*/
 	}
+	
 	//Jugador con escaleras
 	player.limiteEscalera(escalera1);
 	if (player.getUpStairs()) {
@@ -90,6 +97,8 @@ void Mundo::Mueve() {
 	if (player.detectaEscalera(escalera1)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
+
+	
 
 }
 
@@ -108,7 +117,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 
 	case GLUT_KEY_UP:
 		if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
-			player.setVel(0.0f, 5.0f);
+			player.setVel(0.0f, 4.0f);
 			player.setAligned(true);
 			//player.setPath("imagenes/Diego/escalera dcha.png");
 		}
@@ -116,7 +125,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 
 	case GLUT_KEY_DOWN:
 		if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma2)) {
-			player.setVel(0.0f, -5.0f);
+			player.setVel(0.0f, -4.0f);
 			player.setAligned(true);
 		}
 		break;
@@ -127,11 +136,16 @@ void Mundo::Tecla(unsigned char key) {
 
 	switch (key) {
 	case ' ':
-		if (player.sobrePlataforma(plataforma1)) {
-			player.setVel(player.getVel().x, 4.0f);
+		if (player.sobrePlataforma(plataforma1)){
 			player.setAcel(0, -15);
+			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
 			//player.setPath("imagenes/Diego/salto dcha.png");
+		}
+		else if (player.sobrePlataforma(plataforma2)) {
+			player.setAcel(0, -15);
+			player.setVel(player.getVel().x, 4.0f);
+			player.setSalto(true);
 		}
 		break;
 	}
