@@ -1,5 +1,6 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
+#include "Globales.h"
 #include "glut.h"
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
@@ -17,15 +18,15 @@ void Mundo::Inicializa() {
 	//Pared
 	suelo.setLimites(-9, -4, 9, -3);
 	//Jugador
-	player.setPos(-8,-1.85);
+	player.setPos(-8, -2);
 	//Plataformas
-	plataforma1.Inicializa(0, -2, 18, 0.3);
-	plataforma2.Inicializa(4.75, 2, 8.5, 0.3);
-	plataforma3.Inicializa(-4.75, 2, 8.5, 0.3);
-	plataforma4.Inicializa(0, 6, 18, 0.3);
-	plataforma5.Inicializa(3.5, 10, 11, 0.3);
-	plataforma6.Inicializa(-4.75, 10, 7, 0.3);
-	plataforma7.Inicializa(0, 14, 18, 0.3);
+	plataforma1.Inicializa(0, -2, 18, 0.3, plataforma_18);
+	plataforma2.Inicializa(4.75, 2, 8.5, 0.3, plataforma_8_5);
+	plataforma3.Inicializa(-4.75, 2, 8.5, 0.3, plataforma_8_5);
+	plataforma4.Inicializa(0, 6, 18, 0.3, plataforma_18);
+	plataforma5.Inicializa(3.5, 10, 11, 0.3, plataforma_11);
+	plataforma6.Inicializa(-4.75, 10, 7, 0.3, plataforma_7);
+	plataforma7.Inicializa(0, 14, 18, 0.3, plataforma_18);
 	//Escaleras
 	escalera1.Inicializa(6.0, 0, 0.5, 4);
 	escalera2.Inicializa(3, 4, 0.5, 4);
@@ -62,7 +63,7 @@ void Mundo::Dibuja() {
 }
 
 void Mundo::Mueve() {
-	player.Desplaza(0.025f);
+	player.Mueve(0.025f);
 
 	//Jugador con pared
 	player.limitePared(suelo);
@@ -71,10 +72,17 @@ void Mundo::Mueve() {
 		if (player.sobrePlataforma(plataforma1)) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
+			player.setSalto(false);
 		}
 	}
 	//Jugador con escaleras
-	if (player.arribaEscalera(escalera1)) {
+	player.limiteEscalera(escalera1);
+	if (player.getUpStairs()) {
+		player.setVel(0.0f, 0.0f);
+		player.setAligned(false);
+	}
+
+	if (player.getDownStairs()) {
 		player.setVel(0.0f, 0.0f);
 		player.setAligned(false);
 	}
@@ -82,6 +90,7 @@ void Mundo::Mueve() {
 	if (player.detectaEscalera(escalera1)) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
+
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
@@ -89,22 +98,27 @@ void Mundo::TeclaEspecial(unsigned char key) {
 	switch (key) {
 	case GLUT_KEY_RIGHT:
 		player.setVel(5.0f, 0.0f);
+		//player.setPath("imagenes/Diego/paso dcha.png");
 		break;
 
 	case GLUT_KEY_LEFT:
 		player.setVel(-5.0f, 0.0f);
+		//player.setPath("imagenes/Diego/paso izq.png");
 		break;
 
 	case GLUT_KEY_UP:
 		if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
 			player.setVel(0.0f, 5.0f);
 			player.setAligned(true);
+			//player.setPath("imagenes/Diego/escalera dcha.png");
 		}
 		break;
 
 	case GLUT_KEY_DOWN:
-		/*if (player.detectaEscalera(escalera1) || player.detectaEscalera(escalera2))
-			player.setVel(0.0f, -5.0f);*/
+		if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma2)) {
+			player.setVel(0.0f, -5.0f);
+			player.setAligned(true);
+		}
 		break;
 	}
 }
@@ -117,6 +131,7 @@ void Mundo::Tecla(unsigned char key) {
 			player.setVel(player.getVel().x, 4.0f);
 			player.setAcel(0, -15);
 			player.setSalto(true);
+			//player.setPath("imagenes/Diego/salto dcha.png");
 		}
 		break;
 	}

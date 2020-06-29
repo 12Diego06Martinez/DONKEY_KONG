@@ -20,7 +20,7 @@ Plataforma::~Plataforma() {
 ///////////////////////////////////METODOS////////////////////////////////
 void Plataforma::Dibuja() {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Block.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(path).id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -40,13 +40,15 @@ void Plataforma::setLimites(float x1, float y1, float x2, float y2) {
 	limite2.y = y2;
 }
 
-void Plataforma::Inicializa(float px, float py, float ancho, float alto) {
+void Plataforma::Inicializa(float px, float py, float ancho, float alto, const char* p) {
 	posicion.x = px;
 	posicion.y = py;
 	limite1.x = px - ancho / 2;
 	limite1.y = py - alto / 2;
 	limite2.x = px + ancho / 2;
 	limite2.y = py + alto / 2;
+	path = new char[strlen(p) + 1];
+	strcpy(path, p);
 }
 
 void Plataforma::setPos(float px, float py) {

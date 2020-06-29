@@ -16,7 +16,7 @@ public:
 	virtual ~Plataforma();
 	void Dibuja();
 	void setLimites(float x1, float y1, float x2, float y2);
-	void Inicializa(float px, float py, float ancho, float alto);
+	void Inicializa(float px, float py, float ancho, float alto, const char* p);
 	void setPos(float px, float py);
 	void setPath(const char* p);
 	void setHarmful(bool harm);

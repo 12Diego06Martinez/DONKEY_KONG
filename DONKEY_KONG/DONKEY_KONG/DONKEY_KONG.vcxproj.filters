@@ -47,9 +47,6 @@
     <ClInclude Include="src\Vector2D.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\Paths.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\Jugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -60,6 +57,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Pared.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Globales.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
