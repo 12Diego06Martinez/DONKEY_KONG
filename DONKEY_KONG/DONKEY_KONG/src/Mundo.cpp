@@ -19,7 +19,7 @@ void Mundo::Inicializa() {
 	//Pared
 	//suelo.setLimites(-9, -4, 9, -3);
 	//Jugador
-	player.setPos(-8, -2);
+	player.setPos(-8, -1.85);
 	//Plataformas
 	plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
 	plataformas.Agregar(new Plataforma(4.75, 2, 8.5, 0.3, plataforma_8_5));
@@ -72,7 +72,7 @@ void Mundo::Mueve() {
 		player.setAligned(false);
 	}
 	
-	if (escaleras.detectaEscaleras(player)!=0) {
+	if (escaleras.detectaEscalerasSubir(player)!=0) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
 }
@@ -89,7 +89,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		if(escaleras.detectaEscaleras(player)!=0 && plataformas.sobrePlataformas(player)!=0){
+		if(escaleras.detectaEscalerasSubir(player)!=0 && plataformas.sobrePlataformas(player)!=0){
 			player.setVel(0.0f, 5.0f);
 			player.setAligned(true);
 		}

@@ -13,6 +13,7 @@ public:
 	static bool sobrePlataforma(Jugador& jugador, Plataforma plataforma);
 	static bool detectaEscalera(Jugador& jugador, Escalera escalera);
 	static bool arribaEscalera(Jugador& jugador, Escalera escalera);
-
+	static bool detectaEscaleraSubir(Jugador& jugador, Escalera escalera);
+	static bool detectaEscaleraBajar(Jugador& jugador, Escalera escalera);
 	//static bool comprobarAltura(Jugador& jugador, Plataforma plataforma);
 };

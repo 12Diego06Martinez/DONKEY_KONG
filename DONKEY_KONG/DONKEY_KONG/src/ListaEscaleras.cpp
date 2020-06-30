@@ -75,10 +75,10 @@ Escalera* ListaEscaleras::operator[](int pos) {
 	return lista[pos];
 }
 ///////////////////////////////////////////////////////////
-Escalera* ListaEscaleras::detectaEscaleras(Jugador& jugador){
+Escalera* ListaEscaleras::detectaEscalerasSubir(Jugador& jugador){
 	
 	for (int i = 0; i < num; i++) {
-		if (Interaccion::detectaEscalera(jugador, *lista[i]))
+		if (Interaccion::detectaEscaleraSubir(jugador, *lista[i]))
 			return lista[i];
 	}
 	return 0;
@@ -87,12 +87,9 @@ Escalera* ListaEscaleras::detectaEscaleras(Jugador& jugador){
 Escalera* ListaEscaleras::jugadorArriba(Jugador& jugador) {
 
 	for (int i = 0; i < num; i++) {
-		if (detectaEscaleras(jugador) != 0) 
-			if (Interaccion::arribaEscalera(jugador, *lista[i])) {
-				jugador.setPos(jugador.getPos().x, lista[i]->getLimite2().x);
+		//if (detectaEscalerasSubir(jugador)!=0) 
+			if (Interaccion::arribaEscalera(jugador, *lista[i]))
 				return lista[i];
-			}
-				
 	}
 	return 0;
 }

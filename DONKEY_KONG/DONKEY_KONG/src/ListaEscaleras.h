@@ -19,6 +19,6 @@ public:
 	int GetNum() { return num; }
 	Escalera* operator [](int pos);
 	/////////////////////////////////////////////////////////
-	Escalera* detectaEscaleras(Jugador& jugador);
+	Escalera* detectaEscalerasSubir(Jugador& jugador);
 	Escalera* jugadorArriba(Jugador& jugador);
 };
