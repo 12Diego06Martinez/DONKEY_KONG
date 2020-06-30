@@ -3,6 +3,7 @@
 #include "Plataforma.h"
 #include "Pared.h"
 #include "Escalera.h"
+#include "ListaPlataformas.h"
 
 class Mundo
 {
@@ -12,14 +13,14 @@ private:
 	float z_ojo;
 	Pared suelo;
 	Jugador player;
-	//ListaEstaticos plataformas;
-	Plataforma plataforma1;
+	ListaPlataformas plataformas;
+	/*Plataforma plataforma1;
 	Plataforma plataforma2;
 	Plataforma plataforma3;
 	Plataforma plataforma4;
 	Plataforma plataforma5;
 	Plataforma plataforma6;
-	Plataforma plataforma7;
+	Plataforma plataforma7;*/
 	Escalera escalera1;
 	Escalera escalera2;
 	Escalera escalera3;

@@ -29,7 +29,7 @@ bool ListaPlataformas::Agregar(Plataforma* plataforma) {
 		return false;
 }
 
-void ListaPlataformas::Dibujar() {
+void ListaPlataformas::Dibuja() {
 	for (int i = 0; i < num; i++) {
 		lista[i]->Dibuja();
 	}

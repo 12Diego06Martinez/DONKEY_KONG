@@ -11,7 +11,7 @@ public:
 	ListaPlataformas();
 	virtual ~ListaPlataformas();
 	bool Agregar(Plataforma* plataforma);
-	void Dibujar();
+	void Dibuja();
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Plataforma* plataforma); //elimina la esfera apuntada por el puntero
