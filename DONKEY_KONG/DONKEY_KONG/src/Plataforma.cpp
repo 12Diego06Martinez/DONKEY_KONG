@@ -7,7 +7,6 @@ using namespace ETSIDI;
 
 /////////////////////////////////////CONSTRUCTOR//////////////////////////
 Plataforma::Plataforma(float px, float py, float ancho, float alto, const char* p) {
-
 	posicion.x = px;
 	posicion.y = py;
 	limite1.x = px - ancho / 2;

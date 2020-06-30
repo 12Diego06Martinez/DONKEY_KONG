@@ -2,7 +2,6 @@
 #define MAX_NUM 20
 
 #include "Plataforma.h"
-#include "Interaccion.h"
 #include "Jugador.h"
 
 class ListaPlataformas {

@@ -29,12 +29,12 @@ void Mundo::Inicializa() {
 	plataformas.Agregar(new Plataforma(-5, 10, 8, 0.3, plataforma_7));
 	plataformas.Agregar(new Plataforma(0, 14, 18, 0.3, plataforma_18));
 	//Escaleras
-	escalera1.Inicializa(6.0, 0, 0.5, 4);
-	escalera2.Inicializa(3, 4, 0.5, 4);
-	escalera3.Inicializa(-8, 4, 0.5, 4);
-	escalera4.Inicializa(-5, 8, 0.5, 4);
-	escalera5.Inicializa(1, 12, 0.5, 4);
-	escalera6.Inicializa(-3, 16, 0.5, 4);
+	escaleras.Agregar(new Escalera(6, 0, 0.5, 4));
+	escaleras.Agregar(new Escalera(3, 4, 0.5, 4));
+	escaleras.Agregar(new Escalera(-8, 4, 0.5, 4));
+	escaleras.Agregar(new Escalera(-5, 8, 0.5, 4));
+	escaleras.Agregar(new Escalera(1, 12, 0.5, 4));
+	escaleras.Agregar(new Escalera(-3, 16, 0.5, 4));
 }
 
 void Mundo::Dibuja() {
@@ -49,12 +49,7 @@ void Mundo::Dibuja() {
 	//Plataformas
 	plataformas.Dibuja();
 	//Escaleras
-	escalera1.Dibuja();
-	escalera2.Dibuja();
-	escalera3.Dibuja();
-	escalera4.Dibuja();
-	escalera5.Dibuja();
-	escalera6.Dibuja();
+	escaleras.Dibuja();
 }
 
 void Mundo::Mueve() {
@@ -85,23 +80,20 @@ void Mundo::Mueve() {
 	//}
 	
 	//Jugador con escaleras
-	player.limiteEscalera(escalera1);
-	if (player.getUpStairs()) {
-		player.setVel(0.0f, 0.0f);
-		player.setAligned(false);
-	}
+	//player.limiteEscalera(escalera1);
+	//if (player.getUpStairs()) {
+	//	player.setVel(0.0f, 0.0f);
+	//	player.setAligned(false);
+	//}
 
-	if (player.getDownStairs()) {
-		player.setVel(0.0f, 0.0f);
-		player.setAligned(false);
-	}
-	
-	if (player.detectaEscalera(escalera1)) {
+	//if (player.getDownStairs()) {
+	//	player.setVel(0.0f, 0.0f);
+	//	player.setAligned(false);
+	//}
+	//
+	if (escaleras.detectaEscaleras(player)!=0) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
-
-	
-
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
@@ -116,10 +108,11 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		/*if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
+		if(escaleras.detectaEscaleras(player)!=0 && plataformas.sobrePlataformas(player)!=0){
+		//if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
 			player.setVel(0.0f, 5.0f);
 			player.setAligned(true);
-		}*/
+		}
 		break;
 
 	case GLUT_KEY_DOWN:

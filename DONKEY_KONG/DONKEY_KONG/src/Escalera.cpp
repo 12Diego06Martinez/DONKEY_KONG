@@ -7,11 +7,13 @@
 using namespace ETSIDI;
 
 ////////////////////////////////CONSTRUCTOR////////////////////////////////
-Escalera::Escalera(bool harm, const char* p) {
-	path = new char[strlen(p) + 1];
-	strcpy(path, p);
-
-	harmful = harm;
+Escalera::Escalera(float px, float py, float ancho, float alto) {
+	posicion.x = px;
+	posicion.y = py;
+	limite1.x = px - ancho / 2;
+	limite1.y = py - alto / 2;
+	limite2.x = px + ancho / 2;
+	limite2.y = py + alto / 2;
 }
 
 Escalera::~Escalera() {

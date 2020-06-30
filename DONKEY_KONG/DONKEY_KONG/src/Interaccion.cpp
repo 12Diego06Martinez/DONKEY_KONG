@@ -31,10 +31,18 @@ bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
 		return false;
 }
 
-bool Interaccion::comprobarAltura(Jugador& jugador, Plataforma plataforma) {
-
-	if (jugador.posicion.y > plataforma.limite1.y)
+bool Interaccion::detectaEscalera(Jugador& jugador, Escalera escalera) {
+	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
+	if (distancia > 1.999 && distancia < 2.004)
 		return true;
 	else
 		return false;
 }
+
+//bool Interaccion::comprobarAltura(Jugador& jugador, Plataforma plataforma) {
+//
+//	if (jugador.posicion.y > plataforma.limite1.y)
+//		return true;
+//	else
+//		return false;
+//}

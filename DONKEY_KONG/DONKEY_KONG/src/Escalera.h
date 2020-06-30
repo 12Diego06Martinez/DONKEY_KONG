@@ -9,9 +9,10 @@ private:
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D limite1;
 	ETSIDI::Vector2D limite2;
+	friend class Interaccion;
 public:
 	Escalera(){}
-	Escalera(bool harm, const char* p);
+	Escalera(float px, float py, float ancho, float alto);
 	virtual ~Escalera();
 	void Dibuja();
 	void setLimites(float x1, float y1, float x2, float y2);

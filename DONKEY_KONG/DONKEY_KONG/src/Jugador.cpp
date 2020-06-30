@@ -63,30 +63,6 @@ void Jugador::setReposo() {
 	setVel(0.0f, 0.0f);
 }
 
-bool Jugador::sobrePlataforma(Plataforma plataforma) {
-	//Detecta si el jugador está sobre una plataforma
-	//+0.00000006
-	if (posicion.y <= plataforma.getPos().y) {
-		posicion.y = plataforma.getPos().y;
-		isOnPlatform = true;
-	}
-		
-	else
-		isOnPlatform = false;
-
-	return isOnPlatform;
-}
-
-bool Jugador::detectaEscalera(Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.getPos(), posicion);
-	if (distancia > 1.999 && distancia < 2.004) {
-		isInLadder = true;
-	}
-	else
-		isInLadder = false;
-
-	return isInLadder;
-}
 
 //bool Jugador::detectaEscaleraAbajo(Escalera escalera) {
 //	//Detecta cuando el jugador está en línea con la escalera para subir

@@ -1,9 +1,8 @@
 #pragma once
 #include "Jugador.h"
-#include "Plataforma.h"
 #include "Pared.h"
-#include "Escalera.h"
 #include "ListaPlataformas.h"
+#include "ListaEscaleras.h"
 
 class Mundo
 {
@@ -14,19 +13,7 @@ private:
 	Pared suelo;
 	Jugador player;
 	ListaPlataformas plataformas;
-	/*Plataforma plataforma1;
-	Plataforma plataforma2;
-	Plataforma plataforma3;
-	Plataforma plataforma4;
-	Plataforma plataforma5;
-	Plataforma plataforma6;
-	Plataforma plataforma7;*/
-	Escalera escalera1;
-	Escalera escalera2;
-	Escalera escalera3;
-	Escalera escalera4;
-	Escalera escalera5;
-	Escalera escalera6;
+	ListaEscaleras escaleras;
 public:
 	Mundo() {}
 	virtual ~Mundo();

@@ -33,8 +33,6 @@ public:
 	void setUpStairs(bool up) { isUpStairs = up; }
 	void setAligned(bool aligned) { isAligned = aligned; }
 	void setReposo();
-	bool sobrePlataforma(Plataforma plataforma);
-	bool detectaEscalera(Escalera escalera);
 	void limiteEscalera(Escalera escalera);
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
