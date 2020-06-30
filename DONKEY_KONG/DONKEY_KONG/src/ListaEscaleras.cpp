@@ -83,3 +83,12 @@ Escalera* ListaEscaleras::detectaEscaleras(Jugador& jugador){
 	}
 	return 0;
 }
+
+Escalera* ListaEscaleras::jugadorArriba(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::arribaEscalera(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}

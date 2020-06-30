@@ -25,6 +25,7 @@ public:
 	virtual ~Jugador();
 	void Dibuja();
 	void Mueve(float t);
+	//Setters
 	void setPath(const char* p);
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
@@ -33,7 +34,7 @@ public:
 	void setUpStairs(bool up) { isUpStairs = up; }
 	void setAligned(bool aligned) { isAligned = aligned; }
 	void setReposo();
-	void limiteEscalera(Escalera escalera);
+	//Getters
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
 	ETSIDI::Vector2D getAcel() { return aceleracion; }

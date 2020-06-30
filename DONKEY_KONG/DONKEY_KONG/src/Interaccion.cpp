@@ -39,6 +39,15 @@ bool Interaccion::detectaEscalera(Jugador& jugador, Escalera escalera) {
 		return false;
 }
 
+bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
+	if (jugador.posicion.y >= escalera.limite2.y && jugador.isAligned == true) {
+		jugador.setPos(jugador.posicion.x, escalera.limite2.y);
+		return true;
+	}
+	else
+		return false;
+}
+
 //bool Interaccion::comprobarAltura(Jugador& jugador, Plataforma plataforma) {
 //
 //	if (jugador.posicion.y > plataforma.limite1.y)

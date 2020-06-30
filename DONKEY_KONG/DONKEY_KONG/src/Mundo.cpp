@@ -65,21 +65,26 @@ void Mundo::Mueve() {
 			player.setSalto(false);
 		}
 	}
-	//if (player.getSalto()) {
-	//	if (player.sobrePlataforma(plataforma1)) {
-	//		player.setAcel(0.0f, 0.0f);
-	//		player.setVel(player.getVel().x, 0);
-	//		player.setSalto(false);
-	//	}
 
-		/*else if(player.sobrePlataforma(plataforma2)) {
+	/*if (player.getSalto()) {
+		if (player.sobrePlataforma(plataforma1)) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
-		}*/
-	//}
+		}
+
+		else if(player.sobrePlataforma(plataforma2)) {
+			player.setAcel(0.0f, 0.0f);
+			player.setVel(player.getVel().x, 0);
+			player.setSalto(false);
+		}
+	}*/
 	
 	//Jugador con escaleras
+	if (escaleras.jugadorArriba(player)!=0) {
+		player.setVel(0.0f, 0.0f);
+		player.setAligned(false);
+	}
 	//player.limiteEscalera(escalera1);
 	//if (player.getUpStairs()) {
 	//	player.setVel(0.0f, 0.0f);
@@ -109,7 +114,6 @@ void Mundo::TeclaEspecial(unsigned char key) {
 
 	case GLUT_KEY_UP:
 		if(escaleras.detectaEscaleras(player)!=0 && plataformas.sobrePlataformas(player)!=0){
-		//if (player.detectaEscalera(escalera1) && player.sobrePlataforma(plataforma1)) {
 			player.setVel(0.0f, 5.0f);
 			player.setAligned(true);
 		}
