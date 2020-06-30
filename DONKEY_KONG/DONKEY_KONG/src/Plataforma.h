@@ -12,7 +12,7 @@ private:
 
 public:
 	Plataforma(){}
-	Plataforma(bool harm, const char* p);
+	Plataforma(float px, float py, float ancho, float alto, const char* p);
 	virtual ~Plataforma();
 	void Dibuja();
 	void setLimites(float x1, float y1, float x2, float y2);

@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ListaPlataformas.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\DonkeyKong.cpp" />
     <ClCompile Include="src\Escalera.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ListaPlataformas.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Escalera.h" />
     <ClInclude Include="src\Jugador.h" />

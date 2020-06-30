@@ -19,7 +19,7 @@ void Jugador::Dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Diego/pie_dcha_transparente.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_pie_dcha.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -124,7 +124,6 @@ void Jugador::limiteEscalera(Escalera escalera) {
 	float y_max = escalera.getLimite2().y;
 	float y_min = escalera.getLimite1().y;
 
-	//
 	if (posicion.y > y_max && isAligned == true) {
 		isUpStairs = true;
 		setPos(posicion.x, y_max);

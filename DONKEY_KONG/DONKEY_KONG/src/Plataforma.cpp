@@ -6,11 +6,17 @@
 using namespace ETSIDI;
 
 /////////////////////////////////////CONSTRUCTOR//////////////////////////
-Plataforma::Plataforma(bool harm, const char* p) {
+Plataforma::Plataforma(float px, float py, float ancho, float alto, const char* p) {
+
+	posicion.x = px;
+	posicion.y = py;
+	limite1.x = px - ancho / 2;
+	limite1.y = py - alto / 2;
+	limite2.x = px + ancho / 2;
+	limite2.y = py + alto / 2;
+
 	path = new char[strlen(p) + 1];
 	strcpy(path, p);
-
-	harmful = harm;
 }
 
 Plataforma::~Plataforma() {

@@ -21,7 +21,7 @@ Escalera::~Escalera() {
 /////////////////////////////////METODOS///////////////////////////////////
 void Escalera::Dibuja() {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Diego/escalera_transparente.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/escalera_transparente.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
