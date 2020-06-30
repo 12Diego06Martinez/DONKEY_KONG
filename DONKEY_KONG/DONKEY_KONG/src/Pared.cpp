@@ -4,7 +4,10 @@ using namespace ETSIDI;
 
 ////////////////////////////////////CONSTRUCTOR//////////////////////
 Pared::Pared() {
-	limite1.x = limite1.y = limite2.x = limite2.y = 0;
+	limite1.x = -9;
+	limite1.y = -4;
+	limite2.x = 9;
+	limite2.y = -3;
 }
 
 Pared::~Pared() {

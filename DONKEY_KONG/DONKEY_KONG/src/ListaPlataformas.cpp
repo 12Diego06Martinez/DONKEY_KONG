@@ -74,3 +74,14 @@ Plataforma* ListaPlataformas::operator[](int pos) {
 
 	return lista[pos];
 }
+
+///////////////////////////////////////////////////////////////////////////
+Plataforma* ListaPlataformas::sobrePlataformas(Jugador& jugador) {
+
+	for(int i=0; i<num; i++){
+		//if (Interaccion::sobrePlataforma(jugador, *lista[i]) && !Interaccion::comprobarAltura(jugador, *lista[i + 1]))
+		if(Interaccion::sobrePlataforma(jugador,*lista[i]))
+			return lista[i];
+	}
+	return 0;
+}

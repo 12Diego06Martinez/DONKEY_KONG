@@ -33,7 +33,6 @@ public:
 	void setUpStairs(bool up) { isUpStairs = up; }
 	void setAligned(bool aligned) { isAligned = aligned; }
 	void setReposo();
-	void limitePared(Pared pared);
 	bool sobrePlataforma(Plataforma plataforma);
 	bool detectaEscalera(Escalera escalera);
 	void limiteEscalera(Escalera escalera);

@@ -17,7 +17,7 @@ void Mundo::Inicializa() {
 	z_ojo = 30;
 
 	//Pared
-	suelo.setLimites(-9, -4, 9, -3);
+	//suelo.setLimites(-9, -4, 9, -3);
 	//Jugador
 	player.setPos(-8, -2);
 	//Plataformas
@@ -63,6 +63,13 @@ void Mundo::Mueve() {
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	//Salto
+	if (player.getSalto()) {
+		if (plataformas.sobrePlataformas(player)!=0) {
+			player.setAcel(0.0f, 0.0f);
+			player.setVel(player.getVel().x, 0);
+			player.setSalto(false);
+		}
+	}
 	//if (player.getSalto()) {
 	//	if (player.sobrePlataforma(plataforma1)) {
 	//		player.setAcel(0.0f, 0.0f);
@@ -102,12 +109,10 @@ void Mundo::TeclaEspecial(unsigned char key) {
 	switch (key) {
 	case GLUT_KEY_RIGHT:
 		player.setVel(5.0f, 0.0f);
-		//player.setPath("imagenes/Diego/paso dcha.png");
 		break;
 
 	case GLUT_KEY_LEFT:
 		player.setVel(-5.0f, 0.0f);
-		//player.setPath("imagenes/Diego/paso izq.png");
 		break;
 
 	case GLUT_KEY_UP:
@@ -130,6 +135,11 @@ void Mundo::Tecla(unsigned char key) {
 
 	switch (key) {
 	case ' ':
+		if (plataformas.sobrePlataformas(player)!=0) {
+			player.setAcel(0, -15);
+			player.setVel(player.getVel().x, 4.0f);
+			player.setSalto(true);
+		}
 		//if (player.sobrePlataforma(plataforma1)){
 		//	player.setAcel(0, -15);
 		//	player.setVel(player.getVel().x, 4.0f);

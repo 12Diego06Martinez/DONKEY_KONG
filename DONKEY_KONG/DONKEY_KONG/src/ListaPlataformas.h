@@ -2,6 +2,8 @@
 #define MAX_NUM 20
 
 #include "Plataforma.h"
+#include "Interaccion.h"
+#include "Jugador.h"
 
 class ListaPlataformas {
 private:
@@ -17,4 +19,6 @@ public:
 	void Delete(Plataforma* plataforma); //elimina la esfera apuntada por el puntero
 	int GetNum() { return num; }
 	Plataforma* operator [](int pos);
+	/////////////////////////////////////////////////////////
+	Plataforma* sobrePlataformas(Jugador& jugador);
 };

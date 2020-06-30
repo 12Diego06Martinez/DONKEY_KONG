@@ -19,3 +19,22 @@ void Interaccion::reboteExterior(Jugador& jugador, Pared pared) {
 		jugador.posicion.x = pared.limite1.x;
 	}
 }
+
+bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
+
+	if (jugador.posicion.y <= plataforma.posicion.y && jugador.posicion.y > plataforma.limite1.y) {
+		jugador.setPos(jugador.posicion.x, plataforma.posicion.y);
+		return true;
+	}
+	
+	else
+		return false;
+}
+
+bool Interaccion::comprobarAltura(Jugador& jugador, Plataforma plataforma) {
+
+	if (jugador.posicion.y > plataforma.limite1.y)
+		return true;
+	else
+		return false;
+}

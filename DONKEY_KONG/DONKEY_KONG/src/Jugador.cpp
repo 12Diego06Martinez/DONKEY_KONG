@@ -63,13 +63,6 @@ void Jugador::setReposo() {
 	setVel(0.0f, 0.0f);
 }
 
-void Jugador::limitePared(Pared pared){
-	if (posicion.x > pared.getLimite2().x)
-		posicion.x = pared.getLimite2().x;
-	if (posicion.x < pared.getLimite1().x)
-		posicion.x = pared.getLimite1().x;
-}
-
 bool Jugador::sobrePlataforma(Plataforma plataforma) {
 	//Detecta si el jugador está sobre una plataforma
 	//+0.00000006
