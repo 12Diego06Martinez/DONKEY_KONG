@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
 #include "Globales.h"
+#include "Interaccion.h"
 #include "glut.h"
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
@@ -60,7 +61,7 @@ void Mundo::Mueve() {
 	
 	player.Mueve(0.025f);
 	//Jugador con pared
-	player.limitePared(suelo);
+	Interaccion::reboteExterior(player, suelo);
 	//Salto
 	//if (player.getSalto()) {
 	//	if (player.sobrePlataforma(plataforma1)) {

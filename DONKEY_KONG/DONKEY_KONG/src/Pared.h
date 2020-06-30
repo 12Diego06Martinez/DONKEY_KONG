@@ -6,6 +6,7 @@ class Pared
 private:
 	ETSIDI::Vector2D limite1;
 	ETSIDI::Vector2D limite2;
+	friend class Interaccion;
 public:
 	Pared();
 	virtual ~Pared();

@@ -19,6 +19,7 @@ private:
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D aceleracion;
+	friend class Interaccion;
 public:
 	Jugador();
 	virtual ~Jugador();
