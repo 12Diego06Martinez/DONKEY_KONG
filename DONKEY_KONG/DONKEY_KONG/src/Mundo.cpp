@@ -65,37 +65,13 @@ void Mundo::Mueve() {
 			player.setSalto(false);
 		}
 	}
-
-	/*if (player.getSalto()) {
-		if (player.sobrePlataforma(plataforma1)) {
-			player.setAcel(0.0f, 0.0f);
-			player.setVel(player.getVel().x, 0);
-			player.setSalto(false);
-		}
-
-		else if(player.sobrePlataforma(plataforma2)) {
-			player.setAcel(0.0f, 0.0f);
-			player.setVel(player.getVel().x, 0);
-			player.setSalto(false);
-		}
-	}*/
 	
 	//Jugador con escaleras
 	if (escaleras.jugadorArriba(player)!=0) {
 		player.setVel(0.0f, 0.0f);
 		player.setAligned(false);
 	}
-	//player.limiteEscalera(escalera1);
-	//if (player.getUpStairs()) {
-	//	player.setVel(0.0f, 0.0f);
-	//	player.setAligned(false);
-	//}
-
-	//if (player.getDownStairs()) {
-	//	player.setVel(0.0f, 0.0f);
-	//	player.setAligned(false);
-	//}
-	//
+	
 	if (escaleras.detectaEscaleras(player)!=0) {
 		ETSIDI::play("sonidos/contactoPared.wav");
 	}
@@ -137,17 +113,6 @@ void Mundo::Tecla(unsigned char key) {
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
 		}
-		//if (player.sobrePlataforma(plataforma1)){
-		//	player.setAcel(0, -15);
-		//	player.setVel(player.getVel().x, 4.0f);
-		//	player.setSalto(true);
-		//	//player.setPath("imagenes/Diego/salto dcha.png");
-		//}
-		/*else if (player.sobrePlataforma(plataforma2)) {
-			player.setAcel(0, -15);
-			player.setVel(player.getVel().x, 4.0f);
-			player.setSalto(true);
-		}*/
 		break;
 	}
 }

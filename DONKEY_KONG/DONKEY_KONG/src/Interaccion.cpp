@@ -40,8 +40,8 @@ bool Interaccion::detectaEscalera(Jugador& jugador, Escalera escalera) {
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
-	if (jugador.posicion.y >= escalera.limite2.y && jugador.isAligned == true) {
-		jugador.setPos(jugador.posicion.x, escalera.limite2.y);
+	if (jugador.posicion.y > escalera.limite2.y && jugador.isAligned == true) {
+		//jugador.setPos(jugador.posicion.x, escalera.limite2.y);
 		return true;
 	}
 	else
