@@ -39,7 +39,7 @@ void Enemigo::Mueve(float t) {
 	posicion = posicion + velocidad * t;
 }
 
-int Enemigo::generaAleatorio() {
+void Enemigo::generaAleatorio() {
 	int num=lanzaDado(1.0, 6.0);
 	if (num <= 3)
 		setVel(5.0f, 0.0f);

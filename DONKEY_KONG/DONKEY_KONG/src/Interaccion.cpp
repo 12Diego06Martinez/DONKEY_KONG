@@ -1,4 +1,7 @@
 #include "Interaccion.h"
+//#include "ETSIDI.h"
+
+using namespace ETSIDI;
 
 /////////////////////////////////////CONSTRUCTOR////////////////////////////
 Interaccion::Interaccion() {
@@ -42,7 +45,8 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 	//}
 	//else
 	//	return false;
-	float distancia = escalera.calculaDistancia(escalera.limite1, jugador.posicion);
+	float distancia = (escalera.limite1 - jugador.posicion).module();
+		//escalera.calculaDistancia(escalera.limite1, jugador.posicion);
 	if (distancia > 4.15 && distancia < 4.16 && jugador.isGoingUp==true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite2.y + 0.15));
 		return true;
@@ -52,7 +56,8 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 }
 
 bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.limite2, jugador.posicion);
+	float distancia = (escalera.limite2 - jugador.posicion).module();
+		//escalera.calculaDistancia(escalera.limite2, jugador.posicion);
 	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
 		return true;
@@ -62,7 +67,8 @@ bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
 }
 
 bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
+	float distancia = (escalera.posicion - jugador.posicion).module();
+		//escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 1.849 && distancia < 1.852) {
 		return true;
 	}
@@ -71,7 +77,8 @@ bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 }
 
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
+	float distancia = (escalera.posicion - jugador.posicion).module();
+		//escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 2.149 && distancia < 2.152)
 		return true;
 	else
@@ -89,9 +96,18 @@ bool Interaccion::caidaHueco(Jugador& jugador, Pared pared) {
 		return false;
 }
 
-bool Interaccion::detectaMoneda(Jugador& jugador, Moneda moneda) {
-	float distancia = moneda.calculaDistancia(moneda.posicion, jugador.posicion);
+bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
+	float distancia = (moneda.posicion - jugador.posicion).module();
+		//moneda.calculaDistancia(moneda.posicion, jugador.posicion);
 	if (distancia < 0.7)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
+	float distancia = (jugador.posicion - enemigo.posicion).module();
+	if (distancia >= 1.0f)
 		return true;
 	else
 		return false;

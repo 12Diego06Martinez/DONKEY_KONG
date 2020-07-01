@@ -1,7 +1,7 @@
 #pragma once
 
 enum jugador_t {PARADO_D, PARADO_I, ANDAD_D, ANDA_I, SALTA_D, SALTA_I, SUBE_D, SUBE_I, MUERE };
-enum enemigo_t	{NORMAL_D, NORMAL_I, VULNERABLE_D, VULNERABLE_I};
+
 enum plataformas_t {ESTATICA, MOVIL};
 
 const char* plataforma_7 = "imagenes/plataforma_transparente_7_buena.png";

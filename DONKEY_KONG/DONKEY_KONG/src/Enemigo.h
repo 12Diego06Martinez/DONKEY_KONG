@@ -1,24 +1,26 @@
 #pragma once
 #include <ETSIDI.h>
-#include "Globales.h"
+
 
 class Enemigo {
 private:
+	enum enemigo_t { NORMAL_D, NORMAL_I, VULNERABLE_D, VULNERABLE_I };
 	enemigo_t estado;
-	const char* path;
+	char* path;
 	float ancho;
 	float alto;
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D limite1;
 	ETSIDI::Vector2D limite2;
+	friend class Interaccion;
 public:
 	Enemigo(){}
 	Enemigo(float px, float py, float ancho, float alto);
 	virtual ~Enemigo();
 	void Dibuja();
 	void Mueve(float t);
-	int generaAleatorio();
+	void generaAleatorio();
 	//Setters
 	void setPos(float px, float py);
 	void setVel(float vx, float vy);
