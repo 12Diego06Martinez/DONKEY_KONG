@@ -150,7 +150,9 @@
   <ItemGroup>
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\ListaEscaleras.cpp" />
+    <ClCompile Include="src\ListaMonedas.cpp" />
     <ClCompile Include="src\ListaPlataformas.cpp" />
+    <ClCompile Include="src\Moneda.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\DonkeyKong.cpp" />
     <ClCompile Include="src\Escalera.cpp" />
@@ -162,7 +164,9 @@
   <ItemGroup>
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\ListaEscaleras.h" />
+    <ClInclude Include="src\ListaMonedas.h" />
     <ClInclude Include="src\ListaPlataformas.h" />
+    <ClInclude Include="src\Moneda.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Escalera.h" />
     <ClInclude Include="src\Jugador.h" />

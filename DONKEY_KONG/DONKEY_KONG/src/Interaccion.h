@@ -4,6 +4,7 @@
 #include "Plataforma.h"
 #include "Pared.h"
 #include "Escalera.h"
+#include "Moneda.h"
 
 class Interaccion{
 public:
@@ -16,5 +17,6 @@ public:
 	static bool detectaEscaleraSubir(Jugador& jugador, Escalera escalera);
 	static bool detectaEscaleraBajar(Jugador& jugador, Escalera escalera);
 	static bool caidaHueco(Jugador& jugador, Pared pared);
+	static bool detectaMoneda(Jugador& jugador, Moneda moneda);
 	//static bool comprobarAltura(Jugador& jugador, Plataforma plataforma);
 };

@@ -3,6 +3,7 @@
 #include "Pared.h"
 #include "ListaPlataformas.h"
 #include "ListaEscaleras.h"
+#include "ListaMonedas.h"
 
 class Mundo
 {
@@ -10,12 +11,15 @@ private:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+	int monedas_recogidas = 0;
+	bool pasar_nivel;
 	Pared suelo;
 	Pared hueco1;
 	Pared hueco2;
 	Jugador player;
 	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;
+	ListaMonedas monedas;
 public:
 	Mundo() {}
 	virtual ~Mundo();

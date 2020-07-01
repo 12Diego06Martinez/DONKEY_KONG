@@ -16,7 +16,7 @@ public:
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Plataforma* plataforma); //elimina la esfera apuntada por el puntero
-	int GetNum() { return num; }
+	int getNum() { return num; }
 	Plataforma* operator [](int pos);
 	/////////////////////////////////////////////////////////
 	Plataforma* sobrePlataformas(Jugador& jugador);
