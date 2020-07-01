@@ -3,6 +3,7 @@
 #include "Globales.h"
 #include "Interaccion.h"
 #include "glut.h"
+#include <sstream>
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
 Mundo::~Mundo() {
@@ -39,13 +40,13 @@ void Mundo::Inicializa() {
 	escaleras.Agregar(new Escalera(-3, 16, 0.5, 4));
 	//Monedas
 	monedas.Agregar(new Moneda(-1, -1.4, 0.5, 0.5));
-	monedas.Agregar(new Moneda(6, 0.5, 0.5, 0.5));
+	monedas.Agregar(new Moneda(6, 0.25, 0.5, 0.5));
 	monedas.Agregar(new Moneda(-4, 2.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(0, 2.25, 0.5, 0.5));
 	monedas.Agregar(new Moneda(2, 6.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(8, 10.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(-1, 10.65, 0.5, 0.5));
-	monedas.Agregar(new Moneda(-3, 14.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(-6, 14.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(4, 14.65, 0.5, 0.5));
 
 }
@@ -87,7 +88,6 @@ void Mundo::Mueve() {
 			player.setFalling(false);
 		}
 	}
-	
 	//Jugador con escaleras
 	if (escaleras.jugadorArriba(player)!=0) {
 		player.setVel(0.0f, 0.0f);
@@ -98,14 +98,29 @@ void Mundo::Mueve() {
 		player.setVel(0.0f, 0.0f);
 		player.setDown(false);
 	}
-
-	if (escaleras.detectaEscalerasSubir(player)!=0) {
-		ETSIDI::play("sonidos/contactoPared.wav");
-	}
-
-	if (escaleras.detectaEscalerasBajar(player) != 0) {
+	//Jugador con monedas
+	Moneda* aux = monedas.cogeMonedas(player);
+	if (aux != 0) {
 		ETSIDI::play("sonidos/coin.wav");
+		if (monedas_recogidas < 9) 
+			monedas_recogidas++;
+		else
+			pasar_nivel = true;
 	}
+	monedas.Delete(aux);
+
+	
+	
+	ETSIDI::setFont("mygame.ttf", 5);
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::printxy("Monedas", 0, 0);
+	//if (escaleras.detectaEscalerasSubir(player)!=0) {
+	//	ETSIDI::play("sonidos/contactoPared.wav");
+	//}
+
+	//if (escaleras.detectaEscalerasBajar(player) != 0) {
+	//	ETSIDI::play("sonidos/coin.wav");
+	//}
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {

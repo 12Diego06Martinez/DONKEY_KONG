@@ -91,7 +91,7 @@ bool Interaccion::caidaHueco(Jugador& jugador, Pared pared) {
 
 bool Interaccion::detectaMoneda(Jugador& jugador, Moneda moneda) {
 	float distancia = moneda.calculaDistancia(moneda.posicion, jugador.posicion);
-	if (distancia < 0.5)
+	if (distancia < 0.7)
 		return true;
 	else
 		return false;

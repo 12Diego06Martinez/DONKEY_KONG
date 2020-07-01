@@ -16,7 +16,7 @@ public:
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Escalera* escalera); //elimina la esfera apuntada por el puntero
-	int GetNum() { return num; }
+	int getNum() { return num; }
 	Escalera* operator [](int pos);
 	/////////////////////////////////////////////////////////
 	Escalera* detectaEscalerasSubir(Jugador& jugador);

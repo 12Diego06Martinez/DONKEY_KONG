@@ -16,7 +16,7 @@ public:
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Moneda* moneda); //elimina la esfera apuntada por el puntero
-	int GetNum() { return num; }
+	int getNum() { return num; }
 	Moneda* operator [](int pos);
 	///////////////////////////////////////////
 	Moneda* cogeMonedas(Jugador& jugador);
