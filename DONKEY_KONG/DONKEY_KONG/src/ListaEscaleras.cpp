@@ -1,8 +1,8 @@
 #include "ListaEscaleras.h"
+#include "Interaccion.h"
 
-////////////////////////////////////CONSTRUCTOR//////////////////////////
+///////////////////////////////////CONSTRUCTOR///////////////////////
 ListaEscaleras::ListaEscaleras() {
-	//Lista vacia
 	num = 0;
 	for (int i = 0; i < MAX_NUM; i++) {
 		lista[i] = 0;
@@ -13,13 +13,7 @@ ListaEscaleras::~ListaEscaleras() {
 
 }
 
-///////////////////////////////////METODOS///////////////////////////////
-void ListaEscaleras::Dibuja() {
-	for (int i = 0; i < num; i++) {
-		lista[i]->Dibuja();
-	}
-}
-
+///////////////////////////////////MÉTODOS//////////////////////////
 bool ListaEscaleras::Agregar(Escalera* escalera) {
 	if (num < MAX_NUM) {
 		for (int i = 0; i < num; i++) {
@@ -31,33 +25,41 @@ bool ListaEscaleras::Agregar(Escalera* escalera) {
 		num++;
 		return true;
 	}
-	return false;
+	else
+		return false;
 }
 
-void ListaEscaleras::destruirContenido() {
+void ListaEscaleras::Dibuja() {
+	for (int i = 0; i < num; i++) {
+		lista[i]->Dibuja();
+	}
+}
+
+void ListaEscaleras::Destruir() {
 	for (int i = 0; i < num; i++) {
 		delete lista[i];
 	}
 	num = 0;
 }
 
-void ListaEscaleras::Eliminar(int index) {
+void ListaEscaleras::Delete(int index) {
 	if ((index < 0) || (index >= num)) {
 		return;
 	}
 	delete lista[index];
 	num--;
-
 	for (int i = index; i < num; i++) {
-		//Movemos los objetos una posición a partir del indice eliminado
+		//Recorremos la lista desde la posición indicada hasta el 
+		//final de la lista. Si por ejemplo eliminamos la Escalera en la posición 2, Muevemos 
+		//la posición 3 a la 2, la 4 a la 3 y así sucesivamente hasta num
 		lista[i] = lista[i + 1];
 	}
 }
 
-void ListaEscaleras::Eliminar(Escalera* escalera) {
+void ListaEscaleras::Delete(Escalera* escalera) {
 	for (int i = 0; i < num; i++) {
 		if (lista[i] == escalera) {
-			Eliminar(i);
+			Delete(i);
 			return;
 		}
 	}
@@ -71,4 +73,41 @@ Escalera* ListaEscaleras::operator[](int pos) {
 		pos = 0;
 
 	return lista[pos];
+}
+///////////////////////////////////////////////////////////
+Escalera* ListaEscaleras::detectaEscalerasSubir(Jugador& jugador){
+	
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::detectaEscaleraSubir(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}
+
+Escalera* ListaEscaleras::detectaEscalerasBajar(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::detectaEscaleraBajar(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}
+
+
+Escalera* ListaEscaleras::jugadorArriba(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::arribaEscalera(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}
+
+Escalera* ListaEscaleras::jugadorAbajo(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::abajoEscalera(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
 }

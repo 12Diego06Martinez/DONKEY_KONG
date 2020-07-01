@@ -1,13 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Jugador.h"
-#include "Paths.h"
-#include "ETSIDI.h"
+#include <string>
 #include "glut.h"
+
+using namespace ETSIDI;
 
 //////////////////////////////////////CONSTRUCTOR////////////////////////
 Jugador::Jugador() {
-	largo = 1;
-	alto = 2;
-	
+
 }
 
 Jugador::~Jugador() {
@@ -16,39 +17,31 @@ Jugador::~Jugador() {
 //////////////////////////////////////METODOS///////////////////////////
 void Jugador::Dibuja() {
 
-	glDisable(GL_LIGHTING);
-	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3ub(255, 0, 255);
-	glBegin(GL_POLYGON);
-	glVertex2d(x + largo / 2, y + alto / 2);
-	glVertex2d(x - largo / 2, y + alto / 2);
-	glVertex2d(x - largo / 2, y - alto / 2);
-	glVertex2d(x + largo / 2, y - alto / 2);
-	glEnd();
-	glTranslatef(-posicion.x, -posicion.y, 0);
-	glEnable(GL_LIGHTING);
-}
-
-void Jugador::cargaTextura() {
-
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario_right.png").id);
+	glTranslatef(posicion.x, posicion.y, 0);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario pie dcha.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1);		glVertex3f(-10, 0, -0.1);
-	glTexCoord2d(1, 1);		glVertex3f(10, 0, -0.1);
-	glTexCoord2d(1, 0);		glVertex3f(10, 15, -0.1);
-	glTexCoord2d(0, 0);		glVertex3f(-10, 15, -0.1);
+	glTexCoord2d(0, 1);		glVertex2d(-0.5, 0);
+	glTexCoord2d(1, 1);		glVertex2d(0.5, 0);
+	glTexCoord2d(1, 0);		glVertex2d(0.5, 1);
+	glTexCoord2d(0, 0);		glVertex2d(-0.5, 1);
 	glEnd();
+	glTranslatef(-posicion.x, -posicion.y, 0);
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 }
 
 void Jugador::Mueve(float t) {
-	//Ecuaciones del movimiento
-	posicion = posicion + velocidad * t + aceleracion * (0.5f * t * t);
+	//Movimiento rectilineo unirformemente acelerado
+	posicion = posicion + velocidad *t + aceleracion * (0.5 * t * t);
 	velocidad = velocidad + aceleracion * t;
+}
+
+void Jugador::setPath(const char* p) {
+	path = new char[strlen(p) + 1];
+	strcpy(path, p);
 }
 
 void Jugador::setPos(float px, float py) {
@@ -61,12 +54,11 @@ void Jugador::setVel(float vx, float vy) {
 	velocidad.y = vy;
 }
 
-void Jugador::setSize(float w, float h) {
-	largo = w;
-	alto = h;
+void Jugador::setAcel(float ax, float ay) {
+	aceleracion.x = ax;
+	aceleracion.y = ay;
 }
 
-void Jugador::setCentro(float cx, float cy) {
-	x = cx;
-	y = cy;
+void Jugador::setReposo() {
+	setVel(0.0f, 0.0f);
 }

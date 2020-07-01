@@ -1,7 +1,6 @@
 #pragma once
 #include "Jugador.h"
-#include "Plataforma.h"
-#include "Escalera.h"
+#include "Pared.h"
 #include "ListaPlataformas.h"
 #include "ListaEscaleras.h"
 
@@ -11,9 +10,9 @@ private:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+	Pared suelo;
 	Jugador player;
-	ListaPlataformas plataformasLargas;
-	ListaPlataformas plataformasCortas;
+	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;
 public:
 	Mundo() {}
@@ -22,4 +21,5 @@ public:
 	void Dibuja();
 	void Mueve();
 	void TeclaEspecial(unsigned char key);
+	void Tecla(unsigned char key);
 };

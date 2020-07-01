@@ -3,7 +3,6 @@
 
 ////////////////////////CONSTRUCTOR////////////////////////////
 Vector2D::Vector2D(float xv, float yv) {
-	//pos=origen, vel=parado, acel=no
 	x = xv;
 	y = yv;
 }
@@ -70,4 +69,11 @@ Vector2D Vector2D::operator +(float r) {
 	res.x = x + r;
 	res.y = y + r;
 	return res;
+}
+
+bool Vector2D::operator >(const Vector2D& v) {
+	if (this->x > v.x && this->y > v.y)
+		return true;
+	else
+		return false;
 }
