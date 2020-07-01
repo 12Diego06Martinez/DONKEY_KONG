@@ -15,5 +15,6 @@ public:
 	static bool abajoEscalera(Jugador& jugador, Escalera escalera);
 	static bool detectaEscaleraSubir(Jugador& jugador, Escalera escalera);
 	static bool detectaEscaleraBajar(Jugador& jugador, Escalera escalera);
+	static bool caidaHueco(Jugador& jugador, Pared pared);
 	//static bool comprobarAltura(Jugador& jugador, Plataforma plataforma);
 };

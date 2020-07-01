@@ -21,14 +21,18 @@ void Interaccion::reboteExterior(Jugador& jugador, Pared pared) {
 }
 
 bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
-
-	if (jugador.posicion.y <= plataforma.limite2.y && jugador.posicion.y > plataforma.limite1.y) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+	float y_min = plataforma.limite1.y;
+	if (jugador.posicion.y <= y_max && jugador.posicion.y > y_min && jugador.posicion.x >= x_min && jugador.posicion.x<=x_max) {
 		jugador.setPos(jugador.posicion.x, plataforma.limite2.y);
-		return true;
+		jugador.isOnPlatform = true;
 	}
 	
 	else
-		return false;
+		jugador.isOnPlatform = false;
+	return jugador.isOnPlatform;
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
@@ -69,6 +73,17 @@ bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
 	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 2.149 && distancia < 2.152)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::caidaHueco(Jugador& jugador, Pared pared) {
+	float x_max = pared.limite2.x;
+	float x_min = pared.limite1.x;
+	float y_max = pared.limite2.y;
+
+	if (jugador.posicion.x < x_max  && jugador.posicion.x > x_min && jugador.posicion.y == y_max) 
 		return true;
 	else
 		return false;
