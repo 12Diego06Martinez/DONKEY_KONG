@@ -1,32 +1,33 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "Escalera.h"
-#include <cmath>
+#include "Moneda.h"
 #include <string>
 
 using namespace ETSIDI;
 
-////////////////////////////////CONSTRUCTOR////////////////////////////////
-Escalera::Escalera(float px, float py, float ancho, float alto) {
+/////////////////////////////////////CONSTRUCTOR//////////////////////////
+Moneda::Moneda(float px, float py, float ancho, float alto, const char* p) {
 	posicion.x = px;
 	posicion.y = py;
 	limite1.x = px - ancho / 2;
 	limite1.y = py - alto / 2;
 	limite2.x = px + ancho / 2;
 	limite2.y = py + alto / 2;
+
+	path = new char[strlen(p) + 1];
+	strcpy(path, p);
 }
 
-Escalera::~Escalera() {
+Moneda::~Moneda() {
 
 }
 
-/////////////////////////////////METODOS///////////////////////////////////
-void Escalera::Dibuja() {
+///////////////////////////////////METODOS////////////////////////////////
+void Moneda::Dibuja() {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/escalera_transparente.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(path).id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
 	glColor3f(1, 1, 1);
 	glTexCoord2d(0, 1);		glVertex3f(limite1.x, limite1.y, 0);
 	glTexCoord2d(1, 1);		glVertex3f(limite2.x, limite1.y, 0);
@@ -37,39 +38,40 @@ void Escalera::Dibuja() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-float Escalera::calculaDistancia(Vector2D vector1, Vector2D vector2) {
-	float distancia;
-	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
-
-	return distancia;
-}
-
-void Escalera::Inicializa(float px, float py, float ancho, float alto) {
+void Moneda::Inicializa(float px, float py, float ancho, float alto, const char* p) {
 	posicion.x = px;
 	posicion.y = py;
 	limite1.x = px - ancho / 2;
 	limite1.y = py - alto / 2;
 	limite2.x = px + ancho / 2;
 	limite2.y = py + alto / 2;
+	path = new char[strlen(p) + 1];
+	strcpy(path, p);
 }
 
-void Escalera::setLimites(float x1, float y1, float x2, float y2) {
+float Moneda::calculaDistancia(Vector2D vector1, Vector2D vector2) {
+	float distancia;
+	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
+
+	return distancia;
+}
+
+void Moneda::setLimites(float x1, float y1, float x2, float y2) {
 	limite1.x = x1;
 	limite1.y = y1;
 	limite2.x = x2;
 	limite2.y = y2;
 }
 
-void Escalera::setPos(float px, float py) {
+void Moneda::setPos(float px, float py) {
 	posicion.x = px;
 	posicion.y = py;
 }
 
-void Escalera::setPath(const char* p) {
+void Moneda::setPath(const char* p) {
 	strcpy(path, p);
 }
 
-void Escalera::setHarmful(bool harm) {
+void Moneda::setHarmful(bool harm) {
 	harmful = harm;
 }
-

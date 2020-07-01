@@ -38,13 +38,6 @@ void Plataforma::Dibuja() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Plataforma::setLimites(float x1, float y1, float x2, float y2) {
-	limite1.x = x1;
-	limite1.y = y1;
-	limite2.x = x2;
-	limite2.y = y2;
-}
-
 void Plataforma::Inicializa(float px, float py, float ancho, float alto, const char* p) {
 	posicion.x = px;
 	posicion.y = py;
@@ -54,6 +47,20 @@ void Plataforma::Inicializa(float px, float py, float ancho, float alto, const c
 	limite2.y = py + alto / 2;
 	path = new char[strlen(p) + 1];
 	strcpy(path, p);
+}
+
+float Plataforma::calculaDistancia(Vector2D vector1, Vector2D vector2) {
+	float distancia;
+	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
+
+	return distancia;
+}
+
+void Plataforma::setLimites(float x1, float y1, float x2, float y2) {
+	limite1.x = x1;
+	limite1.y = y1;
+	limite2.x = x2;
+	limite2.y = y2;
 }
 
 void Plataforma::setPos(float px, float py) {
@@ -69,9 +76,3 @@ void Plataforma::setHarmful(bool harm) {
 	harmful = harm;
 }
 
-float Plataforma::calculaDistancia(Vector2D vector1, Vector2D vector2) {
-	float distancia;
-	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
-	
-	return distancia;
-}

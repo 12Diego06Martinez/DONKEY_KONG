@@ -45,8 +45,8 @@ void Mundo::Dibuja() {
 		0.0, y_ojo, 0.0, //Miramos al centro de la escena
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
 	//Pared
-	suelo.Dibuja();
-	hueco1.Dibuja();
+	//suelo.Dibuja();
+	//hueco1.Dibuja();
 	//hueco2.Dibuja();
 	//Jugador
 	player.Dibuja();

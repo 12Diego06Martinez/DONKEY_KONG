@@ -1,8 +1,7 @@
 #pragma once
 #include <ETSIDI.h>
 
-class Escalera
-{
+class Moneda {
 private:
 	char* path;
 	bool harmful;
@@ -11,22 +10,20 @@ private:
 	ETSIDI::Vector2D limite2;
 	friend class Interaccion;
 public:
-	Escalera(){}
-	Escalera(float px, float py, float ancho, float alto);
-	virtual ~Escalera();
+	Moneda() {}
+	Moneda(float px, float py, float ancho, float alto, const char* p);
+	virtual ~Moneda();
 	void Dibuja();
-	float calculaDistancia(ETSIDI::Vector2D vector1, ETSIDI::Vector2D vector2);
-	void Inicializa(float px, float py, float ancho, float alto);
+	void Inicializa(float px, float py, float ancho, float alto, const char* p);
 	//Setters
 	void setLimites(float x1, float y1, float x2, float y2);
 	void setPos(float px, float py);
 	void setPath(const char* p);
-	void setHarmful(bool harm);
+	void setHarmful(bool harm) { harmful = harm; }
 	//Getters
 	bool isHarmful() { return harmful; }
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getLimite1() { return limite1; }
 	ETSIDI::Vector2D getLimite2() { return limite2; }
-	ETSIDI::Vector2D getSize() { return limite2-limite1; }
+	ETSIDI::Vector2D getSize() { return limite2 - limite1; }
 };
-
