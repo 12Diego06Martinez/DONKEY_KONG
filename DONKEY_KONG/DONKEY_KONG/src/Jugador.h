@@ -1,8 +1,8 @@
 #pragma once
 #include "ETSIDI.h"
-#include "Plataforma.h"
-#include "Escalera.h"
-#include "Pared.h"
+//#include "Plataforma.h"
+//#include "Escalera.h"
+//#include "Pared.h"
 
 class Jugador
 {

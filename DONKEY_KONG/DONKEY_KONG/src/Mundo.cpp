@@ -111,9 +111,6 @@ void Mundo::Mueve() {
 
 	
 	
-	ETSIDI::setFont("mygame.ttf", 5);
-	ETSIDI::setTextColor(1, 1, 1);
-	ETSIDI::printxy("Monedas", 0, 0);
 	//if (escaleras.detectaEscalerasSubir(player)!=0) {
 	//	ETSIDI::play("sonidos/contactoPared.wav");
 	//}
