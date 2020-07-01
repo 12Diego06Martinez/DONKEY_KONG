@@ -31,14 +31,6 @@ bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
 		return false;
 }
 
-bool Interaccion::detectaEscalera(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
-	if (distancia > 1.999 && distancia < 2.004)
-		return true;
-	else
-		return false;
-}
-
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 	//if (jugador.posicion.y > escalera.limite2.y && jugador.isAligned == true) {
 	//	jugador.setPos(jugador.posicion.x, (escalera.limite2.y+0.15));
@@ -47,8 +39,18 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 	//else
 	//	return false;
 	float distancia = escalera.calculaDistancia(escalera.limite1, jugador.posicion);
-	if (distancia > 4.15 && distancia < 4.16 && jugador.isAligned==true) {
+	if (distancia > 4.15 && distancia < 4.16 && jugador.isGoingUp==true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite2.y + 0.15));
+		return true;
+	}
+	else
+		return false;
+}
+
+bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
+	float distancia = escalera.calculaDistancia(escalera.limite2, jugador.posicion);
+	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
+		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
 		return true;
 	}
 	else
@@ -58,7 +60,6 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 1.849 && distancia < 1.852) {
-		//jugador.setPos(escalera.posicion.x, jugador.posicion.y);
 		return true;
 	}
 	else
@@ -66,17 +67,9 @@ bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 }
 
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.limite2, jugador.posicion);
-	if (distancia > 3.857 && distancia < 3.859)
+	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
+	if (distancia > 2.149 && distancia < 2.152)
 		return true;
 	else
 		return false;
 }
-
-//bool Interaccion::comprobarAltura(Jugador& jugador, Plataforma plataforma) {
-//
-//	if (jugador.posicion.y > plataforma.limite1.y)
-//		return true;
-//	else
-//		return false;
-//}

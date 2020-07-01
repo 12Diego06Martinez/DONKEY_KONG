@@ -20,5 +20,7 @@ public:
 	Escalera* operator [](int pos);
 	/////////////////////////////////////////////////////////
 	Escalera* detectaEscalerasSubir(Jugador& jugador);
+	Escalera* detectaEscalerasBajar(Jugador& jugador);
 	Escalera* jugadorArriba(Jugador& jugador);
+	Escalera* jugadorAbajo(Jugador& jugador);
 };

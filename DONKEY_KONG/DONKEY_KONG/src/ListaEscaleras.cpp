@@ -84,12 +84,30 @@ Escalera* ListaEscaleras::detectaEscalerasSubir(Jugador& jugador){
 	return 0;
 }
 
+Escalera* ListaEscaleras::detectaEscalerasBajar(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::detectaEscaleraBajar(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}
+
+
 Escalera* ListaEscaleras::jugadorArriba(Jugador& jugador) {
 
 	for (int i = 0; i < num; i++) {
-		//if (detectaEscalerasSubir(jugador)!=0) 
-			if (Interaccion::arribaEscalera(jugador, *lista[i]))
-				return lista[i];
+		if (Interaccion::arribaEscalera(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}
+
+Escalera* ListaEscaleras::jugadorAbajo(Jugador& jugador) {
+
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::abajoEscalera(jugador, *lista[i]))
+			return lista[i];
 	}
 	return 0;
 }
