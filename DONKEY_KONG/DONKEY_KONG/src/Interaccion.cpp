@@ -40,26 +40,34 @@ bool Interaccion::detectaEscalera(Jugador& jugador, Escalera escalera) {
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
-	if (jugador.posicion.y > escalera.limite2.y && jugador.isAligned == true) {
-		jugador.setPos(jugador.posicion.x, (escalera.limite2.y+0.15));
+	//if (jugador.posicion.y > escalera.limite2.y && jugador.isAligned == true) {
+	//	jugador.setPos(jugador.posicion.x, (escalera.limite2.y+0.15));
+	//	return true;
+	//}
+	//else
+	//	return false;
+	float distancia = escalera.calculaDistancia(escalera.limite1, jugador.posicion);
+	if (distancia > 4.15 && distancia < 4.16 && jugador.isAligned==true) {
+		jugador.setPos(jugador.posicion.x, (escalera.limite2.y + 0.15));
 		return true;
 	}
 	else
 		return false;
-
 }
 
 bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
-	if (distancia > 1.849 && distancia < 1.856)
+	if (distancia > 1.849 && distancia < 1.852) {
+		//jugador.setPos(escalera.posicion.x, jugador.posicion.y);
 		return true;
+	}
 	else
 		return false;
 }
 
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
-	float distancia = escalera.calculaDistancia(escalera.posicion, jugador.posicion);
-	if (distancia > 2.149 && distancia < 2.156)
+	float distancia = escalera.calculaDistancia(escalera.limite2, jugador.posicion);
+	if (distancia > 3.857 && distancia < 3.859)
 		return true;
 	else
 		return false;
