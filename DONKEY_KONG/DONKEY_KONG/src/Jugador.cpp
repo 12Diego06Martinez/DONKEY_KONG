@@ -8,7 +8,8 @@ using namespace ETSIDI;
 
 //////////////////////////////////////CONSTRUCTOR////////////////////////
 Jugador::Jugador() {
-
+	ancho = 1;
+	alto = 1;
 }
 
 Jugador::~Jugador() {
@@ -19,7 +20,7 @@ void Jugador::Dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario pie dcha.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario pie dcha transparente.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);

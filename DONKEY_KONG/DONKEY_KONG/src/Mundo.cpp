@@ -58,11 +58,12 @@ void Mundo::Mueve() {
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	//Salto
-	if (player.getSalto()) {
+	if (player.getSalto() || player.getFalling()) {
 		if (plataformas.sobrePlataformas(player)!=0) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
+			player.setFalling(false);
 		}
 	}
 	
@@ -91,10 +92,18 @@ void Mundo::TeclaEspecial(unsigned char key) {
 	switch (key) {
 	case GLUT_KEY_RIGHT:
 		player.setVel(5.0f, 0.0f);
+		if (player.getUp() || player.getDown()) {
+			player.setAcel(0.0f, -20.0f);
+			player.setFalling(true);
+		}
 		break;
 
 	case GLUT_KEY_LEFT:
 		player.setVel(-5.0f, 0.0f);
+		if (player.getUp() || player.getDown()) {
+			player.setAcel(0.0f, -20.0f);
+			player.setFalling(true);
+		}
 		break;
 
 	case GLUT_KEY_UP:
