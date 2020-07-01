@@ -37,6 +37,17 @@ void Mundo::Inicializa() {
 	escaleras.Agregar(new Escalera(-5, 8, 0.5, 4));
 	escaleras.Agregar(new Escalera(1, 12, 0.5, 4));
 	escaleras.Agregar(new Escalera(-3, 16, 0.5, 4));
+	//Monedas
+	monedas.Agregar(new Moneda(-1, -1.4, 0.5, 0.5));
+	monedas.Agregar(new Moneda(6, 0.5, 0.5, 0.5));
+	monedas.Agregar(new Moneda(-4, 2.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(0, 2.25, 0.5, 0.5));
+	monedas.Agregar(new Moneda(2, 6.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(8, 10.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(-1, 10.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(-3, 14.65, 0.5, 0.5));
+	monedas.Agregar(new Moneda(4, 14.65, 0.5, 0.5));
+
 }
 
 void Mundo::Dibuja() {
@@ -54,6 +65,8 @@ void Mundo::Dibuja() {
 	plataformas.Dibuja();
 	//Escaleras
 	escaleras.Dibuja();
+	//Monedas
+	monedas.Dibuja();
 }
 
 void Mundo::Mueve() {

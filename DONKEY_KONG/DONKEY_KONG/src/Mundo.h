@@ -3,6 +3,7 @@
 #include "Pared.h"
 #include "ListaPlataformas.h"
 #include "ListaEscaleras.h"
+#include "ListaMonedas.h"
 
 class Mundo
 {
@@ -16,6 +17,7 @@ private:
 	Jugador player;
 	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;
+	ListaMonedas monedas;
 public:
 	Mundo() {}
 	virtual ~Mundo();
