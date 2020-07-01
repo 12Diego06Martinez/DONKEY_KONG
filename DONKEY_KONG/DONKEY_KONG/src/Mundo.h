@@ -11,6 +11,8 @@ private:
 	float y_ojo;
 	float z_ojo;
 	Pared suelo;
+	Pared hueco1;
+	Pared hueco2;
 	Jugador player;
 	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;

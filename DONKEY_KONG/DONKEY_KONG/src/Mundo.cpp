@@ -17,16 +17,18 @@ void Mundo::Inicializa() {
 	z_ojo = 30;
 
 	//Pared
-	//suelo.setLimites(-9, -4, 9, -3);
+	suelo.setLimites(-9, -4, 9, -3);
+	hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
+	hueco2.setLimites(-2, 9.75, 0, 10.15);
 	//Jugador
 	player.setPos(-8, -1.85);
 	//Plataformas
 	plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
-	plataformas.Agregar(new Plataforma(4.75, 2, 8.5, 0.3, plataforma_8_5));
-	plataformas.Agregar(new Plataforma(-4.75, 2, 8.5, 0.3, plataforma_8_5));
+	plataformas.Agregar(new Plataforma(5, 2, 8, 0.3, plataforma_8_5));
+	plataformas.Agregar(new Plataforma(-5, 2, 8, 0.3, plataforma_8_5));
 	plataformas.Agregar(new Plataforma(0, 6, 18, 0.3, plataforma_18));
 	plataformas.Agregar(new Plataforma(4.5, 10, 9, 0.3, plataforma_8_5));
-	plataformas.Agregar(new Plataforma(-5, 10, 8, 0.3, plataforma_7));
+	plataformas.Agregar(new Plataforma(-5.5, 10, 7, 0.3, plataforma_7));
 	plataformas.Agregar(new Plataforma(0, 14, 18, 0.3, plataforma_18));
 	//Escaleras
 	escaleras.Agregar(new Escalera(6, 0, 0.5, 4));
@@ -44,6 +46,8 @@ void Mundo::Dibuja() {
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
 	//Pared
 	suelo.Dibuja();
+	hueco1.Dibuja();
+	//hueco2.Dibuja();
 	//Jugador
 	player.Dibuja();
 	//Plataformas
@@ -57,6 +61,10 @@ void Mundo::Mueve() {
 	player.Mueve(0.025f);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
+	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
+		player.setAcel(0.0, -20.0f);
+		player.setFalling(true);
+	}
 	//Salto
 	if (player.getSalto() || player.getFalling()) {
 		if (plataformas.sobrePlataformas(player)!=0) {

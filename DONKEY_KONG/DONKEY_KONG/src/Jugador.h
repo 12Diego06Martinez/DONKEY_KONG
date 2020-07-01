@@ -33,6 +33,7 @@ public:
 	void setUp(bool up) { isGoingUp = up; }
 	void setDown(bool down) { isGoingDown = down; }
 	void setFalling(bool falling) { isFalling = falling; }
+	void setPlatform(bool platform) { isOnPlatform = platform; }
 	void setReposo();
 	//Getters
 	ETSIDI::Vector2D getPos() { return posicion; }
