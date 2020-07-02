@@ -23,7 +23,6 @@ public:
 	static bool colisionEnemigo(Jugador& jugador, Enemigo& enemigo);
 	static void colisionEnemigos(Enemigo& enemigo1, Enemigo& enemigo2);
 	static void reboteEnemigos(Enemigo& enemigo, Plataforma plataforma);
-	static bool sobrePlataforma(Enemigo& enemigo, Plataforma plataforma);
 	////////////////////////////////////////////
 	static void persigueJugador(Jugador& jugador, Enemigo& enemigo);
 };

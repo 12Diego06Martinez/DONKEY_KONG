@@ -59,7 +59,7 @@ void Mundo::Inicializa() {
 	enemigos.Agregar(new Enemigo(-4, 10.25));
 	enemigos.Agregar(new Enemigo(-8, 14.25));
 	enemigos.Agregar(new Enemigo(0, 14.25));
-	enemigos.Agregar(new Enemigo(5, 14.25));
+	//enemigos.Agregar(new Enemigo(5, 14.25));
 }
 
 void Mundo::Dibuja() {
@@ -84,8 +84,8 @@ void Mundo::Mueve() {
 	player.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
 	//Enemigos
-	//InteraccionListas::rebotePlataformas(plataformas, enemigos);
-	InteraccionListas::persiguenJugador(player, enemigos);
+	InteraccionListas::rebotePlataformas(plataformas, enemigos);
+	//InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
