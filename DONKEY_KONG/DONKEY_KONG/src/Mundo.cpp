@@ -48,7 +48,17 @@ void Mundo::Inicializa() {
 	monedas.Agregar(new Moneda(-1, 10.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(-6, 14.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(4, 14.65, 0.5, 0.5));
-
+	//Enemigos
+	
+	enemigos.Agregar(new Enemigo(2,-1.85));
+	enemigos.Agregar(new Enemigo(6, 2.25));
+	enemigos.Agregar(new Enemigo(-3, 2.25));
+	enemigos.Agregar(new Enemigo(-1, 6.25));
+	enemigos.Agregar(new Enemigo(6, 6.25));
+	enemigos.Agregar(new Enemigo(-4, 10.25));
+	enemigos.Agregar(new Enemigo(-8, 14.25));
+	enemigos.Agregar(new Enemigo(0, 14.25));
+	enemigos.Agregar(new Enemigo(5, 14.25));
 }
 
 void Mundo::Dibuja() {
@@ -56,10 +66,6 @@ void Mundo::Dibuja() {
 	gluLookAt(x_ojo, y_ojo, z_ojo,//posición del ojo
 		0.0, y_ojo, 0.0, //Miramos al centro de la escena
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
-	//Pared
-	//suelo.Dibuja();
-	//hueco1.Dibuja();
-	//hueco2.Dibuja();
 	//Jugador
 	player.Dibuja();
 	//Plataformas
@@ -68,11 +74,14 @@ void Mundo::Dibuja() {
 	escaleras.Dibuja();
 	//Monedas
 	monedas.Dibuja();
+	//Enemigos
+	enemigos.Dibuja();
 }
 
 void Mundo::Mueve() {
 	
 	player.Mueve(0.025f);
+	enemigos.Mueve(0.025f);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {

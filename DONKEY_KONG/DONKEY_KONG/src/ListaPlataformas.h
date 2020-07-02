@@ -4,7 +4,8 @@
 #include "Plataforma.h"
 #include "Jugador.h"
 
-class ListaPlataformas {
+class ListaPlataformas 
+{
 private:
 	Plataforma* lista[MAX_NUM];
 	int num;

@@ -4,6 +4,7 @@
 #include "ListaPlataformas.h"
 #include "ListaEscaleras.h"
 #include "ListaMonedas.h"
+#include "ListaEnemigos.h"
 
 class Mundo
 {
@@ -20,6 +21,7 @@ private:
 	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
+	ListaEnemigos enemigos;
 public:
 	Mundo() {}
 	virtual ~Mundo();

@@ -2,7 +2,8 @@
 #include <ETSIDI.h>
 
 
-class Enemigo {
+class Enemigo 
+{
 private:
 	enum enemigo_t { NORMAL_D, NORMAL_I, VULNERABLE_D, VULNERABLE_I };
 	enemigo_t estado;
@@ -16,7 +17,7 @@ private:
 	friend class Interaccion;
 public:
 	Enemigo(){}
-	Enemigo(float px, float py, float ancho, float alto);
+	Enemigo(float px, float py);
 	virtual ~Enemigo();
 	void Dibuja();
 	void Mueve(float t);

@@ -5,7 +5,8 @@
 #include "Enemigo.h"
 #include "Jugador.h"
 
-class ListaEnemigos {
+class ListaEnemigos 
+{
 private:
 	Enemigo* lista[MAX_NUM];
 	int num;
@@ -14,10 +15,12 @@ public:
 	virtual ~ListaEnemigos();
 	bool Agregar(Enemigo* enemigo);
 	void Dibuja();
+	void Mueve(float t);
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Enemigo* enemigo); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Enemigo* operator [](int pos);
 	//////////////////////////////////////////////
+	Enemigo* colisionEnemigos(Jugador& jugador);
 };

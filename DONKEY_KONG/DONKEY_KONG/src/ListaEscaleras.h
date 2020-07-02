@@ -4,7 +4,8 @@
 #include "Escalera.h"
 #include "Jugador.h"
 
-class ListaEscaleras {
+class ListaEscaleras 
+{
 private:
 	Escalera* lista[MAX_NUM];
 	int num;

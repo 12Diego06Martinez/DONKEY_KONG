@@ -7,7 +7,8 @@
 #include "Moneda.h"
 #include "Enemigo.h"
 
-class Interaccion{
+class Interaccion
+{
 public:
 	Interaccion();
 	virtual ~Interaccion();
@@ -20,5 +21,4 @@ public:
 	static bool caidaHueco(Jugador& jugador, Pared pared);
 	static bool colisionMoneda(Jugador& jugador, Moneda moneda);
 	static bool colisionEnemigo(Jugador& jugador, Enemigo& enemigo);
-	//static bool comprobarAltura(Jugador& jugador, Plataforma plataforma);
 };

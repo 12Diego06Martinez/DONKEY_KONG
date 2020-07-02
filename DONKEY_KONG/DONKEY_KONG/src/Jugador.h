@@ -1,8 +1,6 @@
 #pragma once
-#include "ETSIDI.h"
-//#include "Plataforma.h"
-//#include "Escalera.h"
-//#include "Pared.h"
+#include <ETSIDI.h>
+
 
 class Jugador
 {
@@ -18,6 +16,8 @@ private:
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D aceleracion;
+	ETSIDI::Vector2D limite1;
+	ETSIDI::Vector2D limite2;
 	friend class Interaccion;
 public:
 	Jugador();

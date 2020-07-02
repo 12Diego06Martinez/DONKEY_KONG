@@ -1,7 +1,8 @@
 #pragma once
 #include <ETSIDI.h>
 
-class Moneda {
+class Moneda 
+{
 private:
 	char* path;
 	bool harmful;

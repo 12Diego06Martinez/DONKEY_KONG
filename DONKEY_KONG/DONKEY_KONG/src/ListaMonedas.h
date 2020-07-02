@@ -4,7 +4,8 @@
 #include "Moneda.h"
 #include "Jugador.h"
 
-class ListaMonedas {
+class ListaMonedas 
+{
 private:
 	Moneda* lista[MAX_NUM];
 	int num;

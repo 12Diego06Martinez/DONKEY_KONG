@@ -15,7 +15,6 @@ public:
 	Escalera(float px, float py, float ancho, float alto);
 	virtual ~Escalera();
 	void Dibuja();
-	float calculaDistancia(ETSIDI::Vector2D vector1, ETSIDI::Vector2D vector2);
 	void Inicializa(float px, float py, float ancho, float alto);
 	//Setters
 	void setLimites(float x1, float y1, float x2, float y2);

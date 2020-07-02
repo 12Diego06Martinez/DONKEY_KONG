@@ -35,6 +35,12 @@ void ListaEnemigos::Dibuja() {
 	}
 }
 
+void ListaEnemigos::Mueve(float t) {
+	for (int i = 0; i < num; i++) {
+		lista[i]->Mueve(t);
+	}
+}
+
 void ListaEnemigos::Destruir() {
 	for (int i = 0; i < num; i++) {
 		delete lista[i];
@@ -76,3 +82,10 @@ Enemigo* ListaEnemigos::operator[](int pos) {
 }
 
 ///////////////////////////////////////////////////////////
+Enemigo* ListaEnemigos::colisionEnemigos(Jugador& jugador) {
+	for (int i = 0; i < num; i++) {
+		if (Interaccion::colisionEnemigo(jugador, *lista[i]))
+			return lista[i];
+	}
+	return 0;
+}

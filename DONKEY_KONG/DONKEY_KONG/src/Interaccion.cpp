@@ -1,5 +1,4 @@
 #include "Interaccion.h"
-//#include "ETSIDI.h"
 
 using namespace ETSIDI;
 
@@ -46,7 +45,6 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 	//else
 	//	return false;
 	float distancia = (escalera.limite1 - jugador.posicion).module();
-		//escalera.calculaDistancia(escalera.limite1, jugador.posicion);
 	if (distancia > 4.15 && distancia < 4.16 && jugador.isGoingUp==true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite2.y + 0.15));
 		return true;
@@ -57,7 +55,6 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 
 bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
 	float distancia = (escalera.limite2 - jugador.posicion).module();
-		//escalera.calculaDistancia(escalera.limite2, jugador.posicion);
 	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
 		return true;
@@ -68,7 +65,6 @@ bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
 
 bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 	float distancia = (escalera.posicion - jugador.posicion).module();
-		//escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 1.849 && distancia < 1.852) {
 		return true;
 	}
@@ -78,7 +74,6 @@ bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
 	float distancia = (escalera.posicion - jugador.posicion).module();
-		//escalera.calculaDistancia(escalera.posicion, jugador.posicion);
 	if (distancia > 2.149 && distancia < 2.152)
 		return true;
 	else
@@ -98,7 +93,6 @@ bool Interaccion::caidaHueco(Jugador& jugador, Pared pared) {
 
 bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 	float distancia = (moneda.posicion - jugador.posicion).module();
-		//moneda.calculaDistancia(moneda.posicion, jugador.posicion);
 	if (distancia < 0.7)
 		return true;
 	else
@@ -106,8 +100,14 @@ bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 }
 
 bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
-	float distancia = (jugador.posicion - enemigo.posicion).module();
-	if (distancia >= 1.0f)
+	float enemigo_x_max = enemigo.limite2.x;
+	float enemigo_x_min = enemigo.limite1.x;
+	float enemigo_y_max = enemigo.limite2.y;
+	float jugador_x_max = jugador.posicion.x + jugador.ancho;
+	float jugador_x_min = jugador.posicion.x - jugador.ancho;
+	float jugador_y_min = jugador.posicion.y - jugador.alto;
+
+	if (jugador_x_max <= enemigo_x_min || jugador_x_min <= enemigo_x_max || jugador_y_min <= enemigo_y_max)
 		return true;
 	else
 		return false;
