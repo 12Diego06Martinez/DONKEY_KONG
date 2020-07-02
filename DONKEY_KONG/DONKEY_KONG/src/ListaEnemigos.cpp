@@ -82,10 +82,35 @@ Enemigo* ListaEnemigos::operator[](int pos) {
 }
 
 ///////////////////////////////////////////////////////////
-Enemigo* ListaEnemigos::colisionEnemigos(Jugador& jugador) {
+Enemigo* ListaEnemigos::colisionJugador(Jugador& jugador) {
 	for (int i = 0; i < num; i++) {
 		if (Interaccion::colisionEnemigo(jugador, *lista[i]))
 			return lista[i];
 	}
 	return 0;
 }
+
+//void ListaEnemigos::colisionEnemigos(Enemigo& enemigo) {
+//	for (int i = 0; i < num; i++) {
+//		for (int j = 0; j < num; j++) {
+//			Interaccion::colisionEnemigos(*lista[i], *enemigo[j]);
+//		}
+//	}
+//}
+
+void ListaEnemigos::rebotePlataformas(ListaPlataformas plataformas) {
+	for (int i = 0; i < num; i++) {
+		for (int j = 0; j < num; j++) {
+			Interaccion::reboteEnemigos(*lista[i], *plataformas[j]);
+		}
+	}
+}
+
+//////////////////////////////////////////////
+
+void ListaEnemigos::persiguenJugador(Jugador& jugador) {
+	for (int i = 0; i < num; i++) {
+		Interaccion::persigueJugador(jugador, *lista[i]);
+	}
+}
+

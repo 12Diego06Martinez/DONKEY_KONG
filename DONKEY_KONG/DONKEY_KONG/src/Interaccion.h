@@ -21,4 +21,8 @@ public:
 	static bool caidaHueco(Jugador& jugador, Pared pared);
 	static bool colisionMoneda(Jugador& jugador, Moneda moneda);
 	static bool colisionEnemigo(Jugador& jugador, Enemigo& enemigo);
+	static void colisionEnemigos(Enemigo& enemigo1, Enemigo& enemigo2);
+	static void reboteEnemigos(Enemigo& enemigo, Plataforma plataforma);
+	////////////////////////////////////////////
+	static void persigueJugador(Jugador& jugador, Enemigo& enemigo);
 };

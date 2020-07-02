@@ -7,6 +7,7 @@ using namespace ETSIDI;
 ////////////////////////////////////CONSTRUCTOR///////////////////////////
 Enemigo::Enemigo(float px, float py) {
 	alto = ancho = 0.5f;
+	velocidad.x = 8.0f;
 	posicion.x = px;
 	posicion.y = py;
 }

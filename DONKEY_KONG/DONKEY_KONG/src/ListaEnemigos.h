@@ -4,6 +4,7 @@
 
 #include "Enemigo.h"
 #include "Jugador.h"
+#include "ListaPlataformas.h"
 
 class ListaEnemigos 
 {
@@ -22,5 +23,8 @@ public:
 	int getNum() { return num; }
 	Enemigo* operator [](int pos);
 	//////////////////////////////////////////////
-	Enemigo* colisionEnemigos(Jugador& jugador);
+	Enemigo* colisionJugador(Jugador& jugador);
+	void colisionEnemigos(Enemigo& enemigo);
+	void persiguenJugador(Jugador& jugador);
+	void rebotePlataformas(ListaPlataformas plataformas);
 };

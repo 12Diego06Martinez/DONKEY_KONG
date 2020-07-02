@@ -82,6 +82,11 @@ void Mundo::Mueve() {
 	
 	player.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
+	//Enemigos con plataformas
+	enemigos.rebotePlataformas(plataformas);
+	//Enemigos con enemigos
+	//enemigos.colisionEnemigos(enemigos);
+	//enemigos.persiguenJugador(player);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
