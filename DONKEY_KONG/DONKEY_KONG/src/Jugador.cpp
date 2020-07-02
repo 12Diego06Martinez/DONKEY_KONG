@@ -17,7 +17,6 @@ Jugador::~Jugador() {
 }
 //////////////////////////////////////METODOS///////////////////////////
 void Jugador::Dibuja() {
-
 	glEnable(GL_TEXTURE_2D);
 	glTranslatef(posicion.x, posicion.y, 0);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/mario pie dcha transparente.png").id);

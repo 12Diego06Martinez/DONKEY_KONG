@@ -55,13 +55,6 @@ float Moneda::calculaDistancia(Vector2D vector1, Vector2D vector2) {
 	return distancia;
 }
 
-//float Moneda::calculaDistancia(Vector2D vector1, Vector2D vector2) {
-//	float distancia;
-//	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
-//
-//	return distancia;
-//}
-
 void Moneda::setLimites(float x1, float y1, float x2, float y2) {
 	limite1.x = x1;
 	limite1.y = y1;

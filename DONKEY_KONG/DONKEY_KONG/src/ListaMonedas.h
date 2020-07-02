@@ -19,6 +19,4 @@ public:
 	void Delete(Moneda* moneda); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Moneda* operator [](int pos);
-	///////////////////////////////////////////
-	Moneda* cogeMonedas(Jugador& jugador);
 };

@@ -22,9 +22,4 @@ public:
 	void Delete(Enemigo* enemigo); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Enemigo* operator [](int pos);
-	//////////////////////////////////////////////
-	Enemigo* colisionJugador(Jugador& jugador);
-	void colisionEnemigos(Enemigo& enemigo);
-	void persiguenJugador(Jugador& jugador);
-	void rebotePlataformas(ListaPlataformas plataformas);
 };

@@ -131,8 +131,13 @@ void Interaccion::reboteEnemigos(Enemigo& enemigo, Plataforma plataforma) {
 
 ////////////////////////////////////////////////////////
 void Interaccion::persigueJugador(Jugador& jugador, Enemigo& enemigo) {
-	float distancia = (jugador.posicion - enemigo.posicion).module();
-	if (distancia > 1.0f)
-		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
+	if (enemigo.posicion.x > jugador.posicion.x) {
+		if (jugador.velocidad.x > 0 && enemigo.velocidad.x > 0)
+			enemigo.setVel(-enemigo.velocidad.x, 0.0f);
+	}
 	
+	if (enemigo.posicion.x < jugador.posicion.x) {
+		if (jugador.velocidad.x < 0 && enemigo.velocidad.x < 0)
+			enemigo.setVel(-enemigo.velocidad.x, 0.0f);
+	}
 }

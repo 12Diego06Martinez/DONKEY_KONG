@@ -19,6 +19,4 @@ public:
 	void Delete(Plataforma* plataforma); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Plataforma* operator [](int pos);
-	/////////////////////////////////////////////////////////
-	Plataforma* sobrePlataformas(Jugador& jugador);
 };

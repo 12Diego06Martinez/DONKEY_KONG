@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
 #include "Globales.h"
+#include "InteraccionListas.h"
 #include "Interaccion.h"
 #include "glut.h"
 #include <sstream>
@@ -82,11 +83,9 @@ void Mundo::Mueve() {
 	
 	player.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
-	//Enemigos con plataformas
-	enemigos.rebotePlataformas(plataformas);
-	//Enemigos con enemigos
-	//enemigos.colisionEnemigos(enemigos);
-	//enemigos.persiguenJugador(player);
+	//Enemigos
+	//InteraccionListas::rebotePlataformas(plataformas, enemigos);
+	InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
@@ -95,7 +94,7 @@ void Mundo::Mueve() {
 	}
 	//Salto
 	if (player.getSalto() || player.getFalling()) {
-		if (plataformas.sobrePlataformas(player)!=0) {
+		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
@@ -103,17 +102,17 @@ void Mundo::Mueve() {
 		}
 	}
 	//Jugador con escaleras
-	if (escaleras.jugadorArriba(player)!=0) {
+	if (InteraccionListas::jugadorArriba(player,escaleras)!=0) {
 		player.setVel(0.0f, 0.0f);
 		player.setUp(false);
 	}
 	
-	if (escaleras.jugadorAbajo(player) != 0) {
+	if (InteraccionListas::jugadorAbajo(player, escaleras) != 0) {
 		player.setVel(0.0f, 0.0f);
 		player.setDown(false);
 	}
 	//Jugador con monedas
-	Moneda* aux = monedas.cogeMonedas(player);
+	Moneda* aux = InteraccionListas::cogeMonedas(player, monedas);
 	if (aux != 0) {
 		ETSIDI::play("sonidos/coin.wav");
 		if (monedas_recogidas < 9) 
@@ -154,14 +153,14 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		if(escaleras.detectaEscalerasSubir(player)!=0 && plataformas.sobrePlataformas(player)!=0){
+		if(InteraccionListas::detectaEscalerasSubir(player, escaleras)!=0 && InteraccionListas::sobrePlataforma(player, plataformas)!=0){
 			player.setVel(0.0f, 5.0f);
 			player.setUp(true);
 		}
 		break;
 
 	case GLUT_KEY_DOWN:
-		if (escaleras.detectaEscalerasBajar(player) != 0 && plataformas.sobrePlataformas(player) != 0) {
+		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
 			player.setVel(0.0f, -5.0f);
 			player.setDown(true);
 		}
@@ -173,7 +172,7 @@ void Mundo::Tecla(unsigned char key) {
 
 	switch (key) {
 	case ' ':
-		if (plataformas.sobrePlataformas(player)!=0) {
+		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
