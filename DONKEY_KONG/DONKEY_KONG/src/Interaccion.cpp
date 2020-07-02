@@ -113,8 +113,6 @@ bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
 		return false;
 }
 void Interaccion::colisionEnemigos(Enemigo& enemigo1, Enemigo& enemigo2) {
-	enemigo1.posicion.x = enemigo1.posicion.x + enemigo1.ancho;
-	enemigo2.posicion.x = enemigo2.posicion.x + enemigo2.ancho;
 	float distancia = (enemigo1.posicion - enemigo2.posicion).module();
 	if (distancia < 0.2f) {
 		enemigo1.setVel(-enemigo1.velocidad.x, 0.0f);
@@ -129,11 +127,6 @@ void Interaccion::reboteEnemigos(Enemigo& enemigo, Plataforma plataforma) {
 		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
 	if (distancia_lim1 < 0.5)
 		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
-
-	/*if (enemigo.posicion.x >= plataforma.limite2.x)
-		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
-	if (enemigo.posicion.x <= plataforma.limite1.x)
-		enemigo.setVel(-enemigo.velocidad.x, 0.0f);*/
 }
 
 ////////////////////////////////////////////////////////
