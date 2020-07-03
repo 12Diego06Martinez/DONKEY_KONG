@@ -7,7 +7,7 @@ using namespace ETSIDI;
 ////////////////////////////////////CONSTRUCTOR///////////////////////////
 Enemigo::Enemigo(float px, float py) {
 	alto = ancho = 0.5f;
-	velocidad.x = 8.0f;
+	generaAleatorio();
 	posicion.x = px;
 	posicion.y = py;
 }
@@ -40,11 +40,11 @@ void Enemigo::Mueve(float t) {
 }
 
 void Enemigo::generaAleatorio() {
-	int num=lanzaDado(200.0);
-	if (num <25)
-		setVel(8.0f, 0.0f);
+	bool num=lanzaMoneda();
+	if (num == true)
+		setVel(6.5f, 0.0f);
 	else
-		setVel(-8.0f, 0.0f);
+		setVel(-6.5f, 0.0f);
 }
 
 void Enemigo::setPos(float px, float py) {

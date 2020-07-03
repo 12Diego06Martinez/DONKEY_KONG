@@ -13,6 +13,7 @@ private:
 	float y_ojo;
 	float z_ojo;
 	int monedas_recogidas = 0;
+	int vidas = 3;
 	bool pasar_nivel;
 	Pared suelo;
 	Pared hueco1;

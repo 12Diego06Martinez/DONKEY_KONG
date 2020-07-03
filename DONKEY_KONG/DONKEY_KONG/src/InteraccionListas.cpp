@@ -55,12 +55,18 @@ Moneda* InteraccionListas::cogeMonedas(Jugador& jugador, ListaMonedas monedas) {
 	return 0;
 }
 
-Enemigo* InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
+void InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
 	for (int i = 0; i < enemigos.getNum(); i++) {
-		if (Interaccion::colisionEnemigo(jugador, *enemigos[i]))
-			return enemigos[i];
+		if (Interaccion::colisionEnemigo(jugador, *enemigos[i])) {
+			ETSIDI::play("sonidos/jump.wav");
+			jugador.setVidas(jugador.getVidas()-1);
+			if (jugador.getVidas() == 0) {
+				ETSIDI::setTextColor(1, 0, 0);
+				ETSIDI::setFont("fuentes/my game.ttf", 16);
+				ETSIDI::printxy("GAMEOVER: Has perdido", 0, 5);
+			}
+		}
 	}
-	return 0;
 }
 
 void InteraccionListas::colisionEnemigos(ListaEnemigos& enemigos) {

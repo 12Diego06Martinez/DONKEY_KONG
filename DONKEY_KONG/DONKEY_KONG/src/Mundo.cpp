@@ -86,6 +86,7 @@ void Mundo::Mueve() {
 	//Enemigos
 	InteraccionListas::rebotePlataformas(plataformas, enemigos);
 	InteraccionListas::colisionEnemigos(enemigos);
+	//Jugador con enemigos
 	//InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);

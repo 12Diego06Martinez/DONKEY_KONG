@@ -13,6 +13,7 @@ private:
 	bool isFalling;
 	float ancho;
 	float alto;
+	int vidas = 3;
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D velocidad;
 	ETSIDI::Vector2D aceleracion;
@@ -35,6 +36,7 @@ public:
 	void setFalling(bool falling) { isFalling = falling; }
 	void setPlatform(bool platform) { isOnPlatform = platform; }
 	void setReposo();
+	void setVidas(float num) { vidas = num; }
 	//Getters
 	ETSIDI::Vector2D getPos() { return posicion; }
 	ETSIDI::Vector2D getVel() { return velocidad; }
@@ -43,4 +45,5 @@ public:
 	bool getUp() { return isGoingUp; }
 	bool getDown() { return isGoingDown; }
 	bool getFalling() { return isFalling; }
+	int getVidas() { return vidas; }
 };
