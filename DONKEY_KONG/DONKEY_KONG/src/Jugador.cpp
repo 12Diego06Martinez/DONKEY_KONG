@@ -6,8 +6,9 @@ using namespace ETSIDI;
 Jugador::Jugador():ElementoMovil() {
 	posicion.x = -8.0f;
 	posicion.y = -1.85f;
-	alto = ancho = 1.0f;
-	path = "imagenes/mario_pie_dcha.png";
+	alto = 0.85;
+	ancho = 0.5f;
+	path = "imagenes/mario pie dcha transparente.png";
 }
 
 Jugador::~Jugador() {

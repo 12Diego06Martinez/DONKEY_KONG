@@ -86,6 +86,7 @@ void Mundo::Mueve() {
 	InteraccionListas::rebotePlataformas(plataformas, enemigos);
 	InteraccionListas::colisionEnemigos(enemigos);
 	//Jugador con enemigos
+	InteraccionListas::colisionJugador(player, enemigos);
 	//InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
@@ -115,11 +116,10 @@ void Mundo::Mueve() {
 	//Jugador con monedas
 	Moneda* aux = InteraccionListas::cogeMonedas(player, monedas);
 	if (aux != 0) {
-		ETSIDI::play("sonidos/coin.wav");
 		if (monedas_recogidas < 9) 
 			monedas_recogidas++;
-		else
-			pasar_nivel = true;
+		/*else
+			pasar_nivel = true;*/
 	}
 	monedas.Delete(aux);
 }
@@ -167,6 +167,7 @@ void Mundo::Tecla(unsigned char key) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
+			ETSIDI::play("sonidos/jump.wav");
 		}
 		break;
 	}

@@ -100,14 +100,8 @@ bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 }
 
 bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
-	float enemigo_x_max = enemigo.limite2.x;
-	float enemigo_x_min = enemigo.limite1.x;
-	float enemigo_y_max = enemigo.limite2.y;
-	float jugador_x_max = jugador.posicion.x + jugador.ancho;
-	float jugador_x_min = jugador.posicion.x - jugador.ancho;
-	float jugador_y_min = jugador.posicion.y - jugador.alto;
-
-	if (jugador_x_max <= enemigo_x_min || jugador_x_min <= enemigo_x_max || jugador_y_min <= enemigo_y_max)
+	float distancia = (jugador.posicion - enemigo.posicion).module();
+	if (distancia<0.35)
 		return true;
 	else
 		return false;

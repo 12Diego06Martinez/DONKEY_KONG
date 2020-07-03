@@ -15,6 +15,7 @@ private:
 	int monedas_recogidas = 0;
 	int vidas = 3;
 	bool pasar_nivel;
+	bool fin_juego;
 	Pared suelo;
 	Pared hueco1;
 	Pared hueco2;
@@ -31,4 +32,7 @@ public:
 	void Mueve();
 	void TeclaEspecial(unsigned char key);
 	void Tecla(unsigned char key);
+
+	int getVidas() { return vidas; }
+	int getMonedas() { return monedas_recogidas; }
 };
