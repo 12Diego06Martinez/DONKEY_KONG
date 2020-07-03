@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "Escalera.h"
-#include <cmath>
 #include <string>
 
 using namespace ETSIDI;
@@ -35,13 +34,6 @@ void Escalera::Dibuja() {
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-}
-
-float Escalera::calculaDistancia(Vector2D vector1, Vector2D vector2) {
-	float distancia;
-	distancia = sqrt(pow(vector2.x - vector1.x, 2.0) + pow(vector2.y - vector1.y, 2.0));
-
-	return distancia;
 }
 
 void Escalera::Inicializa(float px, float py, float ancho, float alto) {

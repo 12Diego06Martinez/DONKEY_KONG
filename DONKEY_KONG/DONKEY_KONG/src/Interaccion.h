@@ -5,8 +5,10 @@
 #include "Pared.h"
 #include "Escalera.h"
 #include "Moneda.h"
+#include "Enemigo.h"
 
-class Interaccion{
+class Interaccion
+{
 public:
 	Interaccion();
 	virtual ~Interaccion();
@@ -17,6 +19,10 @@ public:
 	static bool detectaEscaleraSubir(Jugador& jugador, Escalera escalera);
 	static bool detectaEscaleraBajar(Jugador& jugador, Escalera escalera);
 	static bool caidaHueco(Jugador& jugador, Pared pared);
-	static bool detectaMoneda(Jugador& jugador, Moneda moneda);
-	//static bool comprobarAltura(Jugador& jugador, Plataforma plataforma);
+	static bool colisionMoneda(Jugador& jugador, Moneda moneda);
+	static bool colisionEnemigo(Jugador& jugador, Enemigo& enemigo);
+	static void colisionEnemigos(Enemigo& enemigo1, Enemigo& enemigo2);
+	static void reboteEnemigos(Enemigo& enemigo, Plataforma plataforma);
+	////////////////////////////////////////////
+	static void persigueJugador(Jugador& jugador, Enemigo& enemigo);
 };

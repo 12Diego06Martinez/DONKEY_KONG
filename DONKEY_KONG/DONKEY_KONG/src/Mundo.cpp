@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
 #include "Globales.h"
+#include "InteraccionListas.h"
 #include "Interaccion.h"
 #include "glut.h"
 #include <sstream>
@@ -48,7 +49,17 @@ void Mundo::Inicializa() {
 	monedas.Agregar(new Moneda(-1, 10.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(-6, 14.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(4, 14.65, 0.5, 0.5));
-
+	//Enemigos
+	
+	enemigos.Agregar(new Enemigo(2,-1.85));
+	enemigos.Agregar(new Enemigo(6, 2.25));
+	enemigos.Agregar(new Enemigo(-3, 2.25));
+	enemigos.Agregar(new Enemigo(-1, 6.25));
+	enemigos.Agregar(new Enemigo(6, 6.25));
+	enemigos.Agregar(new Enemigo(-4, 10.25));
+	enemigos.Agregar(new Enemigo(-8, 14.25));
+	enemigos.Agregar(new Enemigo(0, 14.25));
+	enemigos.Agregar(new Enemigo(5, 14.25));
 }
 
 void Mundo::Dibuja() {
@@ -56,10 +67,6 @@ void Mundo::Dibuja() {
 	gluLookAt(x_ojo, y_ojo, z_ojo,//posición del ojo
 		0.0, y_ojo, 0.0, //Miramos al centro de la escena
 		0.0, 1.0, 0.0); //orientación del mundo hacia arriba
-	//Pared
-	//suelo.Dibuja();
-	//hueco1.Dibuja();
-	//hueco2.Dibuja();
 	//Jugador
 	player.Dibuja();
 	//Plataformas
@@ -68,11 +75,19 @@ void Mundo::Dibuja() {
 	escaleras.Dibuja();
 	//Monedas
 	monedas.Dibuja();
+	//Enemigos
+	enemigos.Dibuja();
 }
 
 void Mundo::Mueve() {
 	
 	player.Mueve(0.025f);
+	enemigos.Mueve(0.025f);
+	//Enemigos
+	InteraccionListas::rebotePlataformas(plataformas, enemigos);
+	InteraccionListas::colisionEnemigos(enemigos);
+	//Jugador con enemigos
+	//InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
 	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
@@ -81,7 +96,7 @@ void Mundo::Mueve() {
 	}
 	//Salto
 	if (player.getSalto() || player.getFalling()) {
-		if (plataformas.sobrePlataformas(player)!=0) {
+		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
@@ -89,17 +104,17 @@ void Mundo::Mueve() {
 		}
 	}
 	//Jugador con escaleras
-	if (escaleras.jugadorArriba(player)!=0) {
+	if (InteraccionListas::jugadorArriba(player,escaleras)!=0) {
 		player.setVel(0.0f, 0.0f);
 		player.setUp(false);
 	}
 	
-	if (escaleras.jugadorAbajo(player) != 0) {
+	if (InteraccionListas::jugadorAbajo(player, escaleras) != 0) {
 		player.setVel(0.0f, 0.0f);
 		player.setDown(false);
 	}
 	//Jugador con monedas
-	Moneda* aux = monedas.cogeMonedas(player);
+	Moneda* aux = InteraccionListas::cogeMonedas(player, monedas);
 	if (aux != 0) {
 		ETSIDI::play("sonidos/coin.wav");
 		if (monedas_recogidas < 9) 
@@ -111,9 +126,6 @@ void Mundo::Mueve() {
 
 	
 	
-	ETSIDI::setFont("mygame.ttf", 5);
-	ETSIDI::setTextColor(1, 1, 1);
-	ETSIDI::printxy("Monedas", 0, 0);
 	//if (escaleras.detectaEscalerasSubir(player)!=0) {
 	//	ETSIDI::play("sonidos/contactoPared.wav");
 	//}
@@ -143,14 +155,14 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		if(escaleras.detectaEscalerasSubir(player)!=0 && plataformas.sobrePlataformas(player)!=0){
+		if(InteraccionListas::detectaEscalerasSubir(player, escaleras)!=0 && InteraccionListas::sobrePlataforma(player, plataformas)!=0){
 			player.setVel(0.0f, 5.0f);
 			player.setUp(true);
 		}
 		break;
 
 	case GLUT_KEY_DOWN:
-		if (escaleras.detectaEscalerasBajar(player) != 0 && plataformas.sobrePlataformas(player) != 0) {
+		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
 			player.setVel(0.0f, -5.0f);
 			player.setDown(true);
 		}
@@ -162,7 +174,7 @@ void Mundo::Tecla(unsigned char key) {
 
 	switch (key) {
 	case ' ':
-		if (plataformas.sobrePlataformas(player)!=0) {
+		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);

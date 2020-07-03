@@ -1,27 +1,27 @@
-#include "ListaEscaleras.h"
+#include "ListaEnemigos.h"
 #include "Interaccion.h"
 
 ///////////////////////////////////CONSTRUCTOR///////////////////////
-ListaEscaleras::ListaEscaleras() {
+ListaEnemigos::ListaEnemigos() {
 	num = 0;
 	for (int i = 0; i < MAX_NUM; i++) {
 		lista[i] = 0;
 	}
 }
 
-ListaEscaleras::~ListaEscaleras() {
+ListaEnemigos::~ListaEnemigos() {
 
 }
 
 ///////////////////////////////////MÉTODOS//////////////////////////
-bool ListaEscaleras::Agregar(Escalera* escalera) {
+bool ListaEnemigos::Agregar(Enemigo* enemigo) {
 	if (num < MAX_NUM) {
 		for (int i = 0; i < num; i++) {
-			if (lista[i] == escalera) {
+			if (lista[i] == enemigo) {
 				return false;
 			}
 		}
-		lista[num] = escalera;
+		lista[num] = enemigo;
 		num++;
 		return true;
 	}
@@ -29,20 +29,26 @@ bool ListaEscaleras::Agregar(Escalera* escalera) {
 		return false;
 }
 
-void ListaEscaleras::Dibuja() {
+void ListaEnemigos::Dibuja() {
 	for (int i = 0; i < num; i++) {
 		lista[i]->Dibuja();
 	}
 }
 
-void ListaEscaleras::Destruir() {
+void ListaEnemigos::Mueve(float t) {
+	for (int i = 0; i < num; i++) {
+		lista[i]->Mueve(t);
+	}
+}
+
+void ListaEnemigos::Destruir() {
 	for (int i = 0; i < num; i++) {
 		delete lista[i];
 	}
 	num = 0;
 }
 
-void ListaEscaleras::Delete(int index) {
+void ListaEnemigos::Delete(int index) {
 	if ((index < 0) || (index >= num)) {
 		return;
 	}
@@ -50,22 +56,22 @@ void ListaEscaleras::Delete(int index) {
 	num--;
 	for (int i = index; i < num; i++) {
 		//Recorremos la lista desde la posición indicada hasta el 
-		//final de la lista. Si por ejemplo eliminamos la Escalera en la posición 2, Muevemos 
+		//final de la lista. Si por ejemplo eliminamos la Enemigo en la posición 2, Muevemos 
 		//la posición 3 a la 2, la 4 a la 3 y así sucesivamente hasta num
 		lista[i] = lista[i + 1];
 	}
 }
 
-void ListaEscaleras::Delete(Escalera* escalera) {
+void ListaEnemigos::Delete(Enemigo* enemigo) {
 	for (int i = 0; i < num; i++) {
-		if (lista[i] == escalera) {
+		if (lista[i] == enemigo) {
 			Delete(i);
 			return;
 		}
 	}
 }
 
-Escalera* ListaEscaleras::operator[](int pos) {
+Enemigo* ListaEnemigos::operator[](int pos) {
 	if (pos >= num)//si me paso, devuelvo la ultima   
 		pos = num - 1;
 

@@ -4,6 +4,7 @@
 #include "ListaPlataformas.h"
 #include "ListaEscaleras.h"
 #include "ListaMonedas.h"
+#include "ListaEnemigos.h"
 
 class Mundo
 {
@@ -12,6 +13,7 @@ private:
 	float y_ojo;
 	float z_ojo;
 	int monedas_recogidas = 0;
+	int vidas = 3;
 	bool pasar_nivel;
 	Pared suelo;
 	Pared hueco1;
@@ -20,6 +22,7 @@ private:
 	ListaPlataformas plataformas;
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
+	ListaEnemigos enemigos;
 public:
 	Mundo() {}
 	virtual ~Mundo();

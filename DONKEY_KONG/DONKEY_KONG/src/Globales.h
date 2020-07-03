@@ -1,6 +1,7 @@
 #pragma once
 
-enum jugador_t { ABAJO, ARRIBA, PUEDE_SUBIR, PUEDE_BAJAR, EN_PLATAFORMA, ALINEADO, NO_ALINEADO };
+enum jugador_t {PARADO_D, PARADO_I, ANDAD_D, ANDA_I, SALTA_D, SALTA_I, SUBE_D, SUBE_I, MUERE };
+
 enum plataformas_t {ESTATICA, MOVIL};
 
 const char* plataforma_7 = "imagenes/plataforma_transparente_7_buena.png";

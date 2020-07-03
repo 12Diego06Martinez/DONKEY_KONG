@@ -74,12 +74,3 @@ Moneda* ListaMonedas::operator[](int pos) {
 
 	return lista[pos];
 }
-
-/////////////////////////////////////////////////////////
-Moneda* ListaMonedas::cogeMonedas(Jugador& jugador) {
-	for (int i = 0; i < num; i++) {
-		if (Interaccion::detectaMoneda(jugador, *lista[i]))
-			return lista[i];
-	}
-	return 0;
-}

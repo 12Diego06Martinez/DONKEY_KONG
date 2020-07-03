@@ -4,7 +4,8 @@
 #include "Escalera.h"
 #include "Jugador.h"
 
-class ListaEscaleras {
+class ListaEscaleras 
+{
 private:
 	Escalera* lista[MAX_NUM];
 	int num;
@@ -18,9 +19,4 @@ public:
 	void Delete(Escalera* escalera); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Escalera* operator [](int pos);
-	/////////////////////////////////////////////////////////
-	Escalera* detectaEscalerasSubir(Jugador& jugador);
-	Escalera* detectaEscalerasBajar(Jugador& jugador);
-	Escalera* jugadorArriba(Jugador& jugador);
-	Escalera* jugadorAbajo(Jugador& jugador);
 };
