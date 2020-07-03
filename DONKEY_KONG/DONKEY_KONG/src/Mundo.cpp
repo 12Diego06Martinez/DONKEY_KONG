@@ -1,6 +1,6 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
-#include "Globales.h"
+#include "Paths.h"
 #include "InteraccionListas.h"
 #include "Interaccion.h"
 #include "glut.h"

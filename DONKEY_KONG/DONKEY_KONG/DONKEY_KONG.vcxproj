@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
+    <ClCompile Include="src\ElementoFijo.cpp" />
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\InteraccionListas.cpp" />
@@ -163,10 +164,10 @@
     <ClCompile Include="src\Jugador.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Plataforma.cpp" />
-    <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
+    <ClInclude Include="src\ElementoFijo.h" />
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\InteraccionListas.h" />
@@ -179,9 +180,8 @@
     <ClInclude Include="src\Escalera.h" />
     <ClInclude Include="src\Jugador.h" />
     <ClInclude Include="src\Mundo.h" />
-    <ClInclude Include="src\Globales.h" />
+    <ClInclude Include="src\Paths.h" />
     <ClInclude Include="src\Plataforma.h" />
-    <ClInclude Include="src\Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
