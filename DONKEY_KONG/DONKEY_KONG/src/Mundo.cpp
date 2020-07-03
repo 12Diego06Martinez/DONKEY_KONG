@@ -1,6 +1,6 @@
 #include "Mundo.h"
 #include "ETSIDI.h"
-#include "Globales.h"
+#include "Paths.h"
 #include "InteraccionListas.h"
 #include "Interaccion.h"
 #include "glut.h"
@@ -23,7 +23,7 @@ void Mundo::Inicializa() {
 	hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
 	hueco2.setLimites(-2, 9.75, 0, 10.15);
 	//Jugador
-	player.setPos(-8, -1.85);
+	//player.setPos(-8, -1.85);
 	//Plataformas
 	plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
 	plataformas.Agregar(new Plataforma(5, 2, 8, 0.3, plataforma_8_5));
@@ -50,7 +50,6 @@ void Mundo::Inicializa() {
 	monedas.Agregar(new Moneda(-6, 14.65, 0.5, 0.5));
 	monedas.Agregar(new Moneda(4, 14.65, 0.5, 0.5));
 	//Enemigos
-	
 	enemigos.Agregar(new Enemigo(2,-1.85));
 	enemigos.Agregar(new Enemigo(6, 2.25));
 	enemigos.Agregar(new Enemigo(-3, 2.25));
@@ -123,16 +122,6 @@ void Mundo::Mueve() {
 			pasar_nivel = true;
 	}
 	monedas.Delete(aux);
-
-	
-	
-	//if (escaleras.detectaEscalerasSubir(player)!=0) {
-	//	ETSIDI::play("sonidos/contactoPared.wav");
-	//}
-
-	//if (escaleras.detectaEscalerasBajar(player) != 0) {
-	//	ETSIDI::play("sonidos/coin.wav");
-	//}
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {

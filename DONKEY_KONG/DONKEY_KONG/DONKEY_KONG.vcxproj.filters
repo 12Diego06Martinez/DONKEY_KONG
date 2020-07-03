@@ -13,107 +13,143 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\OBJETOS">
+      <UniqueIdentifier>{f852b748-3fa4-497a-bd12-532f6bb588da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\OBJETOS\LISTAS">
+      <UniqueIdentifier>{68b684d6-ffae-4261-93aa-4eb82ea1aa63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\PERSONAJES">
+      <UniqueIdentifier>{55480df7-be04-4884-a975-6e4d59e3c442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\PERSONAJES\LISTAS">
+      <UniqueIdentifier>{9757114e-5a99-4355-a4b9-7b25d9489553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\GENERALES">
+      <UniqueIdentifier>{e859ad7b-5f2b-4044-8910-323302f10fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\GENERALES">
+      <UniqueIdentifier>{d6bb3edd-0697-49dd-b02a-bf655d2bc1d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\PERSONAJES">
+      <UniqueIdentifier>{2a9388b8-ddf0-4c5e-b790-d7baad3f80b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\OBJETOS">
+      <UniqueIdentifier>{a11c15fc-7dfb-4b4f-bbea-f8741cdd717c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\OBJETOS\LISTAS">
+      <UniqueIdentifier>{d9bc9842-aa61-4308-8436-2168f1af2ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\PERSONAJES\LISTAS">
+      <UniqueIdentifier>{97410cb8-c76e-4753-9ab3-a30da5d66fff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DonkeyKong.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mundo.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vector2D.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Jugador.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Plataforma.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Plataforma.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Escalera.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Pared.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ListaPlataformas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Interaccion.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ListaEscaleras.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Moneda.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ListaMonedas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enemigo.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ListaEnemigos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\InteraccionListas.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\GENERALES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Interaccion.cpp">
+      <Filter>Archivos de origen\GENERALES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mundo.cpp">
+      <Filter>Archivos de origen\GENERALES</Filter>
     </ClCompile>
     <ClCompile Include="src\Bonus.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Escalera.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Moneda.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pared.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Plataforma.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListaEscaleras.cpp">
+      <Filter>Archivos de origen\OBJETOS\LISTAS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListaMonedas.cpp">
+      <Filter>Archivos de origen\OBJETOS\LISTAS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListaPlataformas.cpp">
+      <Filter>Archivos de origen\OBJETOS\LISTAS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemigo.cpp">
+      <Filter>Archivos de origen\PERSONAJES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Jugador.cpp">
+      <Filter>Archivos de origen\PERSONAJES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListaEnemigos.cpp">
+      <Filter>Archivos de origen\PERSONAJES\LISTAS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementoFijo.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementoMovil.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Mundo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vector2D.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Jugador.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Plataforma.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\Escalera.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Pared.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Globales.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ListaPlataformas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Interaccion.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ListaEscaleras.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
     <ClInclude Include="src\Moneda.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
-    <ClInclude Include="src\ListaMonedas.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Pared.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemigo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ListaEnemigos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\InteraccionListas.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\Plataforma.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
     <ClInclude Include="src\Bonus.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ListaEscaleras.h">
+      <Filter>Archivos de encabezado\OBJETOS\LISTAS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ListaMonedas.h">
+      <Filter>Archivos de encabezado\OBJETOS\LISTAS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ListaPlataformas.h">
+      <Filter>Archivos de encabezado\OBJETOS\LISTAS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Jugador.h">
+      <Filter>Archivos de encabezado\PERSONAJES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enemigo.h">
+      <Filter>Archivos de encabezado\PERSONAJES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ListaEnemigos.h">
+      <Filter>Archivos de encabezado\PERSONAJES\LISTAS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interaccion.h">
+      <Filter>Archivos de encabezado\GENERALES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InteraccionListas.h">
+      <Filter>Archivos de encabezado\GENERALES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mundo.h">
+      <Filter>Archivos de encabezado\GENERALES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Paths.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementoFijo.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementoMovil.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
