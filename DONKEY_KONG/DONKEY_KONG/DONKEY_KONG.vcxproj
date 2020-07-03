@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\ElementoFijo.cpp" />
+    <ClCompile Include="src\ElementoMovil.cpp" />
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\InteraccionListas.cpp" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\ElementoFijo.h" />
+    <ClInclude Include="src\ElementoMovil.h" />
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\InteraccionListas.h" />

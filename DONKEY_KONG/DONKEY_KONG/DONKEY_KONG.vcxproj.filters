@@ -94,6 +94,9 @@
       <Filter>Archivos de origen\PERSONAJES\LISTAS</Filter>
     </ClCompile>
     <ClCompile Include="src\ElementoFijo.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementoMovil.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -144,6 +147,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\ElementoFijo.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementoMovil.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

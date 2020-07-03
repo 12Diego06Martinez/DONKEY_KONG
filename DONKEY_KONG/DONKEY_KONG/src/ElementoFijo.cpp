@@ -14,8 +14,9 @@ ElementoFijo::ElementoFijo(float px, float py, float ancho, float alto, const ch
 	limite2.x = px + ancho / 2;
 	limite2.y = py + alto / 2;
 
-	path = new char[strlen(p) + 1];
-	strcpy(path, p);
+	path = p;
+	/*path = new char[strlen(p) + 1];
+	strcpy(path, p);*/
 }
 
 ElementoFijo::~ElementoFijo() {
@@ -45,8 +46,7 @@ void ElementoFijo::Inicializa(float px, float py, float ancho, float alto, const
 	limite1.y = py - alto / 2;
 	limite2.x = px + ancho / 2;
 	limite2.y = py + alto / 2;
-	path = new char[strlen(p) + 1];
-	strcpy(path, p);
+	path = p;
 }
 
 void ElementoFijo::setLimites(float x1, float y1, float x2, float y2) {
@@ -62,7 +62,8 @@ void ElementoFijo::setPos(float px, float py) {
 }
 
 void ElementoFijo::setPath(const char* p) {
-	strcpy(path, p);
+	/*strcpy(path, p);*/
+	path = p;
 }
 
 void ElementoFijo::setHarmful(bool harm) {

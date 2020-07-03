@@ -1,34 +1,16 @@
 #pragma once
-#include <ETSIDI.h>
+#include "ElementoMovil.h"
 
 
-class Enemigo 
+class Enemigo:public ElementoMovil 
 {
 private:
-	enum enemigo_t { NORMAL_D, NORMAL_I, VULNERABLE_D, VULNERABLE_I };
+	enum enemigo_t { NORMAL, VULNERABLE};
 	enemigo_t estado;
-	char* path;
-	float ancho;
-	float alto;
-	ETSIDI::Vector2D posicion;
-	ETSIDI::Vector2D velocidad;
-	ETSIDI::Vector2D limite1;
-	ETSIDI::Vector2D limite2;
 	friend class Interaccion;
 public:
-	Enemigo(){}
-	Enemigo(float px, float py);
+	Enemigo(float px, float py, const char* p = "imagenes/enemy_dcha.png");
 	virtual ~Enemigo();
-	void Dibuja();
-	void Mueve(float t);
+	virtual void Mueve(float t);
 	void generaAleatorio();
-	//Setters
-	void setPos(float px, float py);
-	void setVel(float vx, float vy);
-	//Getters
-	ETSIDI::Vector2D getPos() { return posicion; }
-	ETSIDI::Vector2D getVel() { return velocidad; }
-	ETSIDI::Vector2D getLimite1() { return limite1; }
-	ETSIDI::Vector2D getLimite2() { return limite2; }
-	ETSIDI::Vector2D getSize() { return limite2-limite1; }
 };

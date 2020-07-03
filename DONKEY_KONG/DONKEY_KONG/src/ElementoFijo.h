@@ -5,7 +5,7 @@
 class ElementoFijo
 {
 protected:
-	char* path;
+	const char* path;
 	bool harmful;
 	ETSIDI::Vector2D posicion;
 	ETSIDI::Vector2D limite1;
