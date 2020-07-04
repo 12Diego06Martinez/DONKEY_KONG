@@ -50,7 +50,7 @@ Escalera* InteraccionListas::jugadorAbajo(Jugador& jugador, ListaEscaleras escal
 Moneda* InteraccionListas::cogeMonedas(Jugador& jugador, ListaMonedas monedas) {
 	for (int i = 0; i < monedas.getNum(); i++) {
 		if (Interaccion::colisionMoneda(jugador, *monedas[i])) {
-			ETSIDI::play("sonido/coin.wav");
+			ETSIDI::play("sonidos/coin.wav");
 			return monedas[i];
 		}
 			
@@ -58,12 +58,13 @@ Moneda* InteraccionListas::cogeMonedas(Jugador& jugador, ListaMonedas monedas) {
 	return 0;
 }
 
-void InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
+Enemigo* InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
 	for (int i = 0; i < enemigos.getNum(); i++) {
 		if (Interaccion::colisionEnemigo(jugador, *enemigos[i])) {
-			ETSIDI::play("sonidos/mordisco.wav");
+			return enemigos[i];
 		}
 	}
+	return 0;
 }
 
 void InteraccionListas::colisionEnemigos(ListaEnemigos& enemigos) {

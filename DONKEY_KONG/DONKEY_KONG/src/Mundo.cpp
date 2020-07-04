@@ -8,22 +8,21 @@
 
 ///////////////////////////////////DESTRUCTOR////////////////////////////
 Mundo::~Mundo() {
-
+	enemigos.Destruir();
 }
 
 ////////////////////////////////////METODOS////////////////////////////
 void Mundo::Inicializa() {
+	vidas = 3;
+	monedas_recogidas = 0;
 	//Posición del ojo
 	x_ojo = 0;
 	y_ojo = 7.5;
 	z_ojo = 30;
-
 	//Pared
 	suelo.setLimites(-9, -4, 9, -3);
 	hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
 	hueco2.setLimites(-2, 9.75, 0, 10.15);
-	//Jugador
-	//player.setPos(-8, -1.85);
 	//Plataformas
 	plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
 	plataformas.Agregar(new Plataforma(5, 2, 8, 0.3, plataforma_8_5));
@@ -80,13 +79,18 @@ void Mundo::Dibuja() {
 
 void Mundo::Mueve() {
 	
+	player.getPos();
+	
 	player.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
 	//Enemigos
 	InteraccionListas::rebotePlataformas(plataformas, enemigos);
 	InteraccionListas::colisionEnemigos(enemigos);
 	//Jugador con enemigos
-	InteraccionListas::colisionJugador(player, enemigos);
+	if (InteraccionListas::colisionJugador(player, enemigos)!=0) {
+		ETSIDI::play("sonidos/pierde.wav");
+		vidas--;
+	}
 	//InteraccionListas::persiguenJugador(player, enemigos);
 	//Jugador con pared
 	Interaccion::reboteExterior(player, suelo);
@@ -96,7 +100,7 @@ void Mundo::Mueve() {
 	}
 	//Salto
 	if (player.getSalto() || player.getFalling()) {
-		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
+ 		if (InteraccionListas::sobrePlataforma(player, plataformas)!=0) {
 			player.setAcel(0.0f, 0.0f);
 			player.setVel(player.getVel().x, 0);
 			player.setSalto(false);
@@ -118,8 +122,8 @@ void Mundo::Mueve() {
 	if (aux != 0) {
 		if (monedas_recogidas < 9) 
 			monedas_recogidas++;
-		/*else
-			pasar_nivel = true;*/
+		else
+			pasar_nivel = true;
 	}
 	monedas.Delete(aux);
 }
@@ -147,6 +151,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		if(InteraccionListas::detectaEscalerasSubir(player, escaleras)!=0 && InteraccionListas::sobrePlataforma(player, plataformas)!=0){
 			player.setVel(0.0f, 5.0f);
 			player.setUp(true);
+			ETSIDI::play("sonidos/subir.wav");
 		}
 		break;
 
@@ -154,6 +159,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
 			player.setVel(0.0f, -5.0f);
 			player.setDown(true);
+			ETSIDI::play("sonidos/bajar.wav");
 		}
 		break;
 	}
@@ -167,7 +173,7 @@ void Mundo::Tecla(unsigned char key) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
-			ETSIDI::play("sonidos/jump.wav");
+			ETSIDI::play("sonidos/salto.wav");
 		}
 		break;
 	}

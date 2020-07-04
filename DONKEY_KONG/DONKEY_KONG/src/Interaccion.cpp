@@ -38,12 +38,6 @@ bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
-	//if (jugador.posicion.y > escalera.limite2.y && jugador.isAligned == true) {
-	//	jugador.setPos(jugador.posicion.x, (escalera.limite2.y+0.15));
-	//	return true;
-	//}
-	//else
-	//	return false;
 	float distancia = (escalera.limite1 - jugador.posicion).module();
 	if (distancia > 4.15 && distancia < 4.16 && jugador.isGoingUp==true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite2.y + 0.15));
@@ -101,11 +95,15 @@ bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 
 bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
 	float distancia = (jugador.posicion - enemigo.posicion).module();
-	if (distancia<0.35)
+	if (distancia < 0.26 && !jugador.getSalto())
+		return true;
+	else if (distancia < 0.18 && jugador.getSalto())
 		return true;
 	else
 		return false;
 }
+
+
 void Interaccion::colisionEnemigos(Enemigo& enemigo1, Enemigo& enemigo2) {
 	float distancia = (enemigo1.posicion - enemigo2.posicion).module();
 	if (distancia < 0.2f) {
