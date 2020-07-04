@@ -60,9 +60,6 @@
     <ClCompile Include="src\Interaccion.cpp">
       <Filter>Archivos de origen\GENERALES</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mundo.cpp">
-      <Filter>Archivos de origen\GENERALES</Filter>
-    </ClCompile>
     <ClCompile Include="src\Bonus.cpp">
       <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
@@ -111,6 +108,9 @@
     <ClCompile Include="src\ElementoMovil.cpp">
       <Filter>Archivos de origen\PERSONAJES</Filter>
     </ClCompile>
+    <ClCompile Include="src\GestorNiveles.cpp">
+      <Filter>Archivos de origen\GESTORES</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Escalera.h">
@@ -152,12 +152,6 @@
     <ClInclude Include="src\InteraccionListas.h">
       <Filter>Archivos de encabezado\GENERALES</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mundo.h">
-      <Filter>Archivos de encabezado\GENERALES</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Paths.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\ElementoFijo.h">
       <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
@@ -169,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="src\ElementoMovil.h">
       <Filter>Archivos de encabezado\PERSONAJES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GestorNiveles.h">
+      <Filter>Archivos de encabezado\GESTORES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Paths.h">
+      <Filter>Archivos de encabezado\GENERALES</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

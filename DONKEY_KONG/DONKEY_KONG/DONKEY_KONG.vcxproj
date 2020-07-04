@@ -154,6 +154,7 @@
     <ClCompile Include="src\ElementoMovil.cpp" />
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\GestorMultimedia.cpp" />
+    <ClCompile Include="src\GestorNiveles.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\InteraccionListas.cpp" />
     <ClCompile Include="src\ListaEnemigos.cpp" />
@@ -165,7 +166,6 @@
     <ClCompile Include="src\DonkeyKong.cpp" />
     <ClCompile Include="src\Escalera.cpp" />
     <ClCompile Include="src\Jugador.cpp" />
-    <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Plataforma.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +175,7 @@
     <ClInclude Include="src\ElementoMovil.h" />
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\GestorMultimedia.h" />
+    <ClInclude Include="src\GestorNiveles.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\InteraccionListas.h" />
     <ClInclude Include="src\ListaEnemigos.h" />
@@ -185,7 +186,6 @@
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Escalera.h" />
     <ClInclude Include="src\Jugador.h" />
-    <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Paths.h" />
     <ClInclude Include="src\Plataforma.h" />
   </ItemGroup>

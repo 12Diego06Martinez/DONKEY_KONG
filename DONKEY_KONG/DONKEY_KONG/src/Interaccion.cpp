@@ -68,7 +68,7 @@ bool Interaccion::detectaEscaleraSubir(Jugador& jugador, Escalera escalera) {
 
 bool Interaccion::detectaEscaleraBajar(Jugador& jugador, Escalera escalera) {
 	float distancia = (escalera.posicion - jugador.posicion).module();
-	if (distancia > 2.149 && distancia < 2.152)
+	if (distancia > 2.148 && distancia < 2.153)
 		return true;
 	else
 		return false;
