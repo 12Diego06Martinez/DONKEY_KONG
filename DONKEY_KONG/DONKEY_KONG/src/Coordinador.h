@@ -1,15 +1,13 @@
 #pragma once
-#include "Mundo.h"
+#include "GestorNiveles.h"
 #include "GestorMultimedia.h"
 
 class Coordinador
 {
 private:
-	Mundo miMundo;
 	enum Pantallas{MENU, INSTRUCCIONES, JUEGO, GAMEOVER, PAUSA, GANA, FIN};
 	Pantallas estado;
-	bool pasar_nivel;
-	int monedas_recogidas;
+	GestorNiveles miMundo;
 	GestorMultimedia multi;
 public:
 	Coordinador();

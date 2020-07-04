@@ -21,50 +21,44 @@ void Coordinador::Dibuja() {
 		multi.imprimeInstrucciones();
 	}
 	else if (estado == JUEGO) {
-		miMundo.Inicializa();
-		miMundo.Dibuja();
+		miMundo.dibujaNivel();
 	}
 	else if (estado == GAMEOVER) {
-		gluLookAt(0, 7.5, 30,
-			0.0, 7.5, 0.0,
-			0.0, 1.0, 0.0);
-		setTextColor(1, 1, 0);
-		setFont("fuentes/invaders.ttf", 40);
-		printxy("f", 0, 0);
-		setFont("fuentes/ARCADE_I.TTF", 25);
-		printxy("LOSER", -5, 9);
-		printxy("TRY AGAIN", -8.75, 8);
-		miMundo.~Mundo();
+		multi.imprimeGameOver();
+		miMundo.recargaNivel();
 	}
-	//else if (estado == PAUSA) {
-	//	//miMundo.Dibuja();
-	//	setTextColor(1, 0, 0);
-	//	setFont("fuentes/ARCADE_I.TTF", 18);
-	//	printxy("PAUSE", -2, 8);
-	//}
-	//else if (estado == GANA) {
-	//	miMundo.Dibuja();
-	//	setTextColor(1, 0, 0);
-	//	setFont("fuentes/ARCADE_I.TTF", 18);
-	//	printxy("ENHORABUENA", -5, 9);
-	//	printxy("Has completado la desescalada", -2, 8);
-	//}
+	else if (estado == PAUSA) {
+		miMundo.dibujaNivel();
+		multi.imprimePausa();
+	}
+	else if (estado == GANA) {
+		miMundo.dibujaNivel();
+		setTextColor(1, 0, 0);
+		setFont("fuentes/ARCADE_I.TTF", 18);
+		printxy("ENHORABUENA", -5, 9);
+		printxy("Has completado la desescalada", -2, 8);
+	}
 }
 
 void Coordinador::Mueve() {
 	if (estado == JUEGO) {
-		miMundo.Mueve();
+		miMundo.mueveNivel();
 		
 		if (miMundo.getVidas() == 0)
 			estado = GAMEOVER;
-		else if (miMundo.getValidacion())
-			estado = GANA;
+		else if (miMundo.getValidacion()) {
+			miMundo.subeNivel();
+			if(miMundo.getNivel()<=3)
+				estado = GANA;
+			if (miMundo.getNivel() > 3)
+				estado = FIN;
+		}	
 	}
 }
 
 void Coordinador::TeclaEspecial(unsigned char key) {
 	if (estado == JUEGO) {
-		miMundo.TeclaEspecial(key);
+		miMundo.flechasNivel(key);
 	}
 }
 
@@ -74,14 +68,17 @@ void Coordinador::Tecla(unsigned char key) {
 			estado = INSTRUCCIONES;
 		}
 		else if (key == 'C' || key == 'c') {
-			
+			miMundo.cargaNivel();
 			estado = JUEGO;
+		}
+		else if (key == 'S' || key == 's') {
+			exit(0);
 		}
 	}
 
 	else if (estado == INSTRUCCIONES) {
 		if (key == 'C' || key == 'c') {
-			//miMundo.Inicializa();
+			miMundo.cargaNivel();
 			estado = JUEGO;
 		}
 		if (key == 'H' || key == 'h') {
@@ -89,14 +86,14 @@ void Coordinador::Tecla(unsigned char key) {
 		}
 	}
 	else if (estado == JUEGO) {
-		miMundo.Tecla(key);
+		miMundo.teclasNivel(key);
 		if (key == 'P' || key == 'p') {
 			estado = PAUSA;
 		}
 	}
 	else if (estado == GAMEOVER) {
 		if (key == 'C' || key == 'c') {
-			//miMundo.Inicializa();
+			miMundo.cargaNivel();
 			estado = JUEGO;
 		}
 		else if (key == 'S' || key == 's') {
@@ -104,6 +101,7 @@ void Coordinador::Tecla(unsigned char key) {
 		}
 		else if (key == 'M' || key == 'm') {
 			estado = MENU;
+			miMundo.recargaNivel();
 		}
 	}
 	else if (estado == PAUSA) {
@@ -112,6 +110,7 @@ void Coordinador::Tecla(unsigned char key) {
 		}
 		else if (key == 'M' || key == 'm') {
 			estado = MENU;
+			miMundo.recargaNivel();
 		}
 	}
 	else if (estado == GANA) {
