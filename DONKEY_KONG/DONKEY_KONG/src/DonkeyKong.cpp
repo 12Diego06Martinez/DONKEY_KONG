@@ -1,10 +1,10 @@
 #define _STDC_WANT_IB_EXIT1__1
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "Mundo.h"
+#include "Coordinador.h"
 #include "glut.h"
 
-Mundo miMundo;
+Coordinador kong;
 
 //Funciones necesarias
 void OnDraw(void); //esta funcion sera llamada para dibujar
@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT y crear la ventana
 	glutInit(&argc, argv);
-	glutInitWindowSize(960, 720);
+	glutInitWindowSize(980, 700);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("DONKEY KONG");
 
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 	glutSpecialFunc(OnSpecialKeyboardDown);
 
 	//Llamada a métodos
-	miMundo.Inicializa();
+	//kong.Inicializa();
 
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -55,7 +55,7 @@ void OnDraw(void) {
 	glLoadIdentity();
 
 	//LLAMAR AL MÉTODO Dibujar DE LA CLASE MUNDO   (dibuja todos los objetos)
-	miMundo.Dibuja();
+	kong.Dibuja();
 
 
 	//NO BORRAR NUNCA ESTAS LINEAS
@@ -64,7 +64,7 @@ void OnDraw(void) {
 
 void OnKeyboardDown(unsigned char key, int x_t, int y_t) {
 	//LLAMAR AL MÉTODO DE LA CLASE MUNDO (gestiona la interacción con el teclado)
-	miMundo.Tecla(key);
+	kong.Tecla(key);
 
 	//NO BORRAR ESTAS LINEAS
 	glutPostRedisplay();
@@ -72,7 +72,7 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t) {
 
 void OnSpecialKeyboardDown(int key, int x_t, int y_t) {
 	//LLAMAR AL MÉTODO DE LA CLASE MUNDO (gestiona la interacción con el teclado)
-	miMundo.TeclaEspecial(key);
+	kong.TeclaEspecial(key);
 
 	//NO BORRAR ESTAS LINEAS
 	glutPostRedisplay();
@@ -80,7 +80,7 @@ void OnSpecialKeyboardDown(int key, int x_t, int y_t) {
 
 void OnTimer(int value) {
 	//LLAMAR AL METODO Mueve DE LA CLASE MUNDO (actualiza mundo y esferas)
-	miMundo.Mueve();
+	kong.Mueve();
 
 
 	//NO BORRAR NUNCA ESTAS LINEAS

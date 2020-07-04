@@ -43,21 +43,21 @@
     <Filter Include="Archivos de origen\PERSONAJES\LISTAS">
       <UniqueIdentifier>{97410cb8-c76e-4753-9ab3-a30da5d66fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\GESTORES">
+      <UniqueIdentifier>{1ab27caf-f4a0-4fcb-81f2-b6a6fd440c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\GESTORES">
+      <UniqueIdentifier>{7abd9739-e95d-4dc9-ab9f-e66d888aa701}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DonkeyKong.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Plataforma.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\InteraccionListas.cpp">
       <Filter>Archivos de origen\GENERALES</Filter>
     </ClCompile>
     <ClCompile Include="src\Interaccion.cpp">
-      <Filter>Archivos de origen\GENERALES</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mundo.cpp">
       <Filter>Archivos de origen\GENERALES</Filter>
     </ClCompile>
     <ClCompile Include="src\Bonus.cpp">
@@ -96,8 +96,20 @@
     <ClCompile Include="src\ElementoFijo.cpp">
       <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
+    <ClCompile Include="src\Coordinador.cpp">
+      <Filter>Archivos de origen\GESTORES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GestorMultimedia.cpp">
+      <Filter>Archivos de origen\GESTORES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Plataforma.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
     <ClCompile Include="src\ElementoMovil.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\PERSONAJES</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GestorNiveles.cpp">
+      <Filter>Archivos de origen\GESTORES</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,17 +152,23 @@
     <ClInclude Include="src\InteraccionListas.h">
       <Filter>Archivos de encabezado\GENERALES</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mundo.h">
-      <Filter>Archivos de encabezado\GENERALES</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Paths.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\ElementoFijo.h">
       <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
+    <ClInclude Include="src\GestorMultimedia.h">
+      <Filter>Archivos de encabezado\GESTORES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Coordinador.h">
+      <Filter>Archivos de encabezado\GESTORES</Filter>
+    </ClInclude>
     <ClInclude Include="src\ElementoMovil.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\PERSONAJES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GestorNiveles.h">
+      <Filter>Archivos de encabezado\GESTORES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Paths.h">
+      <Filter>Archivos de encabezado\GENERALES</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

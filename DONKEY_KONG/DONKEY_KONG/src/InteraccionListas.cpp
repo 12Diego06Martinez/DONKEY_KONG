@@ -49,24 +49,22 @@ Escalera* InteraccionListas::jugadorAbajo(Jugador& jugador, ListaEscaleras escal
 
 Moneda* InteraccionListas::cogeMonedas(Jugador& jugador, ListaMonedas monedas) {
 	for (int i = 0; i < monedas.getNum(); i++) {
-		if (Interaccion::colisionMoneda(jugador, *monedas[i]))
+		if (Interaccion::colisionMoneda(jugador, *monedas[i])) {
+			ETSIDI::play("sonidos/coin.wav");
 			return monedas[i];
+		}
+			
 	}
 	return 0;
 }
 
-void InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
-	/*for (int i = 0; i < enemigos.getNum(); i++) {
+Enemigo* InteraccionListas::colisionJugador(Jugador& jugador, ListaEnemigos& enemigos) {
+	for (int i = 0; i < enemigos.getNum(); i++) {
 		if (Interaccion::colisionEnemigo(jugador, *enemigos[i])) {
-			ETSIDI::play("sonidos/jump.wav");
-			jugador.setVidas(jugador.getVidas()-1);
-			if (jugador.getVidas() == 0) {
-				ETSIDI::setTextColor(1, 0, 0);
-				ETSIDI::setFont("fuentes/my game.ttf", 16);
-				ETSIDI::printxy("GAMEOVER: Has perdido", 0, 5);
-			}
+			return enemigos[i];
 		}
-	}*/
+	}
+	return 0;
 }
 
 void InteraccionListas::colisionEnemigos(ListaEnemigos& enemigos) {
