@@ -111,6 +111,9 @@
     <ClCompile Include="src\GestorNiveles.cpp">
       <Filter>Archivos de origen\GESTORES</Filter>
     </ClCompile>
+    <ClCompile Include="src\PlataformaMovil.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Escalera.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="src\Paths.h">
       <Filter>Archivos de encabezado\GENERALES</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlataformaMovil.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

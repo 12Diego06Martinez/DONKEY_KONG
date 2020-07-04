@@ -17,7 +17,7 @@ void GestorNiveles::cargaNivel() {
 	y_ojo = 7.5;
 	z_ojo = 30;
 	//Control juego
-	nivel = 1;
+	nivel = 2;
 	vidas = 3;
 	monedas_recogidas = 0;
 	pasar_nivel = false;
@@ -65,6 +65,25 @@ void GestorNiveles::cargaNivel() {
 		enemigos.Agregar(new Enemigo(0, 14.25));
 		enemigos.Agregar(new Enemigo(5, 14.25));
 	}
+
+	if (nivel == 2) {
+		player.setPos(-8, -1.85);
+		player.setVel(0.0f, 0.0f);
+		//Plataformas
+		plataformas.Agregar(new PlataformaMovil(0, -2, 26, 0.5, plataforma_18));
+		plataformas.Agregar(new PlataformaMovil(0, 2, 8, 0.5, plataforma_11));
+		plataformas.Agregar(new Plataforma(-9, 2, 6, 0.5, plataforma_7));
+		plataformas.Agregar(new Plataforma(9, 2, 6, 0.5, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 6, 8, 0.5, plataforma_11));
+		plataformas.Agregar(new Plataforma(-8.5, 6, 5, 0.5, plataforma_7));
+		plataformas.Agregar(new Plataforma(8.5, 6, 5, 0.5, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 10, 8, 0.5, plataforma_11));
+		plataformas.Agregar(new Plataforma(-8, 10, 4, 0.5, plataforma_7));
+		plataformas.Agregar(new Plataforma(8, 10, 4, 0.5, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.5, plataforma_18));
+		plataformas.Agregar(new Plataforma(-7.5, 10, 3, 0.5, plataforma_7));
+		plataformas.Agregar(new Plataforma(7.5, 10, 3, 0.5, plataforma_7));
+	}
 }
 
 void GestorNiveles::dibujaNivel() {
@@ -82,6 +101,13 @@ void GestorNiveles::dibujaNivel() {
 		monedas.Dibuja();
 		//Enemigos
 		enemigos.Dibuja();
+	}
+
+	if (nivel == 2) {
+		//Jugador
+		player.Dibuja();
+		//Plataformas
+		plataformas.Dibuja();
 	}
 }
 

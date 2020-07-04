@@ -2,12 +2,13 @@
 #define MAX_NUM 20
 
 #include "Plataforma.h"
-#include "Jugador.h"
+#include "PlataformaMovil.h"
 
 class ListaPlataformas 
 {
 private:
 	Plataforma* lista[MAX_NUM];
+	//PlataformaMovil* movil[MAX_NUM];
 	int num;
 public:
 	ListaPlataformas();
