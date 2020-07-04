@@ -24,6 +24,7 @@ void GestorNiveles::cargaNivel() {
 	//Valores iniciales cada nivel
 	if (nivel == 1) {
 		player.setPos(-8, -1.85);
+		player.setVel(0.0f, 0.0f);
 		//Pared
 		suelo.setLimites(-9, -4, 9, -3);
 		hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
@@ -93,7 +94,7 @@ void GestorNiveles::mueveNivel() {
 		InteraccionListas::colisionEnemigos(enemigos);
 		//Jugador con enemigos
 		if (InteraccionListas::colisionJugador(player, enemigos) != 0) {
-			ETSIDI::play("sonidos/pierde.wav");
+			dj.playLose();
 			vidas--;
 		}
 		//InteraccionListas::persiguenJugador(player, enemigos);
@@ -141,7 +142,7 @@ void GestorNiveles::teclasNivel(unsigned char key) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
-			ETSIDI::play("sonidos/salto.wav");
+			dj.playSalto();
 		}
 		break;
 	}
@@ -169,7 +170,7 @@ void GestorNiveles::flechasNivel(unsigned char key) {
 		if (InteraccionListas::detectaEscalerasSubir(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
 			player.setVel(0.0f, 5.0f);
 			player.setUp(true);
-			ETSIDI::play("sonidos/subir.wav");
+			dj.playSube();
 		}
 		break;
 
@@ -177,7 +178,7 @@ void GestorNiveles::flechasNivel(unsigned char key) {
 		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
 			player.setVel(0.0f, -5.0f);
 			player.setDown(true);
-			ETSIDI::play("sonidos/bajar.wav");
+			dj.playBaja();
 		}
 		break;
 	}

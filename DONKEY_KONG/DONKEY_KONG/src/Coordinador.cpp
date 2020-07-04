@@ -16,22 +16,27 @@ Coordinador::~Coordinador() {
 void Coordinador::Dibuja() {
 	if (estado == MENU) {
 		multi.imprimeMenu();
+		multi.playMenu();
 	}
 	else if (estado == INSTRUCCIONES) {
 		multi.imprimeInstrucciones();
 	}
 	else if (estado == JUEGO) {
+		//multi.stopMenu();
 		miMundo.dibujaNivel();
 	}
 	else if (estado == GAMEOVER) {
+		//multi.stopMenu();
 		multi.imprimeGameOver();
 		miMundo.recargaNivel();
 	}
 	else if (estado == PAUSA) {
+		//multi.stopMenu();
 		miMundo.dibujaNivel();
 		multi.imprimePausa();
 	}
 	else if (estado == GANA) {
+		//multi.stopMenu();
 		miMundo.dibujaNivel();
 		setTextColor(1, 0, 0);
 		setFont("fuentes/ARCADE_I.TTF", 18);

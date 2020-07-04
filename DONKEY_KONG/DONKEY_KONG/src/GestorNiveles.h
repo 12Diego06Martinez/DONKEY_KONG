@@ -5,6 +5,7 @@
 #include "ListaEscaleras.h"
 #include "ListaMonedas.h"
 #include "ListaEnemigos.h"
+#include "GestorMultimedia.h"
 
 class GestorNiveles
 {
@@ -17,6 +18,7 @@ private:
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
 	ListaEnemigos enemigos;
+	GestorMultimedia dj;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;

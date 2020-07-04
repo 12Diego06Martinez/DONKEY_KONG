@@ -61,3 +61,27 @@ void GestorMultimedia::imprimePausa() {
 	printxy("Pulse -P- para reaunudar la partida", -7, 8);
 	printxy("Pulse -M- para volver al menu", -6.5, 7);
 }
+
+void GestorMultimedia::playLose() {
+	play("sonidos/pierde.wav");
+}
+
+void GestorMultimedia::playSalto() {
+	play("sonidos/salto.wav");
+}
+
+void GestorMultimedia::playSube() {
+	play("sonidos/subir.wav");
+}
+
+void GestorMultimedia::playBaja() {
+	play("sonidos/bajar.wav");
+}
+
+void GestorMultimedia::playMenu() {
+	playMusica("sonidos/MainMenu.mp3", true);
+}
+
+void GestorMultimedia::stopMenu() {
+	stopMusica();
+}
