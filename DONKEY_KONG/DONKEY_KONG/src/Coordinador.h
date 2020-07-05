@@ -5,7 +5,7 @@
 class Coordinador
 {
 private:
-	enum Pantallas{MENU, INSTRUCCIONES, JUEGO, GAMEOVER, PAUSA, GANA, FIN};
+	enum Pantallas{MENU, INSTRUCCIONES, JUEGO, GAMEOVER, PAUSA, NEXT, FIN};
 	Pantallas estado;
 	GestorNiveles miMundo;
 	GestorMultimedia multi;

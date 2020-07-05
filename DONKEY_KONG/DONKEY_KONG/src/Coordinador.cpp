@@ -6,7 +6,7 @@ using namespace ETSIDI;
 //////////////////////////////////////CONSTRUCTOR////////////////////////////////
 Coordinador::Coordinador() {
 	estado = MENU;
-	miMundo.recargaNivel();
+	multi.playMenu();
 }
 
 Coordinador::~Coordinador() {
@@ -17,32 +17,27 @@ Coordinador::~Coordinador() {
 void Coordinador::Dibuja() {
 	if (estado == MENU) {
 		multi.imprimeMenu();
-		//multi.playMenu();
+		miMundo.recargaNivel();
 	}
 	else if (estado == INSTRUCCIONES) {
 		multi.imprimeInstrucciones();
 	}
 	else if (estado == JUEGO) {
-		//multi.stopMenu();
+		multi.stopMenu();
 		miMundo.dibujaNivel();
 	}
 	else if (estado == GAMEOVER) {
-		//multi.stopMenu();
+		multi.stopMenu();
 		multi.imprimeGameOver();
 		miMundo.recargaNivel();
 	}
 	else if (estado == PAUSA) {
-		//multi.stopMenu();
+		multi.stopMenu();
 		miMundo.dibujaNivel();
 		multi.imprimePausa();
 	}
-	else if (estado == GANA) {
-		//multi.stopMenu();
-		miMundo.dibujaNivel();
-		setTextColor(1, 0, 0);
-		setFont("fuentes/ARCADE_I.TTF", 18);
-		printxy("ENHORABUENA", -5, 9);
-		printxy("Has completado la desescalada", -2, 8);
+	else if (estado == FIN) {
+		multi.imprimeVictoria();
 	}
 }
 
@@ -50,18 +45,22 @@ void Coordinador::Mueve() {
 	if (estado == JUEGO) {
 		miMundo.mueveNivel();
 		
-		if (miMundo.getVidas() == 0)
+		if (miMundo.getVidas() == 0) {
+			//miMundo.recargaNivel();
 			estado = GAMEOVER;
-		else if (miMundo.getValidacion()) {
+		}
+			
+		if (miMundo.getValidacion()) {
 			miMundo.subeNivel();
 			if (miMundo.getNivel() <= 3) {
-				miMundo.recargaNivel();
+				//miMundo.recargaNivel();
 				miMundo.cargaNivel();
-				estado = GANA;
+				estado = JUEGO;
 			}
 				
-			if (miMundo.getNivel() > 3)
+			if (miMundo.getNivel() > 3) {
 				estado = FIN;
+			}
 		}	
 	}
 }
@@ -110,8 +109,8 @@ void Coordinador::Tecla(unsigned char key) {
 			exit(0);
 		}
 		else if (key == 'M' || key == 'm') {
+			multi.playMenu();
 			estado = MENU;
-			miMundo.recargaNivel();
 		}
 	}
 	else if (estado == PAUSA) {
@@ -119,15 +118,14 @@ void Coordinador::Tecla(unsigned char key) {
 			estado = JUEGO;
 		}
 		else if (key == 'M' || key == 'm') {
+			multi.playMenu();
 			estado = MENU;
-			miMundo.recargaNivel();
 		}
 	}
-	else if (estado == GANA) {
-		if (key == 'C' || key == 'c') {
-			estado = JUEGO;
-		}
-		else if (key == 'M' || key == 'm') {
+	else if (estado == FIN) {
+		if (key == 'M' || key == 'm') {
+			//miMundo.recargaNivel();
+			multi.playMenu();
 			estado = MENU;
 		}
 		else if (key == 'S' || key == 's') {

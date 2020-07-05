@@ -8,7 +8,7 @@
 //////////////////////////////////////////DESTRUCTOR////////////////////////
 GestorNiveles::GestorNiveles() {
 	//Control juego
-	nivel = 2;
+	nivel = 1;
 	vidas = 10;
 	monedas_recogidas = 0;
 	pasar_nivel = false;
@@ -24,6 +24,11 @@ void GestorNiveles::cargaNivel() {
 	x_ojo = 0;
 	y_ojo = 7.5;
 	z_ojo = 30;
+	//Inicializa
+	nivel = 1;
+	vidas = 5;
+	monedas_recogidas = 0;
+	pasar_nivel = false;
 	//Valores iniciales cada nivel
 	if (nivel == 1) {
 		player.setPos(-8, -1.85);
@@ -86,8 +91,6 @@ void GestorNiveles::cargaNivel() {
 		plataformas.Agregar(new Plataforma(-8, 10, 4, 0.3, plataforma_7));
 		plataformas.Agregar(new Plataforma(8, 10, 4, 0.3, plataforma_7));
 		plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.3, plataforma_18));
-		//plataformas.Agregar(new Plataforma(-7.5, 14, 3, 0.5, plataforma_7));
-		//plataformas.Agregar(new Plataforma(7.5, 14, 3, 0.5, plataforma_7));
 		//Escaleras
 		escaleras.Agregar(new Escalera(-3, -4, 0.5, 4));
 		escaleras.Agregar(new Escalera(-11.75, 0, 0.5, 4));
@@ -102,26 +105,23 @@ void GestorNiveles::cargaNivel() {
 		escaleras.Agregar(new Escalera(0, 8, 0.5, 4));
 		//Monedas
 		monedas.Agregar(new Moneda(-4, -1.4, 0.7, 0.7));
-		monedas.Agregar(new Moneda(2, -1.4, 0.7, 0.7));
-		monedas.Agregar(new Moneda(-1, 2.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(6, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(12, -1.4, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-14, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(0, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(8, 2.65, 0.7, 0.7));
 		monedas.Agregar(new Moneda(-3, 6.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(0, 6.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(6, 6.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(-2, 10.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(3.5, 10.65, 0.7, 0.7));
-		monedas.Agregar(new Moneda(1, 14.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(8, 6.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-9, 6.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-7, 10.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(7, 10.65, 0.7, 0.7));
 		//Enemigos
 		enemigos.Agregar(new Enemigo(1, 2.25));
-		enemigos.Agregar(new Enemigo(6, 2.25));
-		enemigos.Agregar(new Enemigo(-3, 2.25));
+		enemigos.Agregar(new Enemigo(8, 2.25));
+		enemigos.Agregar(new Enemigo(-7, 2.25));
 		enemigos.Agregar(new Enemigo(5, 6.25));
-		enemigos.Agregar(new Enemigo(-6, 6.25));
-		enemigos.Agregar(new Enemigo(-2, 10.25));
-		enemigos.Agregar(new Enemigo(1, 14.25));
-		enemigos.Agregar(new Enemigo(10, 14.25));
-		enemigos.Agregar(new Enemigo(-9, 14.25));
-
+		enemigos.Agregar(new Enemigo(-3, 6.25));
+		enemigos.Agregar(new Enemigo(-7.5, 10.25));
+		enemigos.Agregar(new Enemigo(7, 10.25));
 	}
 }
 
@@ -201,8 +201,9 @@ void GestorNiveles::mueveNivel() {
 		if (aux != 0) {
 			if (monedas_recogidas < 9)
 				monedas_recogidas++;
-			else
+			else if (monedas_recogidas == 9 && player.getPos().y > 15.9) {
 				pasar_nivel = true;
+			}
 		}
 		monedas.Delete(aux);
 	}

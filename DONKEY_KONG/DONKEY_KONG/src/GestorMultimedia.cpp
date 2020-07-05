@@ -74,12 +74,21 @@ void GestorMultimedia::imprimePausa() {
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	/*setTextColor(1, 1, 0);
-	setFont("fuentes/ARCADE_I.TTF", 22);
-	printxy("PAUSE", -2.5, 9);
-	setFont("fuentes/ARCADE_I.TTF", 10);
-	printxy("Pulse -P- para reaunudar la partida", -7, 8);
-	printxy("Pulse -M- para volver al menu", -6.5, 7);*/
+}
+
+void GestorMultimedia::imprimeVictoria() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Victoria.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1);		glVertex3f(-16, 0, 0.1);
+	glTexCoord2d(1, 1);		glVertex3f(16, 0, 0.1);
+	glTexCoord2d(1, 0);		glVertex3f(16, 16, 0.1);
+	glTexCoord2d(0, 0);		glVertex3f(-16, 16, 0.1);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 }
 
 void GestorMultimedia::playLose() {
