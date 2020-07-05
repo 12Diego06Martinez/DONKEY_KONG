@@ -6,11 +6,16 @@ public:
 	void imprimeInstrucciones();
 	void imprimeGameOver();
 	void imprimePausa();
+	void imprimeVictoria();
 	void playLose();
 	void playSalto();
 	void playSube();
 	void playBaja();
+	void playDesaparece();
+	void playPasaNivel();
 	void playMenu();
+	void playNivel();
 	void stopMenu();
+
 };
 

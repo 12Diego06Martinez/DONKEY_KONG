@@ -6,19 +6,24 @@
 #include "ListaMonedas.h"
 #include "ListaEnemigos.h"
 #include "GestorMultimedia.h"
+#include "ListaVidas.h"
+#include "Vacuna.h"
 
 class GestorNiveles
 {
 private:
 	Pared suelo;
-	Pared hueco1;
-	Pared hueco2;
+	ListaVidas vidas_icono;
 	Jugador player;
 	ListaPlataformas plataformas;
+	ListaPlataformas caja;
+	ListaPlataformas moviles;
+	ListaPlataformas evanescentes;
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
 	ListaEnemigos enemigos;
 	GestorMultimedia dj;
+	Vacuna cura;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -27,6 +32,7 @@ private:
 	int monedas_recogidas;
 	bool pasar_nivel;
 public:
+	GestorNiveles();
 	virtual ~GestorNiveles();
 	void cargaNivel();
 	void dibujaNivel();
@@ -36,6 +42,7 @@ public:
 	void recargaNivel();
 	//Setters
 	void subeNivel() { nivel++; }
+	void setNivel(int num) { nivel = num; }
 	//Getters
 	int getVidas() { return vidas; }
 	int getNivel() { return nivel; }

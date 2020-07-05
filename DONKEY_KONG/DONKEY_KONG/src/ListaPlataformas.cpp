@@ -74,3 +74,9 @@ Plataforma* ListaPlataformas::operator[](int pos) {
 
 	return lista[pos];
 }
+
+void ListaPlataformas::setPos() {
+	for (int i = 0; i < num; i++) {
+		lista[i]->setPos(0, i+10.5);
+	}
+}

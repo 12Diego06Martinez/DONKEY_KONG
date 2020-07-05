@@ -29,12 +29,11 @@ bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
 	float y_min = plataforma.limite1.y;
 	if (jugador.posicion.y <= y_max && jugador.posicion.y > y_min && jugador.posicion.x >= x_min && jugador.posicion.x<=x_max) {
 		jugador.setPos(jugador.posicion.x, plataforma.limite2.y);
-		jugador.isOnPlatform = true;
+		return true;
 	}
 	
 	else
-		jugador.isOnPlatform = false;
-	return jugador.isOnPlatform;
+		return false;
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
@@ -48,8 +47,8 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 }
 
 bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
-	float distancia = (escalera.limite2 - jugador.posicion).module();
-	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
+	float distancia = (escalera.limite1 - jugador.posicion).module();
+	if (distancia > 0.24 && distancia < 0.26 && jugador.isGoingDown == true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
 		return true;
 	}
@@ -95,9 +94,7 @@ bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 
 bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
 	float distancia = (jugador.posicion - enemigo.posicion).module();
-	if (distancia < 0.26 && !jugador.getSalto())
-		return true;
-	else if (distancia < 0.18 && jugador.getSalto())
+	if (distancia < 0.26 && !jugador.getSalto() || distancia < 0.18 && jugador.getSalto())
 		return true;
 	else
 		return false;
@@ -121,6 +118,45 @@ void Interaccion::reboteEnemigos(Enemigo& enemigo, Plataforma plataforma) {
 		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
 }
 
+bool Interaccion::caidaVacio(Jugador& jugador, Plataforma plataforma) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+
+	if (jugador.posicion.x > x_max&& jugador.posicion.y == y_max || jugador.posicion.x < x_min && jugador.posicion.y == y_max)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::detectaEvanescente(Jugador& jugador, Plataforma plataforma) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+
+	if (jugador.posicion.x < x_max && jugador.posicion.x > x_min && jugador.posicion.y == y_max)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::cogeVacuna(Jugador& jugador, Vacuna vacuna) {
+	float distancia = (jugador.posicion - vacuna.posicion).module();
+	if (distancia < 0.5)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::detectaCaja(Jugador& jugador, Plataforma plataforma) {
+	float distancia = (jugador.posicion-plataforma.posicion).module();
+	if (distancia < 1.78 ) {
+		jugador.setVel(0.0f,0.0f);
+		return true;
+	}
+	else
+		return false;
+}
 ////////////////////////////////////////////////////////
 void Interaccion::persigueJugador(Jugador& jugador, Enemigo& enemigo) {
 	if (enemigo.posicion.x > jugador.posicion.x) {

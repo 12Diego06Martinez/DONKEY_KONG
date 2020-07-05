@@ -2,7 +2,8 @@
 #define MAX_NUM 20
 
 #include "Plataforma.h"
-#include "Jugador.h"
+#include "PlataformaMovil.h"
+#include "PlataformaEvanescente.h"
 
 class ListaPlataformas 
 {
@@ -14,9 +15,11 @@ public:
 	virtual ~ListaPlataformas();
 	bool Agregar(Plataforma* plataforma);
 	void Dibuja();
+	void setPos();
 	void Destruir();
 	void Delete(int index); //elimina esfera en la posicion indicada
 	void Delete(Plataforma* plataforma); //elimina la esfera apuntada por el puntero
 	int getNum() { return num; }
 	Plataforma* operator [](int pos);
+	
 };
