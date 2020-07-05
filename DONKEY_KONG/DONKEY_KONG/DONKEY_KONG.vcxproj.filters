@@ -114,6 +114,9 @@
     <ClCompile Include="src\PlataformaMovil.cpp">
       <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
+    <ClCompile Include="src\PlataformaEvanescente.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Escalera.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="src\PlataformaMovil.h">
       <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlataformaEvanescente.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

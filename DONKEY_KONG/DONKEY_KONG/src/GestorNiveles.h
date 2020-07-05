@@ -11,10 +11,10 @@ class GestorNiveles
 {
 private:
 	Pared suelo;
-	Pared hueco1;
-	Pared hueco2;
 	Jugador player;
 	ListaPlataformas plataformas;
+	ListaPlataformas moviles;
+	ListaPlataformas evanescentes;
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
 	ListaEnemigos enemigos;

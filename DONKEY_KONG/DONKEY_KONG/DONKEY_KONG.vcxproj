@@ -167,6 +167,7 @@
     <ClCompile Include="src\Escalera.cpp" />
     <ClCompile Include="src\Jugador.cpp" />
     <ClCompile Include="src\Plataforma.cpp" />
+    <ClCompile Include="src\PlataformaEvanescente.cpp" />
     <ClCompile Include="src\PlataformaMovil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="src\Jugador.h" />
     <ClInclude Include="src\Paths.h" />
     <ClInclude Include="src\Plataforma.h" />
+    <ClInclude Include="src\PlataformaEvanescente.h" />
     <ClInclude Include="src\PlataformaMovil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

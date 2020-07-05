@@ -8,7 +8,7 @@
 //////////////////////////////////////////DESTRUCTOR////////////////////////
 GestorNiveles::GestorNiveles() {
 	//Control juego
-	nivel = 1;
+	nivel = 2;
 }
 
 GestorNiveles::~GestorNiveles() {
@@ -31,8 +31,6 @@ void GestorNiveles::cargaNivel() {
 		player.setVel(0.0f, 0.0f);
 		//Pared
 		suelo.setLimites(-9, -4, 9, -3);
-		//hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
-		//hueco2.setLimites(-2, 9.75, 0, 10.15);
 		//Plataformas
 		plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
 		plataformas.Agregar(new Plataforma(5, 2, 8, 0.3, plataforma_8_5));
@@ -76,17 +74,26 @@ void GestorNiveles::cargaNivel() {
 		//Pared
 		suelo.setLimites(-13, -4, 13, -3);
 		//Plataformas
-		plataformas.Agregar(new PlataformaMovil(0, -2, 26, 0.3, plataforma_18));
-		plataformas.Agregar(new PlataformaMovil(0, 2, 8, 0.3, plataforma_11));
+		plataformas.Agregar(new Plataforma(0, -2, 26, 0.3, plataforma_18));
+		//plataformas.Agregar(new PlataformaMovil(0, 2, 8, 0.3, plataforma_11));
 		plataformas.Agregar(new Plataforma(-9, 2, 6, 0.3, plataforma_7));
 		plataformas.Agregar(new Plataforma(9, 2, 6, 0.3, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 6, 8, 0.3, plataforma_11));
+		//plataformas.Agregar(new PlataformaMovil(0, 6, 8, 0.3, plataforma_11));
 		plataformas.Agregar(new Plataforma(-8.5, 6, 5, 0.3, plataforma_7));
 		plataformas.Agregar(new Plataforma(8.5, 6, 5, 0.3, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 10, 8, 0.3, plataforma_11));
+		//plataformas.Agregar(new PlataformaMovil(0, 10, 8, 0.3, plataforma_11));
 		plataformas.Agregar(new Plataforma(-8, 10, 4, 0.3, plataforma_7));
 		plataformas.Agregar(new Plataforma(8, 10, 4, 0.3, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.3, plataforma_18));
+		//plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.3, plataforma_18));
+		for (int i = 0; i < 4; i++) {
+			moviles.Agregar(new PlataformaMovil(0, 2 + 4 * i, 8, 0.3, plataforma_11));
+		}
+
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 4; j++) {
+				evanescentes.Agregar(new PlataformaEvanescente(-5 + 10 * i, -2 + 4 * j, 2, 0.3, plataforma_evanescente));
+			}
+		}
 		//Escaleras
 		escaleras.Agregar(new Escalera(-3, -4, 0.5, 4));
 		escaleras.Agregar(new Escalera(-11.75, 0, 0.5, 4));
@@ -144,6 +151,8 @@ void GestorNiveles::dibujaNivel() {
 		//Plataformas
 		suelo.Dibuja();
 		plataformas.Dibuja();
+		evanescentes.Dibuja();
+		moviles.Dibuja();
 		//Escaleras
 		escaleras.Dibuja();
 		//Monedas
@@ -167,13 +176,9 @@ void GestorNiveles::mueveNivel() {
 			vidas--;
 		}
 		//InteraccionListas::persiguenJugador(player, enemigos);
-		//Jugador con pared
+		//Jugador con plataformas
 		Interaccion::reboteExterior(player, suelo);
-	/*	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
-			player.setAcel(0.0, -20.0f);
-			player.setFalling(true);
-		}*/
-		if (InteraccionListas::caidaVacio(player, plataformas) != 0) {
+		if (InteraccionListas::caidaVacio(player, plataformas) != 0){
 			player.setAcel(0.0, -20.0f);
 			player.setFalling(true);
 		}
@@ -219,19 +224,15 @@ void GestorNiveles::mueveNivel() {
 		//	vidas--;
 		//}
 		//InteraccionListas::persiguenJugador(player, enemigos);
-		//Jugador con pared
+		//Jugador con plataformas
 		Interaccion::reboteExterior(player, suelo);
-		/*if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
-			player.setAcel(0.0, -20.0f);
-			player.setFalling(true);
-		}*/
-		if (InteraccionListas::caidaVacio(player, plataformas) != 0) {
+		if (InteraccionListas::caidaVacio(player, plataformas) != 0 || InteraccionListas::caidaVacio(player, moviles) != 0) {
 			player.setAcel(0.0, -20.0f);
 			player.setFalling(true);
 		}
 		//Salto
 		if (player.getSalto() || player.getFalling()) {
-			if (InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
+			if (InteraccionListas::sobrePlataforma(player, plataformas) != 0 || InteraccionListas::sobrePlataforma(player, moviles) != 0) {
 				player.setAcel(0.0f, 0.0f);
 				player.setVel(player.getVel().x, 0);
 				player.setSalto(false);
@@ -264,7 +265,7 @@ void GestorNiveles::mueveNivel() {
 void GestorNiveles::teclasNivel(unsigned char key) {
 	switch (key) {
 	case ' ':
-		if (InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
+		if (InteraccionListas::sobrePlataforma(player, plataformas) != 0 || InteraccionListas::sobrePlataforma(player, moviles) != 0) {
 			player.setAcel(0, -15);
 			player.setVel(player.getVel().x, 4.0f);
 			player.setSalto(true);
@@ -293,7 +294,7 @@ void GestorNiveles::flechasNivel(unsigned char key) {
 		break;
 
 	case GLUT_KEY_UP:
-		if (InteraccionListas::detectaEscalerasSubir(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
+		if (InteraccionListas::detectaEscalerasSubir(player, escaleras) != 0 && (InteraccionListas::sobrePlataforma(player, plataformas) != 0 || InteraccionListas::sobrePlataforma(player, moviles) != 0)) {
 			player.setVel(0.0f, 5.0f);
 			player.setUp(true);
 			dj.playSube();
@@ -301,7 +302,7 @@ void GestorNiveles::flechasNivel(unsigned char key) {
 		break;
 
 	case GLUT_KEY_DOWN:
-		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
+		if (InteraccionListas::detectaEscalerasBajar(player, escaleras) != 0 && (InteraccionListas::sobrePlataforma(player, plataformas) != 0 || InteraccionListas::sobrePlataforma(player, moviles) != 0)) {
 			player.setVel(0.0f, -5.0f);
 			player.setDown(true);
 			dj.playBaja();

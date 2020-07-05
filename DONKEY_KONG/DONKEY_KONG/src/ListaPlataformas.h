@@ -3,6 +3,7 @@
 
 #include "Plataforma.h"
 #include "PlataformaMovil.h"
+#include "PlataformaEvanescente.h"
 
 class ListaPlataformas 
 {

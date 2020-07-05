@@ -120,6 +120,27 @@ void Interaccion::reboteEnemigos(Enemigo& enemigo, Plataforma plataforma) {
 		enemigo.setVel(-enemigo.velocidad.x, 0.0f);
 }
 
+bool Interaccion::caidaVacio(Jugador& jugador, Plataforma plataforma) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+
+	if (jugador.posicion.x > x_max&& jugador.posicion.y == y_max || jugador.posicion.x < x_min && jugador.posicion.y == y_max)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::detectaEvanescente(Jugador& jugador, Plataforma plataforma) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+
+	if (jugador.posicion.x < x_max && jugador.posicion.x > x_min && jugador.posicion.y == y_max)
+		return true;
+	else
+		return false;
+}
 ////////////////////////////////////////////////////////
 void Interaccion::persigueJugador(Jugador& jugador, Enemigo& enemigo) {
 	if (enemigo.posicion.x > jugador.posicion.x) {
@@ -131,15 +152,4 @@ void Interaccion::persigueJugador(Jugador& jugador, Enemigo& enemigo) {
 		if (jugador.velocidad.x < 0 && enemigo.velocidad.x < 0)
 			enemigo.setVel(-enemigo.velocidad.x, 0.0f);
 	}
-}
-
-bool Interaccion::caidaVacio(Jugador& jugador, Plataforma plataforma) {
-	float x_max = plataforma.limite2.x;
-	float x_min = plataforma.limite1.x;
-	float y_max = plataforma.limite2.y;
-
-	if (jugador.posicion.x > x_max  && jugador.posicion.y == y_max || jugador.posicion.x < x_min && jugador.posicion.y == y_max)
-		return true;
-	else
-		return false;
 }

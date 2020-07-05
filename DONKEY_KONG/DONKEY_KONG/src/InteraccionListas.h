@@ -19,6 +19,7 @@ public:
 	static void colisionEnemigos(ListaEnemigos& enemigos);
 	static void rebotePlataformas(ListaPlataformas& plataformas, ListaEnemigos& enemigos);
 	static Plataforma* caidaVacio(Jugador& jugador, ListaPlataformas plataformas);
+	static Plataforma* detectaEvanescente(Jugador& jugador, ListaPlataformas plataformas);
 	///////////////////////////////
 	static void persiguenJugador(Jugador& jugador, ListaEnemigos& enemigos);
 };
