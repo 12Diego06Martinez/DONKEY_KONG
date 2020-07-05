@@ -9,6 +9,7 @@ private:
 	Pantallas estado;
 	GestorNiveles miMundo;
 	GestorMultimedia multi;
+	bool musica;
 public:
 	Coordinador();
 	virtual ~Coordinador();

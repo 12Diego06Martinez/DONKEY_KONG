@@ -11,7 +11,11 @@ public:
 	void playSalto();
 	void playSube();
 	void playBaja();
+	void playDesaparece();
+	void playPasaNivel();
 	void playMenu();
+	void playNivel();
 	void stopMenu();
+
 };
 

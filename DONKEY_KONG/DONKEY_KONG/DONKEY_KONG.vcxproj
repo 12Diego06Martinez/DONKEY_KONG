@@ -161,6 +161,7 @@
     <ClCompile Include="src\ListaEscaleras.cpp" />
     <ClCompile Include="src\ListaMonedas.cpp" />
     <ClCompile Include="src\ListaPlataformas.cpp" />
+    <ClCompile Include="src\ListaVidas.cpp" />
     <ClCompile Include="src\Moneda.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\DonkeyKong.cpp" />
@@ -169,6 +170,8 @@
     <ClCompile Include="src\Plataforma.cpp" />
     <ClCompile Include="src\PlataformaEvanescente.cpp" />
     <ClCompile Include="src\PlataformaMovil.cpp" />
+    <ClCompile Include="src\Vacuna.cpp" />
+    <ClCompile Include="src\Vidas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="src\ListaEscaleras.h" />
     <ClInclude Include="src\ListaMonedas.h" />
     <ClInclude Include="src\ListaPlataformas.h" />
+    <ClInclude Include="src\ListaVidas.h" />
     <ClInclude Include="src\Moneda.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Escalera.h" />
@@ -192,6 +196,8 @@
     <ClInclude Include="src\Plataforma.h" />
     <ClInclude Include="src\PlataformaEvanescente.h" />
     <ClInclude Include="src\PlataformaMovil.h" />
+    <ClInclude Include="src\Vacuna.h" />
+    <ClInclude Include="src\Vidas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,27 +1,26 @@
-#include "ListaPlataformas.h"
-#include "Interaccion.h"
+#include "ListaVidas.h"
 
 ///////////////////////////////////CONSTRUCTOR///////////////////////
-ListaPlataformas::ListaPlataformas() {
+ListaVidas::ListaVidas() {
 	num = 0;
 	for (int i = 0; i < MAX_NUM; i++) {
 		lista[i] = 0;
 	}
 }
 
-ListaPlataformas::~ListaPlataformas() {
+ListaVidas::~ListaVidas() {
 
 }
 
 ///////////////////////////////////MÉTODOS//////////////////////////
-bool ListaPlataformas::Agregar(Plataforma* plataforma) {
+bool ListaVidas::Agregar(Vidas* vida) {
 	if (num < MAX_NUM) {
 		for (int i = 0; i < num; i++) {
-			if (lista[i] == plataforma) {
+			if (lista[i] == vida) {
 				return false;
 			}
 		}
-		lista[num] = plataforma;
+		lista[num] = vida;
 		num++;
 		return true;
 	}
@@ -29,20 +28,20 @@ bool ListaPlataformas::Agregar(Plataforma* plataforma) {
 		return false;
 }
 
-void ListaPlataformas::Dibuja() {
+void ListaVidas::Dibuja() {
 	for (int i = 0; i < num; i++) {
 		lista[i]->Dibuja();
 	}
 }
 
-void ListaPlataformas::Destruir() {
+void ListaVidas::Destruir() {
 	for (int i = 0; i < num; i++) {
 		delete lista[i];
 	}
 	num = 0;
 }
 
-void ListaPlataformas::Delete(int index) {
+void ListaVidas::Delete(int index) {
 	if ((index < 0) || (index >= num)) {
 		return;
 	}
@@ -50,22 +49,22 @@ void ListaPlataformas::Delete(int index) {
 	num--;
 	for (int i = index; i < num; i++) {
 		//Recorremos la lista desde la posición indicada hasta el 
-		//final de la lista. Si por ejemplo eliminamos la plataforma en la posición 2, Muevemos 
+		//final de la lista. Si por ejemplo eliminamos la Vida en la posición 2, Muevemos 
 		//la posición 3 a la 2, la 4 a la 3 y así sucesivamente hasta num
 		lista[i] = lista[i + 1];
 	}
 }
 
-void ListaPlataformas::Delete(Plataforma* plataforma) {
+void ListaVidas::Delete(Vidas* vida) {
 	for (int i = 0; i < num; i++) {
-		if (lista[i] == plataforma) {
+		if (lista[i] == vida) {
 			Delete(i);
 			return;
 		}
 	}
 }
 
-Plataforma* ListaPlataformas::operator[](int pos) {
+Vidas* ListaVidas::operator[](int pos) {
 	if (pos >= num)//si me paso, devuelvo la ultima   
 		pos = num - 1;
 
@@ -73,10 +72,4 @@ Plataforma* ListaPlataformas::operator[](int pos) {
 		pos = 0;
 
 	return lista[pos];
-}
-
-void ListaPlataformas::setPos() {
-	for (int i = 0; i < num; i++) {
-		lista[i]->setPos(0, i+10.5);
-	}
 }

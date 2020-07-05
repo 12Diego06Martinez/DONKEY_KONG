@@ -114,8 +114,17 @@
     <ClCompile Include="src\PlataformaMovil.cpp">
       <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
+    <ClCompile Include="src\ListaVidas.cpp">
+      <Filter>Archivos de origen\OBJETOS\LISTAS</Filter>
+    </ClCompile>
     <ClCompile Include="src\PlataformaEvanescente.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vacuna.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vidas.cpp">
+      <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +188,17 @@
     <ClInclude Include="src\PlataformaMovil.h">
       <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
+    <ClInclude Include="src\ListaVidas.h">
+      <Filter>Archivos de encabezado\OBJETOS\LISTAS</Filter>
+    </ClInclude>
     <ClInclude Include="src\PlataformaEvanescente.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vacuna.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vidas.h">
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -98,6 +98,14 @@ Plataforma* InteraccionListas::detectaEvanescente(Jugador& jugador, ListaPlatafo
 	}
 	return 0;
 }
+
+Plataforma* InteraccionListas::detectaCaja(Jugador& jugador, ListaPlataformas plataforma) {
+	for (int i = 0; i < plataforma.getNum(); i++) {
+		if (Interaccion::detectaCaja(jugador, *plataforma[i]))
+			return plataforma[i];
+	}
+	return 0;
+}
 /////////////////////////////
 void InteraccionListas::persiguenJugador(Jugador& jugador, ListaEnemigos& enemigos) {
 	for (int i = 0; i < enemigos.getNum(); i++) {

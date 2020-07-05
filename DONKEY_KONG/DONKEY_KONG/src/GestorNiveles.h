@@ -6,19 +6,24 @@
 #include "ListaMonedas.h"
 #include "ListaEnemigos.h"
 #include "GestorMultimedia.h"
+#include "ListaVidas.h"
+#include "Vacuna.h"
 
 class GestorNiveles
 {
 private:
 	Pared suelo;
+	ListaVidas vidas_icono;
 	Jugador player;
 	ListaPlataformas plataformas;
+	ListaPlataformas caja;
 	ListaPlataformas moviles;
 	ListaPlataformas evanescentes;
 	ListaEscaleras escaleras;
 	ListaMonedas monedas;
 	ListaEnemigos enemigos;
 	GestorMultimedia dj;
+	Vacuna cura;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;

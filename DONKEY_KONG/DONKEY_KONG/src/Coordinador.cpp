@@ -23,16 +23,15 @@ void Coordinador::Dibuja() {
 		multi.imprimeInstrucciones();
 	}
 	else if (estado == JUEGO) {
-		multi.stopMenu();
 		miMundo.dibujaNivel();
+		multi.playNivel();
 	}
 	else if (estado == GAMEOVER) {
-		multi.stopMenu();
 		multi.imprimeGameOver();
 		miMundo.recargaNivel();
 	}
 	else if (estado == PAUSA) {
-		multi.stopMenu();
+		multi.playNivel();
 		miMundo.dibujaNivel();
 		multi.imprimePausa();
 	}
@@ -50,14 +49,15 @@ void Coordinador::Mueve() {
 		}
 			
 		if (miMundo.getValidacion()) {
-			if (miMundo.getNivel() <= 3) {
+			if (miMundo.getNivel() <= 2) {
 				miMundo.subeNivel();
 				miMundo.recargaNivel();
 				miMundo.cargaNivel();
+				multi.playPasaNivel();
 				estado = JUEGO;
 			}
 				
-			if (miMundo.getNivel() > 3) {
+			if (miMundo.getNivel() > 2) {
 				estado = FIN;
 			}
 		}	
@@ -87,6 +87,7 @@ void Coordinador::Tecla(unsigned char key) {
 	else if (estado == INSTRUCCIONES) {
 		if (key == 'C' || key == 'c') {
 			miMundo.cargaNivel();
+			multi.playNivel();
 			estado = JUEGO;
 		}
 		if (key == 'H' || key == 'h') {
@@ -94,6 +95,7 @@ void Coordinador::Tecla(unsigned char key) {
 		}
 	}
 	else if (estado == JUEGO) {
+		multi.playNivel();
 		miMundo.teclasNivel(key);
 		if (key == 'P' || key == 'p') {
 			estado = PAUSA;
@@ -102,6 +104,7 @@ void Coordinador::Tecla(unsigned char key) {
 	else if (estado == GAMEOVER) {
 		if (key == 'C' || key == 'c') {
 			miMundo.cargaNivel();
+			//multi.playNivel();
 			estado = JUEGO;
 		}
 		else if (key == 'S' || key == 's') {
@@ -114,6 +117,7 @@ void Coordinador::Tecla(unsigned char key) {
 	}
 	else if (estado == PAUSA) {
 		if (key == 'P' || key == 'p') {
+			//multi.playNivel();
 			estado = JUEGO;
 		}
 		else if (key == 'M' || key == 'm') {

@@ -2,10 +2,12 @@
 
 #include "Jugador.h"
 #include "Plataforma.h"
+#include "PlataformaMovil.h"
 #include "Pared.h"
 #include "Escalera.h"
 #include "Moneda.h"
 #include "Enemigo.h"
+#include "Vacuna.h"
 
 class Interaccion
 {
@@ -25,6 +27,8 @@ public:
 	static void reboteEnemigos(Enemigo& enemigo, Plataforma plataforma);
 	static bool caidaVacio(Jugador& jugador, Plataforma plataforma);
 	static bool detectaEvanescente(Jugador& jugador, Plataforma plataforma);
+	static bool cogeVacuna(Jugador& jugador, Vacuna vacuna);
+	static bool detectaCaja(Jugador& jugador, Plataforma plataforma);
 	////////////////////////////////////////////
 	static void persigueJugador(Jugador& jugador, Enemigo& enemigo);
 };

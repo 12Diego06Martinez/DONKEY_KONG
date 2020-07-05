@@ -8,5 +8,6 @@ private:
 public:
 	PlataformaMovil(float px, float py, float ancho, float alto, const char* path) :Plataforma(px, py, ancho, alto, path) {}
 	void Mueve(float t);
+	void setVel(float vx, float vy);
 };
 

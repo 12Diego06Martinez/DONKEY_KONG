@@ -94,9 +94,7 @@ bool Interaccion::colisionMoneda(Jugador& jugador, Moneda moneda) {
 
 bool Interaccion::colisionEnemigo(Jugador& jugador, Enemigo& enemigo) {
 	float distancia = (jugador.posicion - enemigo.posicion).module();
-	if (distancia < 0.26 && !jugador.getSalto())
-		return true;
-	else if (distancia < 0.18 && jugador.getSalto())
+	if (distancia < 0.26 && !jugador.getSalto() || distancia < 0.18 && jugador.getSalto())
 		return true;
 	else
 		return false;
@@ -138,6 +136,24 @@ bool Interaccion::detectaEvanescente(Jugador& jugador, Plataforma plataforma) {
 
 	if (jugador.posicion.x < x_max && jugador.posicion.x > x_min && jugador.posicion.y == y_max)
 		return true;
+	else
+		return false;
+}
+
+bool Interaccion::cogeVacuna(Jugador& jugador, Vacuna vacuna) {
+	float distancia = (jugador.posicion - vacuna.posicion).module();
+	if (distancia < 0.5)
+		return true;
+	else
+		return false;
+}
+
+bool Interaccion::detectaCaja(Jugador& jugador, Plataforma plataforma) {
+	float distancia = (jugador.posicion-plataforma.posicion).module();
+	if (distancia < 1.78 ) {
+		jugador.setVel(0.0f,0.0f);
+		return true;
+	}
 	else
 		return false;
 }

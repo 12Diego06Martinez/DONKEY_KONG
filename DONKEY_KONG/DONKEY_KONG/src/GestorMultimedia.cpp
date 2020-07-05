@@ -64,22 +64,10 @@ void GestorMultimedia::imprimeGameOver() {
 void GestorMultimedia::imprimePausa() {
 	setTextColor(1, 1, 0);
 	setFont("fuentes/FRANKNPLANK.TTF", 66);
-	printxy("PAUSE", -1, 9);
+	printxy("PAUSE", -2, 9);
 	setFont("fuentes/game_over.ttf", 48);
-	printxy("Pulse -P- para reaunudar la partida", -6.5, 7.5);
-	printxy("Pulse -M- para volver al menu", -7, 6);
-	/*glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/pausa fondo.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glTexCoord2d(0, 1);		glVertex3f(-16, 0, 0.1);
-	glTexCoord2d(1, 1);		glVertex3f(16, 0, 0.1);
-	glTexCoord2d(1, 0);		glVertex3f(16, 16, 0.1);
-	glTexCoord2d(0, 0);		glVertex3f(-16, 16, 0.1);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);*/
+	printxy("Pulse -P- para reaunudar la partida", -6., 7.5);
+	printxy("Pulse -M- para volver al menu", -5, 5);
 }
 
 void GestorMultimedia::imprimeVictoria() {
@@ -113,10 +101,23 @@ void GestorMultimedia::playBaja() {
 	play("sonidos/bajar.wav");
 }
 
+void GestorMultimedia::playDesaparece() {
+	play("sonidos/pop.wav");
+}
+
+void GestorMultimedia::playPasaNivel() {
+	play("sonidos/cambionivel.wav");
+}
+
 void GestorMultimedia::playMenu() {
 	playMusica("sonidos/MainMenu.mp3", true);
+}
+
+void GestorMultimedia::playNivel() {
+	playMusica("sonidos/MusicaNiveles.mp3", true);
 }
 
 void GestorMultimedia::stopMenu() {
 	stopMusica();
 }
+
