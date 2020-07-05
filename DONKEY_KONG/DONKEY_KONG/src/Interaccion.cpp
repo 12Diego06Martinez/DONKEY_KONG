@@ -29,12 +29,11 @@ bool Interaccion::sobrePlataforma(Jugador& jugador, Plataforma plataforma) {
 	float y_min = plataforma.limite1.y;
 	if (jugador.posicion.y <= y_max && jugador.posicion.y > y_min && jugador.posicion.x >= x_min && jugador.posicion.x<=x_max) {
 		jugador.setPos(jugador.posicion.x, plataforma.limite2.y);
-		jugador.isOnPlatform = true;
+		return true;
 	}
 	
 	else
-		jugador.isOnPlatform = false;
-	return jugador.isOnPlatform;
+		return false;
 }
 
 bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
@@ -48,8 +47,15 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 }
 
 bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
-	float distancia = (escalera.limite2 - jugador.posicion).module();
+	/*float distancia = (escalera.limite2 - jugador.posicion).module();
 	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
+		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
+		return true;
+	}
+	else
+		return false;*/
+	float distancia = (escalera.limite1 - jugador.posicion).module();
+	if (distancia > 0.24 && distancia < 0.26 && jugador.isGoingDown == true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
 		return true;
 	}

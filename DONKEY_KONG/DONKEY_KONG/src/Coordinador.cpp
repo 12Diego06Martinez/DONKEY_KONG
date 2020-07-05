@@ -6,6 +6,7 @@ using namespace ETSIDI;
 //////////////////////////////////////CONSTRUCTOR////////////////////////////////
 Coordinador::Coordinador() {
 	estado = MENU;
+	miMundo.recargaNivel();
 }
 
 Coordinador::~Coordinador() {
@@ -16,7 +17,7 @@ Coordinador::~Coordinador() {
 void Coordinador::Dibuja() {
 	if (estado == MENU) {
 		multi.imprimeMenu();
-		multi.playMenu();
+		//multi.playMenu();
 	}
 	else if (estado == INSTRUCCIONES) {
 		multi.imprimeInstrucciones();
@@ -53,8 +54,12 @@ void Coordinador::Mueve() {
 			estado = GAMEOVER;
 		else if (miMundo.getValidacion()) {
 			miMundo.subeNivel();
-			if(miMundo.getNivel()<=3)
+			if (miMundo.getNivel() <= 3) {
+				miMundo.recargaNivel();
+				miMundo.cargaNivel();
 				estado = GANA;
+			}
+				
 			if (miMundo.getNivel() > 3)
 				estado = FIN;
 		}	

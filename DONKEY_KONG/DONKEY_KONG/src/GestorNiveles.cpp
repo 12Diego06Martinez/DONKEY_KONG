@@ -6,6 +6,14 @@
 #include "glut.h"
 
 //////////////////////////////////////////DESTRUCTOR////////////////////////
+GestorNiveles::GestorNiveles() {
+	//Control juego
+	nivel = 2;
+	vidas = 10;
+	monedas_recogidas = 0;
+	pasar_nivel = false;
+}
+
 GestorNiveles::~GestorNiveles() {
 	
 }
@@ -16,11 +24,6 @@ void GestorNiveles::cargaNivel() {
 	x_ojo = 0;
 	y_ojo = 7.5;
 	z_ojo = 30;
-	//Control juego
-	nivel = 2;
-	vidas = 3;
-	monedas_recogidas = 0;
-	pasar_nivel = false;
 	//Valores iniciales cada nivel
 	if (nivel == 1) {
 		player.setPos(-8, -1.85);
@@ -69,20 +72,56 @@ void GestorNiveles::cargaNivel() {
 	if (nivel == 2) {
 		player.setPos(-8, -1.85);
 		player.setVel(0.0f, 0.0f);
+		//Pared
+		suelo.setLimites(-13, -4, 13, -3);
 		//Plataformas
-		plataformas.Agregar(new PlataformaMovil(0, -2, 26, 0.5, plataforma_18));
-		plataformas.Agregar(new PlataformaMovil(0, 2, 8, 0.5, plataforma_11));
-		plataformas.Agregar(new Plataforma(-9, 2, 6, 0.5, plataforma_7));
-		plataformas.Agregar(new Plataforma(9, 2, 6, 0.5, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 6, 8, 0.5, plataforma_11));
-		plataformas.Agregar(new Plataforma(-8.5, 6, 5, 0.5, plataforma_7));
-		plataformas.Agregar(new Plataforma(8.5, 6, 5, 0.5, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 10, 8, 0.5, plataforma_11));
-		plataformas.Agregar(new Plataforma(-8, 10, 4, 0.5, plataforma_7));
-		plataformas.Agregar(new Plataforma(8, 10, 4, 0.5, plataforma_7));
-		plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.5, plataforma_18));
-		plataformas.Agregar(new Plataforma(-7.5, 10, 3, 0.5, plataforma_7));
-		plataformas.Agregar(new Plataforma(7.5, 10, 3, 0.5, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, -2, 26, 0.3, plataforma_18));
+		plataformas.Agregar(new PlataformaMovil(0, 2, 8, 0.3, plataforma_11));
+		plataformas.Agregar(new Plataforma(-9, 2, 6, 0.3, plataforma_7));
+		plataformas.Agregar(new Plataforma(9, 2, 6, 0.3, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 6, 8, 0.3, plataforma_11));
+		plataformas.Agregar(new Plataforma(-8.5, 6, 5, 0.3, plataforma_7));
+		plataformas.Agregar(new Plataforma(8.5, 6, 5, 0.3, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 10, 8, 0.3, plataforma_11));
+		plataformas.Agregar(new Plataforma(-8, 10, 4, 0.3, plataforma_7));
+		plataformas.Agregar(new Plataforma(8, 10, 4, 0.3, plataforma_7));
+		plataformas.Agregar(new PlataformaMovil(0, 14, 8, 0.3, plataforma_18));
+		//plataformas.Agregar(new Plataforma(-7.5, 14, 3, 0.5, plataforma_7));
+		//plataformas.Agregar(new Plataforma(7.5, 14, 3, 0.5, plataforma_7));
+		//Escaleras
+		escaleras.Agregar(new Escalera(-3, -4, 0.5, 4));
+		escaleras.Agregar(new Escalera(-11.75, 0, 0.5, 4));
+		escaleras.Agregar(new Escalera(11.75, 0, 0.5, 4));
+		escaleras.Agregar(new Escalera(0, 0, 0.5, 4));
+		escaleras.Agregar(new Escalera(-10.75, 4, 0.5, 4));
+		escaleras.Agregar(new Escalera(10.75, 4, 0.5, 4));
+		escaleras.Agregar(new Escalera(-3.5, 4, 0.5, 4));
+		escaleras.Agregar(new Escalera(3.5, 4, 0.5, 4));
+		escaleras.Agregar(new Escalera(-9.75, 8, 0.5, 4));
+		escaleras.Agregar(new Escalera(9.75, 8, 0.5, 4));
+		escaleras.Agregar(new Escalera(0, 8, 0.5, 4));
+		//Monedas
+		monedas.Agregar(new Moneda(-4, -1.4, 0.7, 0.7));
+		monedas.Agregar(new Moneda(2, -1.4, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-1, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(6, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-3, 6.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(0, 6.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(6, 6.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-2, 10.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(3.5, 10.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(1, 14.65, 0.7, 0.7));
+		//Enemigos
+		enemigos.Agregar(new Enemigo(1, 2.25));
+		enemigos.Agregar(new Enemigo(6, 2.25));
+		enemigos.Agregar(new Enemigo(-3, 2.25));
+		enemigos.Agregar(new Enemigo(5, 6.25));
+		enemigos.Agregar(new Enemigo(-6, 6.25));
+		enemigos.Agregar(new Enemigo(-2, 10.25));
+		enemigos.Agregar(new Enemigo(1, 14.25));
+		enemigos.Agregar(new Enemigo(10, 14.25));
+		enemigos.Agregar(new Enemigo(-9, 14.25));
+
 	}
 }
 
@@ -107,12 +146,20 @@ void GestorNiveles::dibujaNivel() {
 		//Jugador
 		player.Dibuja();
 		//Plataformas
+		suelo.Dibuja();
 		plataformas.Dibuja();
+		//Escaleras
+		escaleras.Dibuja();
+		//Monedas
+		monedas.Dibuja();
+		//Enemigos
+		enemigos.Dibuja();
 	}
 }
 
 void GestorNiveles::mueveNivel() {
 	player.Mueve(0.025f);
+
 	if (nivel == 1) {
 		//Enemigos
 		enemigos.Mueve(0.025f);
@@ -158,6 +205,54 @@ void GestorNiveles::mueveNivel() {
 				pasar_nivel = true;
 		}
 		monedas.Delete(aux);
+	}
+
+	if(nivel==2){
+		//Enemigos
+		enemigos.Mueve(0.025f);
+		InteraccionListas::rebotePlataformas(plataformas, enemigos);
+		InteraccionListas::colisionEnemigos(enemigos);
+		////Jugador con enemigos
+		//if (InteraccionListas::colisionJugador(player, enemigos) != 0) {
+		//	dj.playLose();
+		//	vidas--;
+		//}
+		//InteraccionListas::persiguenJugador(player, enemigos);
+		//Jugador con pared
+		Interaccion::reboteExterior(player, suelo);
+		/*if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
+			player.setAcel(0.0, -20.0f);
+			player.setFalling(true);
+		}*/
+		//Salto
+		if (player.getSalto() || player.getFalling()) {
+			if (InteraccionListas::sobrePlataforma(player, plataformas) != 0) {
+				player.setAcel(0.0f, 0.0f);
+				player.setVel(player.getVel().x, 0);
+				player.setSalto(false);
+				player.setFalling(false);
+			}
+		}
+		//Jugador con escaleras
+		if (InteraccionListas::jugadorArriba(player, escaleras) != 0) {
+			player.setVel(0.0f, 0.0f);
+			player.setUp(false);
+		}
+
+		if (InteraccionListas::jugadorAbajo(player, escaleras) != 0) {
+			player.setVel(0.0f, 0.0f);
+			player.setDown(false);
+		}
+		//Jugador con monedas
+		Moneda* aux = InteraccionListas::cogeMonedas(player, monedas);
+		if (aux != 0) {
+			if (monedas_recogidas < 9)
+				monedas_recogidas++;
+			else
+				pasar_nivel = true;
+		}
+		monedas.Delete(aux);
+	
 	}
 }
 

@@ -27,6 +27,7 @@ private:
 	int monedas_recogidas;
 	bool pasar_nivel;
 public:
+	GestorNiveles();
 	virtual ~GestorNiveles();
 	void cargaNivel();
 	void dibujaNivel();
