@@ -37,6 +37,7 @@ public:
 	void recargaNivel();
 	//Setters
 	void subeNivel() { nivel++; }
+	void setNivel(int num) { nivel = num; }
 	//Getters
 	int getVidas() { return vidas; }
 	int getNivel() { return nivel; }

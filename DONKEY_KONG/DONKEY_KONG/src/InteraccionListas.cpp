@@ -83,6 +83,15 @@ void InteraccionListas::rebotePlataformas(ListaPlataformas& plataformas, ListaEn
 	}
 }
 
+Plataforma* InteraccionListas::caidaVacio(Jugador& jugador, ListaPlataformas plataformas) {
+	for (int i = 0; i < plataformas.getNum(); i++) {
+		if (Interaccion::caidaVacio(jugador, *plataformas[i]))
+			return plataformas[i];
+	}
+	return 0;
+}
+
+/////////////////////////////
 void InteraccionListas::persiguenJugador(Jugador& jugador, ListaEnemigos& enemigos) {
 	for (int i = 0; i < enemigos.getNum(); i++) {
 		Interaccion::persigueJugador(jugador, *enemigos[i]);

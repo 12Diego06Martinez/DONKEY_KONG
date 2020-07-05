@@ -62,8 +62,14 @@ void GestorMultimedia::imprimeGameOver() {
 }
 
 void GestorMultimedia::imprimePausa() {
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Pause.png").id);
+	setTextColor(1, 1, 0);
+	setFont("fuentes/FRANKNPLANK.TTF", 66);
+	printxy("PAUSE", -1, 9);
+	setFont("fuentes/game_over.ttf", 48);
+	printxy("Pulse -P- para reaunudar la partida", -6.5, 7.5);
+	printxy("Pulse -M- para volver al menu", -7, 6);
+	/*glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/pausa fondo.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
@@ -73,7 +79,7 @@ void GestorMultimedia::imprimePausa() {
 	glTexCoord2d(0, 0);		glVertex3f(-16, 16, 0.1);
 	glEnd();
 	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);*/
 }
 
 void GestorMultimedia::imprimeVictoria() {
@@ -84,7 +90,7 @@ void GestorMultimedia::imprimeVictoria() {
 	glColor3f(1, 1, 1);
 	glTexCoord2d(0, 1);		glVertex3f(-16, 0, 0.1);
 	glTexCoord2d(1, 1);		glVertex3f(16, 0, 0.1);
-	glTexCoord2d(1, 0);		glVertex3f(16, 16, 0.1);
+	glTexCoord2d(1, 0);		glVertex3f(16, 16,0.1);
 	glTexCoord2d(0, 0);		glVertex3f(-16, 16, 0.1);
 	glEnd();
 	glEnable(GL_LIGHTING);

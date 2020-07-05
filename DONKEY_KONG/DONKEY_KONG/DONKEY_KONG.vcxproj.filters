@@ -112,7 +112,7 @@
       <Filter>Archivos de origen\GESTORES</Filter>
     </ClCompile>
     <ClCompile Include="src\PlataformaMovil.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\OBJETOS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,7 +174,7 @@
       <Filter>Archivos de encabezado\GENERALES</Filter>
     </ClInclude>
     <ClInclude Include="src\PlataformaMovil.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\OBJETOS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

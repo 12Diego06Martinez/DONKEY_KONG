@@ -9,9 +9,6 @@
 GestorNiveles::GestorNiveles() {
 	//Control juego
 	nivel = 1;
-	vidas = 10;
-	monedas_recogidas = 0;
-	pasar_nivel = false;
 }
 
 GestorNiveles::~GestorNiveles() {
@@ -25,7 +22,6 @@ void GestorNiveles::cargaNivel() {
 	y_ojo = 7.5;
 	z_ojo = 30;
 	//Inicializa
-	nivel = 1;
 	vidas = 5;
 	monedas_recogidas = 0;
 	pasar_nivel = false;
@@ -35,8 +31,8 @@ void GestorNiveles::cargaNivel() {
 		player.setVel(0.0f, 0.0f);
 		//Pared
 		suelo.setLimites(-9, -4, 9, -3);
-		hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
-		hueco2.setLimites(-2, 9.75, 0, 10.15);
+		//hueco1.setLimites(-0.9, 1.85, 0.9, 2.15);
+		//hueco2.setLimites(-2, 9.75, 0, 10.15);
 		//Plataformas
 		plataformas.Agregar(new Plataforma(0, -2, 18, 0.3, plataforma_18));
 		plataformas.Agregar(new Plataforma(5, 2, 8, 0.3, plataforma_8_5));
@@ -106,7 +102,7 @@ void GestorNiveles::cargaNivel() {
 		//Monedas
 		monedas.Agregar(new Moneda(-4, -1.4, 0.7, 0.7));
 		monedas.Agregar(new Moneda(12, -1.4, 0.7, 0.7));
-		monedas.Agregar(new Moneda(-14, 2.65, 0.7, 0.7));
+		monedas.Agregar(new Moneda(-11, 2.65, 0.7, 0.7));
 		monedas.Agregar(new Moneda(0, 2.65, 0.7, 0.7));
 		monedas.Agregar(new Moneda(8, 2.65, 0.7, 0.7));
 		monedas.Agregar(new Moneda(-3, 6.65, 0.7, 0.7));
@@ -173,7 +169,11 @@ void GestorNiveles::mueveNivel() {
 		//InteraccionListas::persiguenJugador(player, enemigos);
 		//Jugador con pared
 		Interaccion::reboteExterior(player, suelo);
-		if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
+	/*	if (Interaccion::caidaHueco(player, hueco1) || Interaccion::caidaHueco(player, hueco2)) {
+			player.setAcel(0.0, -20.0f);
+			player.setFalling(true);
+		}*/
+		if (InteraccionListas::caidaVacio(player, plataformas) != 0) {
 			player.setAcel(0.0, -20.0f);
 			player.setFalling(true);
 		}
@@ -201,11 +201,11 @@ void GestorNiveles::mueveNivel() {
 		if (aux != 0) {
 			if (monedas_recogidas < 9)
 				monedas_recogidas++;
-			else if (monedas_recogidas == 9 && player.getPos().y > 15.9) {
-				pasar_nivel = true;
-			}
 		}
 		monedas.Delete(aux);
+		if (monedas_recogidas > 8 && player.getPos().y > 18) {
+			pasar_nivel = true;
+		}
 	}
 
 	if(nivel==2){
@@ -213,7 +213,7 @@ void GestorNiveles::mueveNivel() {
 		enemigos.Mueve(0.025f);
 		InteraccionListas::rebotePlataformas(plataformas, enemigos);
 		InteraccionListas::colisionEnemigos(enemigos);
-		////Jugador con enemigos
+		//Jugador con enemigos
 		//if (InteraccionListas::colisionJugador(player, enemigos) != 0) {
 		//	dj.playLose();
 		//	vidas--;
@@ -225,6 +225,10 @@ void GestorNiveles::mueveNivel() {
 			player.setAcel(0.0, -20.0f);
 			player.setFalling(true);
 		}*/
+		if (InteraccionListas::caidaVacio(player, plataformas) != 0) {
+			player.setAcel(0.0, -20.0f);
+			player.setFalling(true);
+		}
 		//Salto
 		if (player.getSalto() || player.getFalling()) {
 			if (InteraccionListas::sobrePlataforma(player, plataformas) != 0) {

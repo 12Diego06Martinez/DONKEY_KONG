@@ -46,14 +46,13 @@ void Coordinador::Mueve() {
 		miMundo.mueveNivel();
 		
 		if (miMundo.getVidas() == 0) {
-			//miMundo.recargaNivel();
 			estado = GAMEOVER;
 		}
 			
 		if (miMundo.getValidacion()) {
-			miMundo.subeNivel();
 			if (miMundo.getNivel() <= 3) {
-				//miMundo.recargaNivel();
+				miMundo.subeNivel();
+				miMundo.recargaNivel();
 				miMundo.cargaNivel();
 				estado = JUEGO;
 			}

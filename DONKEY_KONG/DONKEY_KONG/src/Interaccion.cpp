@@ -47,13 +47,6 @@ bool Interaccion::arribaEscalera(Jugador& jugador, Escalera escalera){
 }
 
 bool Interaccion::abajoEscalera(Jugador& jugador, Escalera escalera) {
-	/*float distancia = (escalera.limite2 - jugador.posicion).module();
-	if (distancia > 3.84 && distancia < 3.86 && jugador.isGoingDown == true) {
-		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
-		return true;
-	}
-	else
-		return false;*/
 	float distancia = (escalera.limite1 - jugador.posicion).module();
 	if (distancia > 0.24 && distancia < 0.26 && jugador.isGoingDown == true) {
 		jugador.setPos(jugador.posicion.x, (escalera.limite1.y + 0.15));
@@ -138,4 +131,15 @@ void Interaccion::persigueJugador(Jugador& jugador, Enemigo& enemigo) {
 		if (jugador.velocidad.x < 0 && enemigo.velocidad.x < 0)
 			enemigo.setVel(-enemigo.velocidad.x, 0.0f);
 	}
+}
+
+bool Interaccion::caidaVacio(Jugador& jugador, Plataforma plataforma) {
+	float x_max = plataforma.limite2.x;
+	float x_min = plataforma.limite1.x;
+	float y_max = plataforma.limite2.y;
+
+	if (jugador.posicion.x > x_max  && jugador.posicion.y == y_max || jugador.posicion.x < x_min && jugador.posicion.y == y_max)
+		return true;
+	else
+		return false;
 }
